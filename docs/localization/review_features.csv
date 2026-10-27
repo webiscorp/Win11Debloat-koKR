@@ -1,0 +1,493 @@
+﻿key,status,reason
+Features.RemoveApps.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.RemoveApps.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.Apps.Label,changed,CLI 매개 변수 설명을 완결된 안내 문장으로 정리; Apps 및 Default 식별자는 유지
+Features.Apps.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.RemoveGamingApps.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.RemoveGamingApps.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.RemoveHPApps.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.RemoveHPApps.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.CreateRestorePoint.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.CreateRestorePoint.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableTelemetry.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableTelemetry.ToolTip,changed,usage를 사용량으로 좁혀 번역한 부분을 사용 방식으로 수정; 원격 분석 용어를 병기하고 Insider 경고 유지
+Features.DisableTelemetry.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableTelemetry.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableTelemetry.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableSuggestions.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableSuggestions.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableSuggestions.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableSuggestions.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableSuggestions.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableNotifications.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableNotifications.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableNotifications.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableNotifications.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableNotifications.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableLocationServices.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableLocationServices.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableLocationServices.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableLocationServices.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableLocationServices.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableFindMyDevice.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableFindMyDevice.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableFindMyDevice.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableFindMyDevice.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableFindMyDevice.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableLockscreenTips.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableLockscreenTips.ToolTip,changed,잠금 화면 Spotlight의 공식 한국어 명칭을 사용하고 fun facts 직역을 자연스럽게 정리
+Features.DisableLockscreenTips.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableLockscreenTips.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableLockscreenTips.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.EnableDesktopSpotlight.Label,changed,Windows Spotlight를 Microsoft 한국어 지원 문서의 Windows 추천으로 통일
+Features.EnableDesktopSpotlight.ToolTip,changed,Windows Spotlight를 Microsoft 한국어 지원 문서의 Windows 추천으로 통일
+Features.EnableDesktopSpotlight.ApplyText,changed,Windows Spotlight를 Microsoft 한국어 지원 문서의 Windows 추천으로 통일
+Features.DisableDesktopSpotlight.Label,changed,Windows Spotlight를 Microsoft 한국어 지원 문서의 Windows 추천으로 통일
+Features.DisableDesktopSpotlight.ToolTip,changed,순환 이미지 직역을 배경 자동 변경으로 풀어 쓰고 정책에 따른 설정 제한 경고 유지
+Features.DisableDesktopSpotlight.ApplyText,changed,Windows Spotlight를 Microsoft 한국어 지원 문서의 Windows 추천으로 통일
+Features.DisableDesktopSpotlight.UndoLabel,changed,Windows Spotlight를 Microsoft 한국어 지원 문서의 Windows 추천으로 통일
+Features.DisableDesktopSpotlight.ApplyUndoText,changed,Windows Spotlight를 Microsoft 한국어 지원 문서의 Windows 추천으로 통일
+Features.HideDesktopSpotlightIcon.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.HideDesktopSpotlightIcon.ToolTip,changed,중첩 부정문을 제거하고 아이콘 숨김과 배경 화면 기능 유지의 차이를 명확화
+Features.HideDesktopSpotlightIcon.ApplyText,changed,Windows Spotlight를 Microsoft 한국어 지원 문서의 Windows 추천으로 통일
+Features.HideDesktopSpotlightIcon.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.HideDesktopSpotlightIcon.ApplyUndoText,changed,Windows Spotlight를 Microsoft 한국어 지원 문서의 Windows 추천으로 통일
+Features.DisableEdgeAds.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableEdgeAds.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableEdgeAds.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableEdgeAds.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableEdgeAds.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableCopilot.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableCopilot.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableCopilot.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableCopilot.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableCopilot.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableRecall.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableRecall.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableRecall.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableRecall.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableRecall.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableClickToDo.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableClickToDo.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableClickToDo.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableClickToDo.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableClickToDo.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableAISvcAutoStart.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableAISvcAutoStart.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableAISvcAutoStart.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableAISvcAutoStart.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableAISvcAutoStart.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableDVR.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableDVR.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableDVR.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableDVR.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableDVR.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableGameBarIntegration.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableGameBarIntegration.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableGameBarIntegration.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableGameBarIntegration.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableGameBarIntegration.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.ClearStart.Label,changed,시작 메뉴 고정 항목 삭제를 앱 자체 제거로 오해하지 않도록 고정 해제로 명확화; 사용자 적용 범위 유지
+Features.ClearStart.ApplyText,changed,시작 메뉴 고정 항목 삭제를 앱 자체 제거로 오해하지 않도록 고정 해제로 명확화; 사용자 적용 범위 유지
+Features.ClearStartAllUsers.Label,changed,시작 메뉴 고정 항목 삭제를 앱 자체 제거로 오해하지 않도록 고정 해제로 명확화; 사용자 적용 범위 유지
+Features.ClearStartAllUsers.ApplyText,changed,시작 메뉴 고정 항목 삭제를 앱 자체 제거로 오해하지 않도록 고정 해제로 명확화; 사용자 적용 범위 유지
+Features.ReplaceStart.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.ReplaceStart.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.ReplaceStartAllUsers.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.ReplaceStartAllUsers.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableStartRecommended.Label,changed,시작 메뉴 Recommended를 대표 지시 및 Windows UI에 맞춰 추천으로 통일; section은 영역으로 정리
+Features.DisableStartRecommended.ToolTip,changed,시작 메뉴 Recommended를 대표 지시 및 Windows UI에 맞춰 추천으로 통일; section은 영역으로 정리
+Features.DisableStartRecommended.ApplyText,changed,시작 메뉴 Recommended를 대표 지시 및 Windows UI에 맞춰 추천으로 통일; section은 영역으로 정리
+Features.DisableStartRecommended.UndoLabel,changed,시작 메뉴 Recommended를 대표 지시 및 Windows UI에 맞춰 추천으로 통일; section은 영역으로 정리
+Features.DisableStartRecommended.ApplyUndoText,changed,시작 메뉴 Recommended를 대표 지시 및 Windows UI에 맞춰 추천으로 통일; section은 영역으로 정리
+Features.DisableStartAllApps.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableStartAllApps.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableStartAllApps.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableStartAllApps.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableStartAllApps.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableStartPhoneLink.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableStartPhoneLink.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableStartPhoneLink.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableStartPhoneLink.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableStartPhoneLink.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableBing.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableBing.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableBing.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableBing.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableBing.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableStoreSearchSuggestions.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableStoreSearchSuggestions.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableStoreSearchSuggestions.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableStoreSearchSuggestions.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableStoreSearchSuggestions.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableSettings365Ads.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableSettings365Ads.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableSettings365Ads.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableSettings365Ads.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableSettings365Ads.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableSettingsHome.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableSettingsHome.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableSettingsHome.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableSettingsHome.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableSettingsHome.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableEdgeAI.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableEdgeAI.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableEdgeAI.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableEdgeAI.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableEdgeAI.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableChromeAI.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableChromeAI.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableChromeAI.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableChromeAI.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableChromeAI.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisablePaintAI.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisablePaintAI.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisablePaintAI.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisablePaintAI.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisablePaintAI.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableNotepadAI.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableNotepadAI.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableNotepadAI.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableNotepadAI.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableNotepadAI.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.EnableDarkMode.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.EnableDarkMode.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.EnableDarkMode.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.EnableDarkMode.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.EnableDarkMode.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.RevertContextMenu.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.RevertContextMenu.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.RevertContextMenu.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.RevertContextMenu.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.RevertContextMenu.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableMouseAcceleration.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableMouseAcceleration.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableMouseAcceleration.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableMouseAcceleration.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableMouseAcceleration.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableStickyKeys.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableStickyKeys.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableStickyKeys.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableStickyKeys.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableStickyKeys.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableWindowSnapping.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableWindowSnapping.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableWindowSnapping.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableWindowSnapping.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableWindowSnapping.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableSnapAssist.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableSnapAssist.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableSnapAssist.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableSnapAssist.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableSnapAssist.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableSnapLayouts.Label,changed,사용자에게 생소한 플라이아웃을 기능 의미를 유지하는 메뉴로 정리
+Features.DisableSnapLayouts.ToolTip,changed,사용자에게 생소한 플라이아웃을 기능 의미를 유지하는 메뉴로 정리
+Features.DisableSnapLayouts.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableSnapLayouts.UndoLabel,changed,사용자에게 생소한 플라이아웃을 기능 의미를 유지하는 메뉴로 정리
+Features.DisableSnapLayouts.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.HideTabsInAltTab.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.HideTabsInAltTab.ApplyText,changed,진행 상태 메시지를 다른 ApplyText와 동일하게 진행 중 시제로 정리
+Features.Show3TabsInAltTab.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.Show3TabsInAltTab.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.Show5TabsInAltTab.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.Show5TabsInAltTab.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.Show20TabsInAltTab.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.Show20TabsInAltTab.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.TaskbarAlignLeft.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.TaskbarAlignLeft.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.TaskbarAlignLeft.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.TaskbarAlignLeft.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.TaskbarAlignLeft.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.HideSearchTb.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.HideSearchTb.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.HideSearchTb.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.HideSearchTb.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.ShowSearchIconTb.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.ShowSearchIconTb.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.ShowSearchIconTb.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.ShowSearchIconTb.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.ShowSearchLabelTb.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.ShowSearchLabelTb.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.ShowSearchLabelTb.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.ShowSearchLabelTb.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.ShowSearchBoxTb.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.ShowSearchBoxTb.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.HideTaskview.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.HideTaskview.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.HideTaskview.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.HideTaskview.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.HideTaskview.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableWidgets.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableWidgets.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableWidgets.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.HideChat.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.HideChat.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.HideChat.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.HideChat.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.HideChat.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableStorageSense.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableStorageSense.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableStorageSense.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableStorageSense.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableStorageSense.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableFastStartup.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableFastStartup.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableFastStartup.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableFastStartup.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableFastStartup.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableBitlockerAutoEncryption.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableBitlockerAutoEncryption.ToolTip,changed,비활성화 옵션을 다시 비활성화하라는 듯한 중첩 표현을 수정; 기존 암호화 유지 조건 보존
+Features.DisableBitlockerAutoEncryption.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableBitlockerAutoEncryption.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableBitlockerAutoEncryption.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableModernStandbyNetworking.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableModernStandbyNetworking.ToolTip,changed,battery life를 배터리 수명 절약으로 번역한 어색함을 실제 의미인 배터리 소모 감소로 수정
+Features.DisableModernStandbyNetworking.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableModernStandbyNetworking.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableModernStandbyNetworking.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.EnableEndTask.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.EnableEndTask.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.EnableEndTask.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.EnableEndTask.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.EnableEndTask.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.EnableLastActiveClick.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.EnableLastActiveClick.ToolTip,changed,미리 보기 썸네일의 중복 외래어를 줄이고 마지막 활성 창 전환 의미 유지
+Features.EnableLastActiveClick.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.EnableLastActiveClick.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.EnableLastActiveClick.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.CombineTaskbarAlways.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.CombineTaskbarAlways.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.CombineMMTaskbarAlways.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.CombineMMTaskbarAlways.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.CombineTaskbarWhenFull.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.CombineTaskbarWhenFull.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.CombineTaskbarWhenFull.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.CombineTaskbarWhenFull.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.CombineMMTaskbarWhenFull.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.CombineMMTaskbarWhenFull.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.CombineMMTaskbarWhenFull.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.CombineMMTaskbarWhenFull.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.CombineTaskbarNever.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.CombineTaskbarNever.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.CombineTaskbarNever.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.CombineTaskbarNever.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.CombineMMTaskbarNever.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.CombineMMTaskbarNever.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.CombineMMTaskbarNever.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.CombineMMTaskbarNever.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.MMTaskbarModeAll.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.MMTaskbarModeAll.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.MMTaskbarModeMainActive.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.MMTaskbarModeMainActive.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.MMTaskbarModeMainActive.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.MMTaskbarModeMainActive.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.MMTaskbarModeActive.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.MMTaskbarModeActive.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.MMTaskbarModeActive.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.MMTaskbarModeActive.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.ExplorerToHome.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.ExplorerToHome.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.ExplorerToThisPC.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.ExplorerToThisPC.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.ExplorerToThisPC.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.ExplorerToThisPC.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.ExplorerToDownloads.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.ExplorerToDownloads.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.ExplorerToDownloads.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.ExplorerToDownloads.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.ExplorerToOneDrive.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.ExplorerToOneDrive.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.ExplorerToOneDrive.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.ExplorerToOneDrive.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.ShowKnownFileExt.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.ShowKnownFileExt.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.ShowKnownFileExt.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.ShowKnownFileExt.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.ShowKnownFileExt.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.ShowHiddenFolders.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.ShowHiddenFolders.ToolTip,changed,실제 Regfiles/Show_Hidden_Folders.reg는 Hidden=1만 변경하므로 모든 파일이 표시된다는 과장을 숨김 항목 표시로 바로잡음
+Features.ShowHiddenFolders.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.ShowHiddenFolders.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.ShowHiddenFolders.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.HideDupliDrive.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.HideDupliDrive.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.HideDupliDrive.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.HideDupliDrive.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.HideDupliDrive.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.HideHome.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.HideHome.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.HideHome.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.HideHome.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.HideHome.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.HideGallery.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.HideGallery.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.HideGallery.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.HideGallery.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.HideGallery.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableTransparency.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableTransparency.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableTransparency.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableTransparency.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableTransparency.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableAnimations.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableAnimations.ToolTip,changed,snappier의 뜻을 산뜻함에서 빠른 반응 속도로 수정; 성능 향상을 보장하지 않음
+Features.DisableAnimations.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableAnimations.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableAnimations.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableUpdateASAP.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableUpdateASAP.ToolTip,changed,eventually를 결국 계속 받음으로 중복 번역한 부분을 이후 수신으로 정리; 비보안 범위 유지
+Features.DisableUpdateASAP.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableUpdateASAP.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableUpdateASAP.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.PreventUpdateAutoReboot.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.PreventUpdateAutoReboot.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.PreventUpdateAutoReboot.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.PreventUpdateAutoReboot.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.PreventUpdateAutoReboot.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableDeliveryOptimization.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableDeliveryOptimization.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableDeliveryOptimization.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableDeliveryOptimization.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableDeliveryOptimization.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableDeviceAutoAppDownload.Label,changed,device companion apps 직역을 사용자가 이해하기 쉬운 장치 보조 앱으로 통일
+Features.DisableDeviceAutoAppDownload.ToolTip,changed,device companion apps 직역을 사용자가 이해하기 쉬운 장치 보조 앱으로 통일
+Features.DisableDeviceAutoAppDownload.ApplyText,changed,device companion apps 직역을 사용자가 이해하기 쉬운 장치 보조 앱으로 통일
+Features.DisableDeviceAutoAppDownload.UndoLabel,changed,device companion apps 직역을 사용자가 이해하기 쉬운 장치 보조 앱으로 통일
+Features.DisableDeviceAutoAppDownload.ApplyUndoText,changed,device companion apps 직역을 사용자가 이해하기 쉬운 장치 보조 앱으로 통일
+Features.ForceRemoveEdge.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.ForceRemoveEdge.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.HideOnedrive.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.HideOnedrive.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.HideOnedrive.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.HideOnedrive.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.HideOnedrive.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.Hide3dObjects.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.Hide3dObjects.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.Hide3dObjects.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.Hide3dObjects.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.Hide3dObjects.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.HideMusic.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.HideMusic.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.HideMusic.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.HideMusic.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.HideMusic.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.AddFoldersToThisPC.Label,changed,common folders를 공유 폴더처럼 오해할 수 있는 공통 폴더 대신 기본 사용자 폴더로 명확화
+Features.AddFoldersToThisPC.ToolTip,changed,common folders를 공유 폴더처럼 오해할 수 있는 공통 폴더 대신 기본 사용자 폴더로 명확화
+Features.AddFoldersToThisPC.ApplyText,changed,common folders를 공유 폴더처럼 오해할 수 있는 공통 폴더 대신 기본 사용자 폴더로 명확화
+Features.AddFoldersToThisPC.UndoLabel,changed,common folders를 공유 폴더처럼 오해할 수 있는 공통 폴더 대신 기본 사용자 폴더로 명확화
+Features.AddFoldersToThisPC.ApplyUndoText,changed,common folders를 공유 폴더처럼 오해할 수 있는 공통 폴더 대신 기본 사용자 폴더로 명확화
+Features.HideIncludeInLibrary.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.HideIncludeInLibrary.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.HideIncludeInLibrary.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.HideIncludeInLibrary.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.HideIncludeInLibrary.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.HideGiveAccessTo.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.HideGiveAccessTo.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.HideGiveAccessTo.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.HideGiveAccessTo.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.HideGiveAccessTo.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.HideShare.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.HideShare.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.HideShare.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.HideShare.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.HideShare.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.DisableBraveBloat.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.DisableBraveBloat.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.DisableBraveBloat.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.DisableBraveBloat.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.DisableBraveBloat.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.EnableWindowsSandbox.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.EnableWindowsSandbox.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.EnableWindowsSandbox.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.EnableWindowsSandbox.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.EnableWindowsSandbox.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.EnableWindowsSubsystemForLinux.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.EnableWindowsSubsystemForLinux.ToolTip,changed,구현이 VirtualMachinePlatform을 함께 활성화하므로 가상화 자체가 없다는 오해를 피하도록 별도 VM 생성 불필요로 정확화
+Features.EnableWindowsSubsystemForLinux.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.EnableWindowsSubsystemForLinux.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.EnableWindowsSubsystemForLinux.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.ShowDriveLettersFirst.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.ShowDriveLettersFirst.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.ShowDriveLettersFirst.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.ShowDriveLettersFirst.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.ShowDriveLettersFirst.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.ShowDriveLettersLast.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.ShowDriveLettersLast.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.ShowDriveLettersLast.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.ShowNetworkDriveLettersFirst.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.ShowNetworkDriveLettersFirst.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.ShowNetworkDriveLettersFirst.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.ShowNetworkDriveLettersFirst.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.ShowNetworkDriveLettersFirst.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.HideDriveLetters.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.HideDriveLetters.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.HideDriveLetters.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.HideDriveLetters.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.HideDriveLetters.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.StartAllAppsCategory.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.StartAllAppsCategory.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.StartAllAppsCategory.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.StartAllAppsGrid.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.StartAllAppsGrid.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.StartAllAppsGrid.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.StartAllAppsGrid.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.StartAllAppsGrid.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+Features.StartAllAppsList.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+Features.StartAllAppsList.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+Features.StartAllAppsList.ApplyText,kept,영문 적용 상태의 대상·동작·진행 시제와 일치하며 기능 식별을 해치지 않아 유지
+Features.StartAllAppsList.UndoLabel,kept,영문 되돌리기 선택의 사용/사용 안 함·표시/숨김 방향과 적용 대상이 일치하여 유지
+Features.StartAllAppsList.ApplyUndoText,kept,영문 되돌리기 상태의 동작 방향·대상·진행 시제가 일치하여 유지
+UiGroups.DesktopSpotlight.Label,changed,Windows Spotlight를 Microsoft 한국어 지원 문서의 Windows 추천으로 통일
+UiGroups.DesktopSpotlight.ToolTip,changed,바로 가기 표시/숨김과 Windows 추천 전체 사용 안 함 선택을 분명히 구분
+UiGroups.DesktopSpotlight.Values.EnableDesktopSpotlight,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.DesktopSpotlight.Values.HideDesktopSpotlightIcon,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.DesktopSpotlight.Values.DisableDesktopSpotlight,changed,Windows Spotlight를 Microsoft 한국어 지원 문서의 Windows 추천으로 통일
+UiGroups.SearchIcon.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+UiGroups.SearchIcon.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+UiGroups.SearchIcon.Values.ShowSearchBoxTb,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.SearchIcon.Values.ShowSearchLabelTb,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.SearchIcon.Values.ShowSearchIconTb,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.SearchIcon.Values.HideSearchTb,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.MultiMon.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+UiGroups.MultiMon.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+UiGroups.MultiMon.Values.MMTaskbarModeAll,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.MultiMon.Values.MMTaskbarModeMainActive,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.MultiMon.Values.MMTaskbarModeActive,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.CombineButtons.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+UiGroups.CombineButtons.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+UiGroups.CombineButtons.Values.CombineTaskbarAlways,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.CombineButtons.Values.CombineTaskbarWhenFull,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.CombineButtons.Values.CombineTaskbarNever,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.CombineMMButtons.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+UiGroups.CombineMMButtons.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+UiGroups.CombineMMButtons.Values.CombineMMTaskbarAlways,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.CombineMMButtons.Values.CombineMMTaskbarWhenFull,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.CombineMMButtons.Values.CombineMMTaskbarNever,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.ClearStart.Label,changed,시작 메뉴 고정 항목 삭제를 앱 자체 제거로 오해하지 않도록 고정 해제로 명확화; 사용자 적용 범위 유지
+UiGroups.ClearStart.ToolTip,changed,시작 메뉴 고정 항목 삭제를 앱 자체 제거로 오해하지 않도록 고정 해제로 명확화; 사용자 적용 범위 유지
+UiGroups.ClearStart.Values.ClearStart,changed,시작 메뉴 고정 항목 삭제를 앱 자체 제거로 오해하지 않도록 고정 해제로 명확화; 사용자 적용 범위 유지
+UiGroups.ClearStart.Values.ClearStartAllUsers,changed,시작 메뉴 고정 항목 삭제를 앱 자체 제거로 오해하지 않도록 고정 해제로 명확화; 사용자 적용 범위 유지
+UiGroups.ExplorerLocation.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+UiGroups.ExplorerLocation.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+UiGroups.ExplorerLocation.Values.ExplorerToHome,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.ExplorerLocation.Values.ExplorerToThisPC,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.ExplorerLocation.Values.ExplorerToDownloads,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.ExplorerLocation.Values.ExplorerToOneDrive,kept,OneDrive 제품명으로 의도적인 원문 유지; 번역 누락이 아님
+UiGroups.DriveLetterPosition.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+UiGroups.DriveLetterPosition.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+UiGroups.DriveLetterPosition.Values.ShowDriveLettersLast,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.DriveLetterPosition.Values.ShowDriveLettersFirst,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.DriveLetterPosition.Values.ShowNetworkDriveLettersFirst,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.DriveLetterPosition.Values.HideDriveLetters,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.ShowTabsInAltTab.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+UiGroups.ShowTabsInAltTab.ToolTip,kept,영문 기능 설명의 효과·조건·주의사항과 대조하여 의미가 일치하고 기존 한국어가 명확하므로 유지
+UiGroups.ShowTabsInAltTab.Values.HideTabsInAltTab,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.ShowTabsInAltTab.Values.Show3TabsInAltTab,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.ShowTabsInAltTab.Values.Show5TabsInAltTab,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.ShowTabsInAltTab.Values.Show20TabsInAltTab,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.StartAllAppsView.Label,kept,영문 옵션명과 적용 대상·동작·범위를 대조했고 기존 한국어 명칭이 명확하여 유지
+UiGroups.StartAllAppsView.ToolTip,changed,설정 잠김을 다른 경고와 동일한 설정 변경 제한 문구로 통일하고 UI 설명을 자연스럽게 정리
+UiGroups.StartAllAppsView.Values.DisableStartAllApps,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.StartAllAppsView.Values.StartAllAppsCategory,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.StartAllAppsView.Values.StartAllAppsGrid,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지
+UiGroups.StartAllAppsView.Values.StartAllAppsList,kept,영문 선택값의 의미·적용 범위·기본값 표시를 확인했고 기존 한국어 표현이 명확하여 유지

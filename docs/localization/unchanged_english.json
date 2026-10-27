@@ -1,0 +1,586 @@
+{
+  "schema_version": 1,
+  "note": "Reviewed exact English-equivalent values. Add or change entries only after English/Korean comparison; CI never updates this allowlist.",
+  "entries": {
+    "Apps.4DF9E0F8.Netflix.FriendlyName": {
+      "english_value": "Netflix",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.9426MICRO-STARINTERNATION.BusinessCenter.FriendlyName": {
+      "english_value": "MSI Center Pro",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.9426MICRO-STARINTERNATION.MSICenter.FriendlyName": {
+      "english_value": "MSI Center",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.ACGMediaPlayer.FriendlyName": {
+      "english_value": "ACG Player",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPAIExperienceCenter.FriendlyName": {
+      "english_value": "HP AI Experience Center",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPConnectedMusic.FriendlyName": {
+      "english_value": "HP Connected Music",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPConnectedPhotopoweredbySnapfish.FriendlyName": {
+      "english_value": "HP Connected Photo",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPDesktopSupportUtilities.FriendlyName": {
+      "english_value": "HP Desktop Support Utilities",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPEasyClean.FriendlyName": {
+      "english_value": "HP Easy Clean",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPFileViewer.FriendlyName": {
+      "english_value": "HP File Viewer",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPJumpStarts.FriendlyName": {
+      "english_value": "HP JumpStarts",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPPCHardwareDiagnosticsWindows.FriendlyName": {
+      "english_value": "HP PC Hardware Diagnostics Windows",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPPowerManager.FriendlyName": {
+      "english_value": "HP Power Manager",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPPrinterControl.FriendlyName": {
+      "english_value": "HP Smart",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPPrivacySettings.FriendlyName": {
+      "english_value": "HP PC Privacy Settings",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPQuickDrop.FriendlyName": {
+      "english_value": "HP QuickDrop",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPQuickTouch.FriendlyName": {
+      "english_value": "HP QuickTouch",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPRegistration.FriendlyName": {
+      "english_value": "HP Registration",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPSupportAssistant.FriendlyName": {
+      "english_value": "HP Support Assistant",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPSureShieldAI.FriendlyName": {
+      "english_value": "HP Sure Shield AI",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPSystemInformation.FriendlyName": {
+      "english_value": "HP System Information",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPWelcome.FriendlyName": {
+      "english_value": "HP Welcome",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.HPWorkWell.FriendlyName": {
+      "english_value": "HP WorkWell",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.OMENCommandCenter.FriendlyName": {
+      "english_value": "HP OMEN Gaming Hub",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AD2F1837.myHP.FriendlyName": {
+      "english_value": "HP",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AcerIncorporated.AcerCareCenterS.FriendlyName": {
+      "english_value": "Acer Care Center S",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AcerIncorporated.AcerRegistration.FriendlyName": {
+      "english_value": "Acer Product Registration",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Amazon.com.Amazon.FriendlyName": {
+      "english_value": "Amazon",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Asphalt8Airborne.FriendlyName": {
+      "english_value": "Asphalt 8: Airborne",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.AutodeskSketchBook.FriendlyName": {
+      "english_value": "Autodesk SketchBook",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.B9ECED6F.ASUSPCAssistant.FriendlyName": {
+      "english_value": "MyASUS",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.B9ECED6F.Glidex.FriendlyName": {
+      "english_value": "ASUS GlideX",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.B9ECED6F.ScreenPadMaster.FriendlyName": {
+      "english_value": "ASUS ScreenXpert",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.BytedancePte.Ltd.TikTok.FriendlyName": {
+      "english_value": "TikTok",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.COOKINGFEVER.FriendlyName": {
+      "english_value": "Cooking Fever",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.CaesarsSlotsFreeCasino.FriendlyName": {
+      "english_value": "Caesars Slots",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Clipchamp.Clipchamp.FriendlyName": {
+      "english_value": "Microsoft Clipchamp",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.CyberLinkMediaSuiteEssentials.FriendlyName": {
+      "english_value": "CyberLink Media Suite",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.DellInc.DellDigitalDelivery.FriendlyName": {
+      "english_value": "Dell Digital Delivery",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.DellInc.DellMobileConnect.FriendlyName": {
+      "english_value": "Dell Mobile Connect",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.DellInc.DellSupportAssistforPCs.FriendlyName": {
+      "english_value": "Dell SupportAssist",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Disney.37853FC22B2CE.FriendlyName": {
+      "english_value": "Disney+",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.DisneyMagicKingdoms.FriendlyName": {
+      "english_value": "Disney Magic Kingdoms",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.DrawboardPDF.FriendlyName": {
+      "english_value": "Drawboard PDF",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Duolingo-LearnLanguagesforFree.FriendlyName": {
+      "english_value": "Duolingo",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.E046963F.LenovoCompanion.FriendlyName": {
+      "english_value": "Lenovo Vantage",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.E0469640.SmartAppearance.FriendlyName": {
+      "english_value": "Lenovo Smart Appearance",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.FACEBOOK.FACEBOOK.FriendlyName": {
+      "english_value": "Facebook",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Facebook.Instagram.FriendlyName": {
+      "english_value": "Instagram",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.FarmVille2CountryEscape.FriendlyName": {
+      "english_value": "FarmVille 2: Country Escape",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Flipboard.FriendlyName": {
+      "english_value": "Flipboard",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.HULULLC.HULUPLUS.FriendlyName": {
+      "english_value": "Hulu",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.HiddenCity.FriendlyName": {
+      "english_value": "Hidden City: Hidden Object Adventure",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.LGElectronics.LGMonitorApp.FriendlyName": {
+      "english_value": "LG Monitor App Installer",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.LenovoCompanyLimited.LenovoVantageService.FriendlyName": {
+      "english_value": "Lenovo Vantage Service",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.LinkedInforWindows.FriendlyName": {
+      "english_value": "LinkedIn",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.MarchofEmpires.FriendlyName": {
+      "english_value": "March of Empires",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.549981C3F5F10.FriendlyName": {
+      "english_value": "Cortana",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.Edge.FriendlyName": {
+      "english_value": "Microsoft Edge",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.GamingApp.FriendlyName": {
+      "english_value": "XBOX",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.MSPaint.FriendlyName": {
+      "english_value": "Paint 3D",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.MicrosoftOfficeHub.FriendlyName": {
+      "english_value": "Microsoft 365 Copilot",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.MicrosoftPowerBIForWindows.FriendlyName": {
+      "english_value": "Power BI",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.Office.Sway.FriendlyName": {
+      "english_value": "Sway",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.OneDrive.FriendlyName": {
+      "english_value": "OneDrive",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.OutlookForWindows.FriendlyName": {
+      "english_value": "Outlook",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.PCManager.FriendlyName": {
+      "english_value": "Microsoft PC Manager",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.PowerAutomateDesktop.FriendlyName": {
+      "english_value": "Power Automate",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.SurfaceHub.FriendlyName": {
+      "english_value": "Surface",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.Todos.FriendlyName": {
+      "english_value": "Microsoft To Do",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.Whiteboard.FriendlyName": {
+      "english_value": "Microsoft Whiteboard",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.Windows.AIHub.FriendlyName": {
+      "english_value": "Copilot+ AI Hub",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.Windows.DevHome.FriendlyName": {
+      "english_value": "Dev Home",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.WindowsStore.FriendlyName": {
+      "english_value": "Microsoft Store",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.Xbox.TCUI.FriendlyName": {
+      "english_value": "Xbox Live (TCUI)",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.XboxApp.FriendlyName": {
+      "english_value": "Xbox Console Companion",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.XboxGameOverlay.FriendlyName": {
+      "english_value": "Xbox Game Overlay",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.XboxGamingOverlay.FriendlyName": {
+      "english_value": "Game Bar",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.XboxIdentityProvider.FriendlyName": {
+      "english_value": "Xbox Identity Provider",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Microsoft.XboxSpeechToTextOverlay.FriendlyName": {
+      "english_value": "Game Speech Window",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.MicrosoftCorporationII.MicrosoftFamily.FriendlyName": {
+      "english_value": "Microsoft Family Safety",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.MicrosoftCorporationII.Windows365.FriendlyName": {
+      "english_value": "Windows App",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.MicrosoftWindows.Client.WebExperience.FriendlyName": {
+      "english_value": "Windows Web Experience Pack",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.NYTCrossword.FriendlyName": {
+      "english_value": "NYT Crossword",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.OneCalendar.FriendlyName": {
+      "english_value": "One Calendar",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.PandoraMediaInc.FriendlyName": {
+      "english_value": "Pandora",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.PhototasticCollage.FriendlyName": {
+      "english_value": "Phototastic Collage",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.PicsArt-PhotoStudio.FriendlyName": {
+      "english_value": "Picsart Photo Editor",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.PolarrPhotoEditorAcademicEdition.FriendlyName": {
+      "english_value": "Polarr Pro Photo Editor",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.SAMSUNGELECTRONICSCO.LTD.Bixby.FriendlyName": {
+      "english_value": "Samsung Bixby",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.SAMSUNGELECTRONICSCO.LTD.PCGallery.FriendlyName": {
+      "english_value": "Samsung Gallery",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.SAMSUNGELECTRONICSCO.LTD.PENUP.FriendlyName": {
+      "english_value": "Samsung PENUP",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.SAMSUNGELECTRONICSCO.LTD.SamsungScreenRecording.FriendlyName": {
+      "english_value": "Samsung Screen Recorder",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.SAMSUNGELECTRONICSCO.LTD.SamsungStudio.FriendlyName": {
+      "english_value": "Samsung Studio",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.SAMSUNGELECTRONICSCO.LTD.SamsungWelcome.FriendlyName": {
+      "english_value": "Samsung Galaxy Book Experience",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.SAMSUNGELECTRONICSCO.LTD.SmartThingsWindows.FriendlyName": {
+      "english_value": "Samsung SmartThings",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.SAMSUNGELECTRONICSCoLtd.MultiControl.FriendlyName": {
+      "english_value": "Samsung Multi control",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.SAMSUNGELECTRONICSCoLtd.SamsungFlux.FriendlyName": {
+      "english_value": "Samsung Flow",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.SAMSUNGELECTRONICSCoLtd.SamsungNotes.FriendlyName": {
+      "english_value": "Samsung Notes",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.SAMSUNGELECTRONICSCoLtd.SamsungQuickShare.FriendlyName": {
+      "english_value": "Samsung Quick Share",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.SAMSUNGELECTRONICSCoLtd.SecondScreen.FriendlyName": {
+      "english_value": "Samsung Second Screen",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.Sidia.LiveWallpaper.FriendlyName": {
+      "english_value": "Samsung Live Wallpaper",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.SlingTV.FriendlyName": {
+      "english_value": "Sling TV",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.SpotifyAB.SpotifyMusic.FriendlyName": {
+      "english_value": "Spotify",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.TuneInRadio.FriendlyName": {
+      "english_value": "TuneIn Radio",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.WinZipUniversal.FriendlyName": {
+      "english_value": "WinZip Universal",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.XP9CXNGPPJ97XX.FriendlyName": {
+      "english_value": "Microsoft Copilot",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.flaregamesGmbH.RoyalRevolt.FriendlyName": {
+      "english_value": "Royal Revolt! / Royal Revolt 2",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.iHeartRadio.FriendlyName": {
+      "english_value": "iHeartRadio",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.king.com.BubbleWitch3Saga.FriendlyName": {
+      "english_value": "Bubble Witch 3 Saga",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.king.com.CandyCrushSaga.FriendlyName": {
+      "english_value": "Candy Crush Saga",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Apps.king.com.CandyCrushSodaSaga.FriendlyName": {
+      "english_value": "Candy Crush Soda Saga",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Categories.AI.Label": {
+      "english_value": "AI",
+      "classification": "technical_term",
+      "reason": "기술 약어 AI를 의도적으로 유지"
+    },
+    "Chrome.AboutKoreanEditionLink": {
+      "english_value": "WEBIS Win11Debloat-koKR",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "Chrome.TitleBarAppName": {
+      "english_value": "Win11Debloat",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    },
+    "UiGroups.ExplorerLocation.Values.ExplorerToOneDrive": {
+      "english_value": "OneDrive",
+      "classification": "product_name",
+      "reason": "제품·앱의 식별 이름을 원문 그대로 유지; 한국어 설명은 별도 카탈로그에서 제공"
+    }
+  }
+}
