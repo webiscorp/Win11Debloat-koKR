@@ -92,8 +92,8 @@ Describe 'Launcher archive verification flow' {
 
     BeforeEach {
         $originalTemp = $env:TEMP
-        $env:TEMP = $TestDrive
-        $archivePath = Join-Path $TestDrive 'win11debloat.zip'
+        $env:TEMP = Join-Path $TestDrive ([guid]::NewGuid().ToString('N'))
+        [void][System.IO.Directory]::CreateDirectory($env:TEMP)
 
         # Mock bodies read this table, so a test changes it instead of re-creating variables.
         $state = @{
@@ -106,6 +106,7 @@ Describe 'Launcher archive verification flow' {
             }
             SumsText  = ''
             ArchiveBytes = [System.Text.Encoding]::ASCII.GetBytes('abc')
+            ArchivePath = $null
         }
 
         Mock Clear-Host {}
@@ -116,7 +117,7 @@ Describe 'Launcher archive verification flow' {
             switch -Regex ([string]$Uri) {
                 'releases/latest$' { return $state.Release }
                 'SHA256SUMS$' { [System.IO.File]::WriteAllText($OutFile, $state.SumsText) }
-                default { [System.IO.File]::WriteAllBytes($OutFile, $state.ArchiveBytes) }
+                default { $state.ArchivePath = $OutFile; [System.IO.File]::WriteAllBytes($OutFile, $state.ArchiveBytes) }
             }
         }
     }
@@ -133,7 +134,8 @@ Describe 'Launcher archive verification flow' {
         & $getScriptPath *> $null
 
         $global:LASTEXITCODE | Should -Be 1
-        Test-Path -LiteralPath $archivePath | Should -BeFalse
+        $state.ArchivePath | Should -Not -BeNullOrEmpty
+        Test-Path -LiteralPath $state.ArchivePath | Should -BeFalse
         Should -Invoke Invoke-RestMethod -Times 1 -Exactly -ParameterFilter { $Uri -eq $archiveUrl }
         Should -Invoke Expand-Archive -Times 0 -Exactly
         Should -Invoke Start-Process -Times 0 -Exactly
@@ -147,7 +149,7 @@ Describe 'Launcher archive verification flow' {
         & $getScriptPath *> $null
 
         $global:LASTEXITCODE | Should -Be 1
-        Test-Path -LiteralPath $archivePath | Should -BeFalse
+        $state.ArchivePath | Should -BeNullOrEmpty
         Should -Invoke Invoke-RestMethod -Times 1 -Exactly -ParameterFilter { $Uri -eq $checksumsUrl }
         Should -Invoke Invoke-RestMethod -Times 0 -Exactly -ParameterFilter { $Uri -eq $archiveUrl -or $Uri -eq $zipballUrl }
         Should -Invoke Expand-Archive -Times 0 -Exactly
@@ -164,14 +166,74 @@ Describe 'Launcher archive verification flow' {
         Should -Invoke Expand-Archive -Times 1 -Exactly
     }
 
-    It 'downloads the generated source archive when the release has no checksum asset' {
+    It 'rejects a Korean stable release without both checksum and archive assets' {
         $state.Release.assets = @($state.Release.assets | Where-Object { $_.name -ne 'SHA256SUMS' })
+        $global:LASTEXITCODE = 0
         $ErrorActionPreference = 'Continue'
 
-        { & $getScriptPath *> $null } | Should -Throw '*reached extraction*'
+        & $getScriptPath *> $null
 
-        Should -Invoke Invoke-RestMethod -Times 1 -Exactly -ParameterFilter { $Uri -eq $zipballUrl }
-        Should -Invoke Invoke-RestMethod -Times 0 -Exactly -ParameterFilter { $Uri -eq $checksumsUrl -or $Uri -eq $archiveUrl }
-        Should -Invoke Expand-Archive -Times 1 -Exactly
+        $global:LASTEXITCODE | Should -Be 1
+        Should -Invoke Invoke-RestMethod -Times 0 -Exactly -ParameterFilter { $Uri -eq $zipballUrl -or $Uri -eq $checksumsUrl -or $Uri -eq $archiveUrl }
+        Should -Invoke Expand-Archive -Times 0 -Exactly
+        Should -Invoke Start-Process -Times 0 -Exactly
     }
+
+    It 'uses only the Korean fork development archive when Dev is explicitly requested' {
+        $ErrorActionPreference = 'Continue'
+        { & $getScriptPath -Dev *> $null } | Should -Throw '*reached extraction*'
+        Should -Invoke Invoke-RestMethod -Times 1 -Exactly -ParameterFilter {
+            $Uri -eq 'https://github.com/webiscorp/Win11Debloat-koKR/archive/refs/heads/master.zip'
+        }
+        Should -Invoke Invoke-RestMethod -Times 0 -Exactly -ParameterFilter { $Uri -like '*releases/latest' }
+        Should -Invoke Start-Process -Times 0 -Exactly
+    }
+
+    It 'queries the Korean fork for stable releases' {
+        $state.SumsText = "$('f' * 64)  Win11Debloat.zip"
+        $ErrorActionPreference = 'Continue'
+        & $getScriptPath *> $null
+        Should -Invoke Invoke-RestMethod -Times 1 -Exactly -ParameterFilter {
+            $Uri -eq 'https://api.github.com/repos/webiscorp/Win11Debloat-koKR/releases/latest'
+        }
+    }
+    It 'preserves current settings across repeated extraction failures' {
+        $settings_directory = Join-Path (Join-Path $env:TEMP 'Win11Debloat-koKR') 'Config'
+        [void][System.IO.Directory]::CreateDirectory($settings_directory)
+        $preferences_path = Join-Path $settings_directory 'Preferences.json'
+        $settings_path = Join-Path $settings_directory 'LastUsedSettings.json'
+        [System.IO.File]::WriteAllText($preferences_path, '{"Language":"ko-KR","Theme":"Dark"}')
+        [System.IO.File]::WriteAllText($settings_path, '{"Version":"1.0"}')
+        $state.SumsText = 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad  Win11Debloat.zip'
+        for ($attempt = 0; $attempt -lt 2; $attempt++) {
+            { & $getScriptPath *> $null } | Should -Throw '*reached extraction*'
+            [System.IO.File]::ReadAllText($preferences_path) | Should -Be '{"Language":"ko-KR","Theme":"Dark"}'
+            [System.IO.File]::ReadAllText($settings_path) | Should -Be '{"Version":"1.0"}'
+        }
+        Should -Invoke Start-Process -Times 0 -Exactly
+    }
+
+    It 'recovers settings left in ConfigOld by an interrupted older launcher' {
+        $work_directory = Join-Path $env:TEMP 'Win11Debloat-koKR'
+        $backup_directory = Join-Path $work_directory 'ConfigOld'
+        [void][System.IO.Directory]::CreateDirectory($backup_directory)
+        [System.IO.File]::WriteAllText((Join-Path $backup_directory 'Preferences.json'), '{"Language":"ko-KR"}')
+        [System.IO.File]::WriteAllText((Join-Path $backup_directory 'LastUsedSettings.json'), '{"Version":"1.0"}')
+        $state.SumsText = 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad  Win11Debloat.zip'
+        Mock Expand-Archive {
+            $payload_directory = Join-Path $DestinationPath 'Win11Debloat-koKR'
+            foreach ($relative_path in @('Win11Debloat.ps1', 'LICENSE', 'Config/Features.json', 'Config/Apps.json',
+                'Config/Languages/en-US/Chrome.json', 'Config/Languages/ko-KR/Chrome.json', 'Scripts/FileIO/Import-LanguageFile.ps1')) {
+                $fixture_file = Join-Path $payload_directory $relative_path
+                [void][System.IO.Directory]::CreateDirectory((Split-Path -Parent $fixture_file))
+                [System.IO.File]::WriteAllText($fixture_file, 'test fixture; never executed')
+            }
+        }
+        $ErrorActionPreference = 'Continue'
+        & $getScriptPath *> $null
+        [System.IO.File]::ReadAllText((Join-Path $work_directory 'Config/Preferences.json')) | Should -Be '{"Language":"ko-KR"}'
+        [System.IO.File]::ReadAllText((Join-Path $work_directory 'Config/LastUsedSettings.json')) | Should -Be '{"Version":"1.0"}'
+        Should -Invoke Start-Process -Times 1 -Exactly
+    }
+
 }

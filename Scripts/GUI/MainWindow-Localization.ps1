@@ -87,6 +87,10 @@ function Update-MainWindowAppLanguage {
         $app.SetValue([System.Windows.Automation.AutomationProperties]::NameProperty, $app.AppName)
     }
     foreach ($preset in $script:JsonPresetCheckboxes) {
+        if ($preset.PSObject.Properties['PresetName']) {
+            $preset.Content = Get-AppPresetDisplayName -PresetId $preset.PresetId -FallbackName $preset.PresetName
+            $preset.SetValue([System.Windows.Automation.AutomationProperties]::NameProperty, [string]$preset.Content)
+        }
         $preset.ToolTip = Get-Translation -Key 'AppPresetSelectTooltip' -FormatArgs @($preset.Content)
     }
     # A future installed-only toggle must not consume a catalog in the old language.

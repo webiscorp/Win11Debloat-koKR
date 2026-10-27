@@ -33,17 +33,17 @@ function Resolve-TargetUserHiveContext {
 
     $normalizedTargetUserName = Normalize-UserLookupValue -Value $TargetUserName
     if ([string]::IsNullOrWhiteSpace($normalizedTargetUserName)) {
-        throw 'Target user name for registry hive resolution is empty.'
+        throw (Get-Translation -Key 'HelperTargetUserEmpty')
     }
 
     $userContext = Resolve-UserProfileContext -UserName $normalizedTargetUserName
     if (-not $userContext -or [string]::IsNullOrWhiteSpace([string]$userContext.ProfilePath)) {
-        throw "Unable to resolve profile path for target user '$normalizedTargetUserName'."
+        throw (Get-Translation -Key 'HelperProfilePathMissing' -FormatArgs @($normalizedTargetUserName))
     }
 
     $hiveDatPath = Join-Path $userContext.ProfilePath 'NTUSER.DAT'
     if (-not (Test-Path -LiteralPath $hiveDatPath)) {
-        throw "Unable to find target user hive at '$hiveDatPath'."
+        throw (Get-Translation -Key 'HelperUserHiveMissing' -FormatArgs @($hiveDatPath))
     }
 
     $isDefaultProfile = $normalizedTargetUserName.Equals('Default', [System.StringComparison]::OrdinalIgnoreCase)
@@ -121,7 +121,7 @@ function Invoke-WithTargetUserHive {
                     $hiveContext = $loadedSidContext
                 }
                 else {
-                    throw "Failed to load target user hive '$($hiveContext.HiveDatPath)' (exit code: $loadExitCode)."
+                    throw (Get-Translation -Key 'HelperHiveLoadFailed' -FormatArgs @($hiveContext.HiveDatPath, $loadExitCode))
                 }
             }
             else {
@@ -145,7 +145,7 @@ function Invoke-WithTargetUserHive {
             reg unload "HKU\$($hiveContext.MountName)" | Out-Null
             $unloadExitCode = $LASTEXITCODE
             if ($unloadExitCode -ne 0) {
-                Write-Warning "Failed to unload registry hive 'HKU\$($hiveContext.MountName)' (exit code: $unloadExitCode)"
+                Write-Warning (Get-Translation -Key 'HelperHiveUnloadFailed' -FormatArgs @($hiveContext.MountName, $unloadExitCode))
             }
         }
     }

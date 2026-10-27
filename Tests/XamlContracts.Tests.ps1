@@ -118,7 +118,7 @@ Describe 'XAML UI contracts' {
     }
 
     It 'exposes <Schema> links as keyboard-accessible hyperlinks with automation names' -TestCases @(
-        @{ Schema = 'AboutWindow.xaml'; LinkNames = @('ProjectLink', 'KofiLink') }
+        @{ Schema = 'AboutWindow.xaml'; LinkNames = @('ProjectLink', 'KoreanProjectLink', 'KofiLink') }
         @{ Schema = 'RestoreBackupWindow.xaml'; LinkNames = @('NonRevertibleWikiLink') }
     ) {
         param($Schema, $LinkNames)

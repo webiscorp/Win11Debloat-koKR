@@ -1,10 +1,13 @@
-BeforeAll {
+﻿BeforeAll {
+    . (Join-Path $PSScriptRoot '..\Scripts\FileIO\Import-JsonFile.ps1')
+    . (Join-Path $PSScriptRoot '..\Scripts\FileIO\Import-LanguageFile.ps1')
+    $script:LanguagesPath = Join-Path $PSScriptRoot '..\Config\Languages'
+    $script:Lang = Import-LanguageFile -LanguageCode 'en-US'
     function Get-TargetUserForAppRemoval { 'AllUsers' }
     function Get-WingetInstalledApps { param($TimeOut, [switch]$NonBlocking) return ,@() }
     function Test-AppInWingetList { param($appId, $InstalledList) $false }
     function Invoke-NonBlocking { param($ScriptBlock, $ArgumentList, $TimeoutSeconds) }
     function Get-UserName { 'Alice' }
-    function Get-Translation { param($Key, $FormatArgs) if ($FormatArgs) { return "$Key $($FormatArgs -join ' ')" }; return $Key }
     function Invoke-ForceRemoveEdge {}
     function Show-MessageBox { 'No' }
     function Invoke-WithTargetUserHive { param($TargetUserName, $ScriptBlock, $ArgumentObject) }
@@ -40,6 +43,23 @@ Describe 'Remove-SelectedApps' {
         Should -Invoke Remove-WinGetApp -Times 0 -Exactly
         Should -Invoke Remove-AppxApp -Times 0 -Exactly
         Should -Invoke Write-Host -Times 2 -Exactly -ParameterFilter { $Object -like '*WhatIf*Remove App*' }
+    }
+
+    It 'explains Korean WhatIf output without invoking a removal backend' {
+        $script:Params = @{ WhatIf = $true }
+        $script:Lang = Import-LanguageFile -LanguageCode 'ko-KR'
+        try {
+            Remove-SelectedApps -appsList @('One.App') | Should -BeTrue
+
+            Should -Invoke Remove-WinGetApp -Times 0 -Exactly
+            Should -Invoke Remove-AppxApp -Times 0 -Exactly
+            Should -Invoke Write-Host -Times 1 -Exactly -ParameterFilter {
+                $Object -eq '[WhatIf] 앱 패키지 제거: One.App(미리 보기이며 실제 변경 없음)'
+            }
+        }
+        finally {
+            $script:Lang = Import-LanguageFile -LanguageCode 'en-US'
+        }
     }
 
     It 'dispatches each app to its configured backend and target scope' {
@@ -362,7 +382,9 @@ Describe 'Remove-AppxApp' {
     ) {
         Remove-AppxApp -app 'One.App' -targetUser $Target
         Should -Invoke Invoke-NonBlocking -Times 1 -Exactly -ParameterFilter {
-            @($ArgumentList).Count -eq 3 -and @($ArgumentList)[0] -eq '*One.App*' -and @($ArgumentList)[1] -eq $Target -and @($ArgumentList)[2] -eq $false
+            @($ArgumentList).Count -eq 4 -and @($ArgumentList)[0] -eq '*One.App*' -and @($ArgumentList)[1] -eq $Target -and @($ArgumentList)[2] -eq $false -and
+                @($ArgumentList)[3].verification_failed -eq 'Unable to verify removal of {0} (target: {1}, provisioned: {2}): {3}' -and
+                @($ArgumentList)[3].verified_despite_error -eq 'Windows 10 Appx removal reported error 0x80070002 for {0}, but the removal succeeded.'
         }
     }
 
@@ -515,6 +537,46 @@ Describe 'Remove-AppxApp' {
 
         $output[-1] | Should -BeFalse
         @($output | Where-Object { $_ -is [System.Management.Automation.ErrorRecord] }) | Should -HaveCount 1
+    }
+
+    It 'passes Korean Appx verification messages into an isolated runspace' {
+        $script:Lang = Import-LanguageFile -LanguageCode 'ko-KR'
+        $script:WinVersion = 19045
+        Mock Invoke-NonBlocking {
+            param($ScriptBlock, $ArgumentList)
+            $script:korean_appx_worker = $ScriptBlock.ToString()
+            $script:korean_appx_arguments = $ArgumentList
+            [PSCustomObject]@{ Success = $true }
+        }
+        $worker_powershell = [powershell]::Create()
+        try {
+            Remove-AppxApp -app 'One.App' -targetUser 'CurrentUser' | Should -BeTrue
+            $worker_setup = {
+                param($worker, $worker_arguments)
+                function Get-AppxPackage {
+                    [CmdletBinding()] param($Name)
+                    if (-not $script:package_removed) {
+                        [PSCustomObject]@{ PackageFullName = 'One.App_1.0' }
+                    }
+                }
+                function Remove-AppxPackage {
+                    [CmdletBinding()] param($Package)
+                    $script:package_removed = $true
+                    Write-Error 'Deployment failed with HRESULT: 0x80070002'
+                }
+                & ([scriptblock]::Create($worker)) @worker_arguments
+            }
+            $null = $worker_powershell.AddScript($worker_setup.ToString()).AddArgument($script:korean_appx_worker).AddArgument($script:korean_appx_arguments)
+            $output = @($worker_powershell.Invoke())
+
+            $worker_powershell.Streams.Error.Count | Should -Be 0
+            $output[-1].Success | Should -BeTrue
+            @($output[-1].IgnoredRemovalMessages) | Should -Be @('Windows 10 Appx 제거에서 One.App_1.0에 대해 오류 0x80070002가 보고되었으나, 실제 제거 성공을 확인했습니다.')
+        }
+        finally {
+            $worker_powershell.Dispose()
+            $script:Lang = Import-LanguageFile -LanguageCode 'en-US'
+        }
     }
 
     It 'preserves the error handling in a background runspace on build <Build>' -ForEach @(
@@ -691,7 +753,9 @@ Describe 'AllUsers deferred WinGet profile enumeration' {
         $script:WingetDeferredRemovals.ContainsKey('One.App') | Should -BeFalse
         Should -Invoke Invoke-WithTargetUserHive -Times 2 -Exactly
         Should -Invoke Invoke-WithTargetUserHive -Times 1 -Exactly -ParameterFilter { $TargetUserName -eq 'Default' }
-        Should -Invoke Write-Host -Times 0 -Exactly -ParameterFilter { $Object -like 'WingetAllUsersUninstallDeferred*' }
+        Should -Invoke Write-Host -Times 0 -Exactly -ParameterFilter {
+            $Object -eq (Get-Translation -Key 'WingetAllUsersUninstallDeferred' -FormatArgs @('One.App'))
+        }
     }
 
     It 'reports failure when required fallback scheduling throws during <Stage>' -ForEach @(

@@ -7,12 +7,12 @@
 #>
 function Invoke-ForceRemoveEdge {
     if ($script:Params.ContainsKey("WhatIf")) {
-        Write-Host "[WhatIf] Forcefully uninstall Microsoft Edge" -ForegroundColor Cyan
+        Write-Host (Get-Translation -Key 'RuntimeEdgeForceRemoveWhatIf') -ForegroundColor Cyan
         return $true
     }
 
     try {
-        Write-Host "> Forcefully uninstalling Microsoft Edge..."
+        Write-Host (Get-Translation -Key 'RuntimeEdgeForceRemoveProgress')
 
         $regView = [Microsoft.Win32.RegistryView]::Registry32
         $hklm = [Microsoft.Win32.RegistryKey]::OpenBaseKey([Microsoft.Win32.RegistryHive]::LocalMachine, $regView)
@@ -27,11 +27,11 @@ function Invoke-ForceRemoveEdge {
     # Remove edge
         $uninstallRegKey = $hklm.OpenSubKey('SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge')
         if ($null -eq $uninstallRegKey) {
-            Write-Host "Unable to forcefully uninstall Microsoft Edge, uninstaller could not be found" -ForegroundColor Red
+            Write-Host (Get-Translation -Key 'RuntimeEdgeUninstallerMissing') -ForegroundColor Red
             return $false
         }
 
-        Write-Host "Running uninstaller..."
+        Write-Host (Get-Translation -Key 'RuntimeEdgeUninstallerRunning')
         $uninstallString = $uninstallRegKey.GetValue('UninstallString') + ' --force-uninstall'
         $exitCode = Invoke-NonBlocking -ScriptBlock {
             param($cmd)
@@ -39,11 +39,11 @@ function Invoke-ForceRemoveEdge {
             return $process.ExitCode
         } -ArgumentList $uninstallString
         if ($exitCode -ne 0) {
-            Write-Warning "Microsoft Edge uninstaller failed with exit code $exitCode."
+            Write-Warning (Get-Translation -Key 'RuntimeEdgeUninstallerFailed' -FormatArgs @($exitCode))
             return $false
         }
 
-        Write-Host "Removing leftover files..."
+        Write-Host (Get-Translation -Key 'RuntimeEdgeLeftoversRemoving')
         $cleanupSucceeded = $true
 
         $edgePaths = @(
@@ -60,16 +60,16 @@ function Invoke-ForceRemoveEdge {
             if (Test-Path -Path $path) {
                 try {
                     Remove-Item -Path $path -Force -Recurse -ErrorAction Stop
-                    Write-Host "  Removed $path" -ForegroundColor DarkGray
+                    Write-Host (Get-Translation -Key 'RuntimeEdgeLeftoverRemoved' -FormatArgs @($path)) -ForegroundColor DarkGray
                 }
                 catch {
-                    Write-Warning "Failed to remove Edge leftover '$path': $($_.Exception.Message)"
+                    Write-Warning (Get-Translation -Key 'RuntimeEdgeLeftoverRemoveFailed' -FormatArgs @($path, $_.Exception.Message))
                     $cleanupSucceeded = $false
                 }
             }
         }
 
-        Write-Host "Cleaning up registry..."
+        Write-Host (Get-Translation -Key 'RuntimeEdgeRegistryCleaning')
         $registryCleanupSucceeded = $true
 
         # Remove MS Edge from autostart. Missing values are already-clean state,
@@ -87,15 +87,15 @@ function Invoke-ForceRemoveEdge {
         }
 
         if (-not $cleanupSucceeded -or -not $registryCleanupSucceeded) {
-            Write-Warning "Microsoft Edge was uninstalled, but some leftover files or autostart entries could not be removed."
+            Write-Warning (Get-Translation -Key 'RuntimeEdgeRemovedWithLeftovers')
             return $false
         }
 
-        Write-Host "Microsoft Edge was uninstalled"
+        Write-Host (Get-Translation -Key 'RuntimeEdgeRemoved')
         return $true
     }
     catch {
-        Write-Warning "Failed to forcefully uninstall Microsoft Edge: $($_.Exception.Message)"
+        Write-Warning (Get-Translation -Key 'RuntimeEdgeForceRemoveFailed' -FormatArgs @($_.Exception.Message))
         return $false
     }
     finally {
@@ -127,7 +127,7 @@ function Remove-EdgeAutostartValue {
         return $true
     }
     catch {
-        Write-Warning "Failed to inspect Edge autostart entry '$Path\$Name': $($_.Exception.Message)"
+        Write-Warning (Get-Translation -Key 'RuntimeEdgeAutostartInspectFailed' -FormatArgs @($Path, $Name, $_.Exception.Message))
         return $false
     }
 
@@ -140,7 +140,7 @@ function Remove-EdgeAutostartValue {
         return $true
     }
     catch {
-        Write-Warning "Failed to remove Edge autostart entry '$Path\$Name': $($_.Exception.Message)"
+        Write-Warning (Get-Translation -Key 'RuntimeEdgeAutostartRemoveFailed' -FormatArgs @($Path, $Name, $_.Exception.Message))
         return $false
     }
 }

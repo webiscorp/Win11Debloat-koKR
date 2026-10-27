@@ -1,4 +1,4 @@
-BeforeAll {
+﻿BeforeAll {
     function Import-RegistryFile { param($Message, $path) }
     function Remove-SelectedApps { param($Apps) $true }
     function Invoke-ForceRemoveEdge { $true }
@@ -20,7 +20,11 @@ BeforeAll {
     function Set-StoreSearchSuggestionsDisabledForAllUsers { $true }
     function Set-StoreSearchSuggestionsDisabled { param($StoreAppsDatabase) $true }
 
+    . (Join-Path $PSScriptRoot '..\Scripts\FileIO\Import-JsonFile.ps1')
     . (Join-Path $PSScriptRoot '..\Scripts\FileIO\Import-LanguageFile.ps1')
+    $script:LanguagesPath = Join-Path $PSScriptRoot '..\Config\Languages'
+    $script:Lang = Import-LanguageFile -LanguageCode 'en-US'
+    $script:en_test_lang = $script:Lang
     . (Join-Path $PSScriptRoot '..\Scripts\Helpers\Windows-BuildHelpers.ps1')
     . (Join-Path $PSScriptRoot '..\Scripts\Helpers\Get-RebootFeatureLabels.ps1')
     . (Join-Path $PSScriptRoot '..\Scripts\Features\Invoke-Changes.ps1')
@@ -41,7 +45,7 @@ BeforeAll {
 
         $script:Lang = [PSCustomObject]@{
             LanguageCode = 'en-US'
-            Chrome       = [PSCustomObject]@{}
+            Chrome       = $script:en_test_lang.Chrome
             Features     = [PSCustomObject]$langFeatures
             UiGroups     = [PSCustomObject]@{}
             Categories   = [PSCustomObject]@{}
@@ -114,6 +118,22 @@ Describe 'Invoke-FeatureApply' {
 
         Should -Invoke Import-RegistryFile -Times 1 -Exactly -ParameterFilter { $path -eq 'feature.reg' }
         Should -Invoke Remove-SelectedApps -Times 0 -Exactly
+    }
+
+    It 'uses Korean feature progress text while preserving the registry action' {
+        $previous_lang = $script:Lang
+        $script:Lang = Import-LanguageFile -LanguageCode 'ko-KR'
+        try {
+            Invoke-FeatureApply -FeatureId 'DisableTelemetry' | Should -BeTrue
+
+            Should -Invoke Import-RegistryFile -Times 1 -Exactly -ParameterFilter {
+                $Message -eq '> 원격 분석 및 진단 데이터 수집 사용 안 함 설정 중...' -and $path -eq 'telemetry.reg'
+            }
+            Should -Invoke Disable-TelemetryScheduledTasks -Times 1 -Exactly
+        }
+        finally {
+            $script:Lang = $previous_lang
+        }
     }
 
     It 'runs the telemetry side effect after importing its registry file' {

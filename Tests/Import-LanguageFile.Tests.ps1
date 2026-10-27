@@ -355,3 +355,17 @@ Describe 'ConvertTo-LocalizedXaml' {
             Should -Throw '*MissingKey*'
     }
 }
+
+Describe 'Korean and invariant culture resolution' {
+    BeforeAll {
+        $script:LanguagesPath = Join-Path $PSScriptRoot '..\Config\Languages'
+    }
+    It 'falls back to en-US for an empty UI culture' {
+        (Import-LanguageFile -LanguageCode '').LanguageCode | Should -Be 'en-US'
+    }
+    It 'uses the other plural category for Korean at every count' {
+        foreach ($count in @(0, 1, 2, 11, 100)) {
+            Get-PluralCategory -LanguageCode 'ko-KR' -Count $count | Should -Be 'other'
+        }
+    }
+}

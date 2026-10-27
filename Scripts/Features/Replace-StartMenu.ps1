@@ -27,11 +27,11 @@ function Replace-StartMenuForAllUsers {
         [string]$startMenuTemplate = "$script:AssetsPath\Start\start2.bin"
     )
 
-    Write-Host "> Removing all pinned apps from the start menu for all users..."
+    Write-Host (Get-Translation -Key 'RuntimeClearStartAllProgress')
 
     # Check if template bin file exists
     if (-not (Test-Path $startMenuTemplate)) {
-        Write-Host "Error: Unable to clear start menu, start2.bin file missing from script folder" -ForegroundColor Red
+        Write-Host (Get-Translation -Key 'RuntimeClearStartTemplateMissing') -ForegroundColor Red
         return $false
     }
 
@@ -51,7 +51,7 @@ function Replace-StartMenuForAllUsers {
     $defaultStartMenuPath = Get-UserDirectory -userName "Default" -fileName "AppData\Local\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState" -exitIfPathNotFound $false
 
     if ($script:Params.ContainsKey("WhatIf")) {
-        Write-Host "[WhatIf] Replace Start Menu for Default user profile with template $startMenuTemplate" -ForegroundColor Cyan
+        Write-Host (Get-Translation -Key 'RuntimeReplaceStartDefaultWhatIf' -FormatArgs @($startMenuTemplate)) -ForegroundColor Cyan
         return $true
     }
 
@@ -59,10 +59,10 @@ function Replace-StartMenuForAllUsers {
     if (-not (Test-Path $defaultStartMenuPath)) {
         try {
             New-Item $defaultStartMenuPath -ItemType Directory -Force -ErrorAction Stop | Out-Null
-            Write-Host "Created LocalState folder for default user profile"
+            Write-Host (Get-Translation -Key 'RuntimeStartDefaultLocalStateCreated')
         }
         catch {
-            Write-Warning "Failed to create the Default profile Start Menu directory: $($_.Exception.Message)"
+            Write-Warning (Get-Translation -Key 'RuntimeStartDefaultDirectoryFailed' -FormatArgs @($_.Exception.Message))
             return $false
         }
     }
@@ -72,7 +72,7 @@ function Replace-StartMenuForAllUsers {
         $success = $false
     }
     else {
-        Write-Host "Replaced start menu for the default user profile"
+        Write-Host (Get-Translation -Key 'RuntimeStartDefaultReplaced')
     }
     return $success
 }
@@ -115,19 +115,19 @@ function Replace-StartMenu {
 
     # Check if template bin file exists
     if (-not (Test-Path $startMenuTemplate)) {
-        Write-Host "Error: Unable to replace start menu, template file not found" -ForegroundColor Red
+        Write-Host (Get-Translation -Key 'RuntimeStartTemplateNotFound') -ForegroundColor Red
         return $false
     }
 
     if ([IO.Path]::GetExtension($startMenuTemplate) -ne ".bin") {
-        Write-Host "Error: Unable to replace start menu, template file is not a valid .bin file" -ForegroundColor Red
+        Write-Host (Get-Translation -Key 'RuntimeStartTemplateInvalid') -ForegroundColor Red
         return $false
     }
 
     $userName = Get-StartMenuUserNameFromPath -StartMenuBinFile $startMenuBinFile
 
     if ($script:Params.ContainsKey("WhatIf")) {
-        Write-Host "[WhatIf] Replace Start Menu for user $userName with template $startMenuTemplate" -ForegroundColor Cyan
+        Write-Host (Get-Translation -Key 'RuntimeReplaceStartUserWhatIf' -FormatArgs @($userName, $startMenuTemplate)) -ForegroundColor Cyan
         return $true
     }
 
@@ -143,7 +143,7 @@ function Replace-StartMenu {
             Write-Verbose "Start menu backup for user $userName saved to $backupFileName"
         }
         else {
-            Write-Host "Unable to find original start2.bin file for user $userName, no backup was created for this user" -ForegroundColor Yellow
+            Write-Host (Get-Translation -Key 'RuntimeStartOriginalMissingNoBackup' -FormatArgs @($userName)) -ForegroundColor Yellow
             New-Item -ItemType File -Path $startMenuBinFile -Force -ErrorAction Stop | Out-Null
         }
 
@@ -151,11 +151,11 @@ function Replace-StartMenu {
         Copy-Item -Path $startMenuTemplate -Destination $startMenuBinFile -Force -ErrorAction Stop
     }
     catch {
-        Write-Warning "Failed to replace Start Menu for user ${userName}: $($_.Exception.Message)"
+        Write-Warning (Get-Translation -Key 'RuntimeStartReplaceFailed' -FormatArgs @($userName, $_.Exception.Message))
         return $false
     }
 
-    Write-Host "Replaced start menu for user $userName"
+    Write-Host (Get-Translation -Key 'RuntimeStartUserReplaced' -FormatArgs @($userName))
     return $true
 }
 
@@ -324,7 +324,7 @@ function Restore-StartMenuFromBackup {
     }
 
     if ($script:Params.ContainsKey("WhatIf")) {
-        Write-Host "[WhatIf] Restore start menu for user $userName from backup $backupBinFile" -ForegroundColor Cyan
+        Write-Host (Get-Translation -Key 'RuntimeRestoreStartUserWhatIf' -FormatArgs @($userName, $backupBinFile)) -ForegroundColor Cyan
         return [PSCustomObject]@{
             UserName = $userName
             Result = $true
@@ -387,7 +387,7 @@ function Restore-StartMenu {
     $targetUserName = $env:USERNAME
     $startMenuBinFile = "$env:LOCALAPPDATA\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\start2.bin"
 
-    Write-Host "Restoring start menu for user $targetUserName from backup..."
+    Write-Host (Get-Translation -Key 'RuntimeRestoreStartUserProgress' -FormatArgs @($targetUserName))
 
     return Restore-StartMenuFromBackup -StartMenuBinFile $startMenuBinFile -BackupFilePath $BackupFilePath
 }
@@ -423,7 +423,7 @@ function Restore-StartMenuForAllUsers {
     $usersStartMenuPaths = Get-ChildItem -Path $userPathString -ErrorAction SilentlyContinue
     $results = @()
 
-    Write-Host "Restoring start menu for all users from backup..."
+    Write-Host (Get-Translation -Key 'RuntimeRestoreStartAllProgress')
 
     foreach ($startMenuPath in $usersStartMenuPaths) {
         $startMenuBinFile = Join-Path $startMenuPath.FullName 'start2.bin'
@@ -436,7 +436,7 @@ function Restore-StartMenuForAllUsers {
         $defaultStartMenuBinFile = Join-Path $defaultStartMenuPath 'start2.bin'
         if (Test-Path -LiteralPath $defaultStartMenuBinFile) {
             if ($script:Params.ContainsKey("WhatIf")) {
-                Write-Host "[WhatIf] Remove start2.bin for the default user profile" -ForegroundColor Cyan
+                Write-Host (Get-Translation -Key 'RuntimeStartDefaultRemoveWhatIf') -ForegroundColor Cyan
                 $results += [PSCustomObject]@{
                     UserName = 'Default'
                     Result   = $true

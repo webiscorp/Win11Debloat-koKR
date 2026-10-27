@@ -26,12 +26,12 @@ function Invoke-WithLoadedRestoreHive {
     elseif ($Target -like 'User:*') {
         $userName = $Target.Substring(5)
         if ([string]::IsNullOrWhiteSpace($userName)) {
-            throw 'Invalid backup target format for user restore.'
+            throw (Get-Translation -Key 'RuntimeBackupUserTargetInvalid')
         }
         $userName
     }
     else {
-        throw "Unsupported backup target '$Target'."
+        throw (Get-Translation -Key 'RuntimeBackupTargetUnsupported' -FormatArgs @($Target))
     }
 
     Invoke-WithTargetUserHive -TargetUserName $targetUserName -ScriptBlock $ScriptBlock -ArgumentObject $ArgumentObject
@@ -52,17 +52,17 @@ function Restore-RegistryKeySnapshot {
 
     $registryParts = Split-RegistryPath -path $Snapshot.Path
     if (-not $registryParts) {
-        throw "Unsupported registry path in backup: $($Snapshot.Path)"
+        throw (Get-Translation -Key 'RuntimeBackupPathUnsupported' -FormatArgs @($Snapshot.Path))
     }
 
     $rootKey = Get-RegistryRootKey -hiveName $registryParts.Hive
     if (-not $rootKey) {
-        throw "Unsupported registry hive in backup: $($registryParts.Hive)"
+        throw (Get-Translation -Key 'RuntimeBackupHiveUnsupported' -FormatArgs @($registryParts.Hive))
     }
 
     $subKeyPath = $registryParts.SubKey
     if ([string]::IsNullOrWhiteSpace($subKeyPath)) {
-        throw "Unsupported root-level registry path in backup: $($Snapshot.Path)"
+        throw (Get-Translation -Key 'RuntimeBackupRootPathUnsupported' -FormatArgs @($Snapshot.Path))
     }
 
     Test-RegistryKeySnapshotCanBeRestored -Snapshot $Snapshot
@@ -95,7 +95,7 @@ function Test-RegistryKeySnapshotCanBeRestored {
     foreach ($subKeySnapshot in @($Snapshot.SubKeys)) {
         $childName = Get-DirectRegistrySnapshotChildName -ParentPath $Snapshot.Path -ChildPath $subKeySnapshot.Path
         if ([string]::IsNullOrWhiteSpace($childName) -or -not $childNames.Add($childName)) {
-            throw "Backup contains duplicate or unsupported registry child path: $($subKeySnapshot.Path)"
+            throw (Get-Translation -Key 'RuntimeBackupChildPathDuplicate' -FormatArgs @($subKeySnapshot.Path))
         }
         Test-RegistryKeySnapshotCanBeRestored -Snapshot $subKeySnapshot
     }
@@ -113,10 +113,10 @@ function Test-RegistryBackupSnapshotsCanBeRestored {
         $parts = Split-RegistryPath -path $snapshot.Path
         if (-not $parts -or [string]::IsNullOrWhiteSpace($parts.SubKey) -or
             $parts.Hive -notin @('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE', 'HKEY_CLASSES_ROOT', 'HKEY_USERS', 'HKEY_CURRENT_CONFIG')) {
-            throw "Unsupported registry path in backup: $($snapshot.Path)"
+            throw (Get-Translation -Key 'RuntimeBackupPathUnsupported' -FormatArgs @($snapshot.Path))
         }
         if (-not $rootPaths.Add("$($parts.Hive)\$($parts.SubKey)")) {
-            throw "Backup contains duplicate registry root path: $($snapshot.Path)"
+            throw (Get-Translation -Key 'RuntimeBackupRootPathDuplicate' -FormatArgs @($snapshot.Path))
         }
         Test-RegistryKeySnapshotCanBeRestored -Snapshot $snapshot
     }
@@ -146,14 +146,14 @@ function Get-DirectRegistrySnapshotChildName {
         -not $parentParts.Hive.Equals($childParts.Hive, [System.StringComparison]::OrdinalIgnoreCase) -or
         [string]::IsNullOrWhiteSpace($parentParts.SubKey) -or
         [string]::IsNullOrWhiteSpace($childParts.SubKey)) {
-        throw "Unsupported registry child path in backup: $ChildPath"
+        throw (Get-Translation -Key 'RuntimeBackupChildPathUnsupported' -FormatArgs @($ChildPath))
     }
 
     $childName = Split-Path -Path $childParts.SubKey -Leaf
     $expectedSubKey = "$($parentParts.SubKey)\$childName"
     if ([string]::IsNullOrWhiteSpace($childName) -or
         -not $childParts.SubKey.Equals($expectedSubKey, [System.StringComparison]::OrdinalIgnoreCase)) {
-        throw "Registry child path '$ChildPath' is not directly below parent '$ParentPath'."
+        throw (Get-Translation -Key 'RuntimeBackupChildNotDirect' -FormatArgs @($ChildPath, $ParentPath))
     }
 
     return $childName
@@ -195,7 +195,7 @@ function Restore-RegistryKeySnapshotAtPath {
         $key = $RootKey.CreateSubKey($SubKeyPath)
     }
     if ($null -eq $key) {
-        throw "Unable to create or open registry key '$($Snapshot.Path)'"
+        throw (Get-Translation -Key 'RuntimeRegistryKeyOpenFailed' -FormatArgs @($Snapshot.Path))
     }
 
     $removeEmptyKey = $false
@@ -248,7 +248,7 @@ function Restore-RegistryValueSnapshot {
             $RegistryKey.DeleteValue($valueName, $false)
         }
         catch {
-            throw "Failed deleting registry value '$valueName' in '$($RegistryKey.Name)': $($_.Exception.Message)"
+            throw (Get-Translation -Key 'RuntimeRegistryValueDeleteFailed' -FormatArgs @($valueName, $RegistryKey.Name, $_.Exception.Message))
         }
         return
     }
@@ -260,7 +260,7 @@ function Restore-RegistryValueSnapshot {
         $RegistryKey.SetValue($valueName, $normalizedData, $valueKind)
     }
     catch {
-        throw "Failed setting registry value '$valueName' in '$($RegistryKey.Name)': $($_.Exception.Message)"
+        throw (Get-Translation -Key 'RuntimeRegistryValueSetFailed' -FormatArgs @($valueName, $RegistryKey.Name, $_.Exception.Message))
     }
 }
 
@@ -287,12 +287,12 @@ function Convert-RegistryValueKindFromBackup {
         $kind = [System.Enum]::Parse([Microsoft.Win32.RegistryValueKind], $KindName, $true)
         if (-not [System.Enum]::IsDefined([Microsoft.Win32.RegistryValueKind], $kind) -or
             $kind -in @([Microsoft.Win32.RegistryValueKind]::Unknown, [Microsoft.Win32.RegistryValueKind]::None)) {
-            throw "Unsupported registry value kind in backup: $KindName"
+            throw (Get-Translation -Key 'RuntimeBackupValueKindUnsupported' -FormatArgs @($KindName))
         }
         return $kind
     }
     catch {
-        throw "Unsupported registry value kind in backup: $KindName"
+        throw (Get-Translation -Key 'RuntimeBackupValueKindUnsupported' -FormatArgs @($KindName))
     }
 }
 
@@ -329,7 +329,7 @@ function Convert-RegistryValueDataFromBackup {
 
             $bytes = Convert-BackupDataToByteArray -Data $Data
             if ($null -eq $bytes) {
-                throw 'Invalid binary registry data in backup. Expected byte values from 0 through 255.'
+                throw (Get-Translation -Key 'RuntimeBackupBinaryInvalid')
             }
             # Keep the byte array intact instead of writing each byte to the
             # pipeline. RegistryKey.SetValue requires a byte[] for Binary.

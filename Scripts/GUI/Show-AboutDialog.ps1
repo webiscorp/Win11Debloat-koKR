@@ -56,6 +56,7 @@ function Show-AboutDialog {
     $titleBar = $aboutWindow.FindName('TitleBar')
     $versionText = $aboutWindow.FindName('VersionText')
     $projectLink = $aboutWindow.FindName('ProjectLink')
+    $korean_project_link = $aboutWindow.FindName('KoreanProjectLink')
     $kofiLink = $aboutWindow.FindName('KofiLink')
     $closeButton = $aboutWindow.FindName('CloseButton')
     
@@ -70,6 +71,9 @@ function Show-AboutDialog {
     # Project link click handler
     $projectLink.Add_Click({
         Start-Process "https://github.com/Raphire/Win11Debloat"
+    })
+    $korean_project_link.Add_Click({
+        Start-Process "https://github.com/webiscorp/Win11Debloat-koKR"
     })
     
     # Ko-fi link click handler

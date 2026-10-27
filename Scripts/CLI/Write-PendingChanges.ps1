@@ -13,10 +13,10 @@
         Enter, giving them an opportunity to review and cancel via Ctrl+C.
 #>
 function Write-PendingChanges {
-    Write-Output "Win11Debloat will make the following changes:"
+    Write-Output (Get-Translation -Key 'CliPendingChanges')
 
     if ($script:Params['CreateRestorePoint']) {
-        Write-Output "- $($script:Features['CreateRestorePoint'].Label)"
+        Write-Output "- $(Get-Translation -Key 'CreateRestorePoint' -Field 'Label' -Section 'Features')"
     }
     foreach ($parameterName in $script:Params.Keys) {
         if ($script:ControlParams -contains $parameterName) {
@@ -35,17 +35,17 @@ function Write-PendingChanges {
                 $appsList = Generate-AppsList
 
                 if ($appsList.Count -eq 0) {
-                    Write-Host "No valid apps were selected for removal" -ForegroundColor Yellow
+                    Write-Host (Get-Translation -Key 'CliNoAppsSelected') -ForegroundColor Yellow
                     Write-Output ""
                     continue
                 }
 
-                Write-Output "- Remove $($appsList.Count) apps:"
+                Write-Output (Get-Translation -Key 'CliRemoveAppsSummary' -FormatArgs @($appsList.Count))
                 Write-Host $appsList -ForegroundColor DarkGray
                 continue
             }
             default {
-                $message = $script:Features[$parameterName].Label
+                $message = Get-Translation -Key $parameterName -Field 'Label' -Section 'Features'
                 Write-Output "- $message"
                 continue
             }
@@ -54,6 +54,6 @@ function Write-PendingChanges {
 
     Write-Output ""
     Write-Output ""
-    Write-Output "Press enter to execute the script or press CTRL+C to quit..."
+    Write-Output (Get-Translation -Key 'CliConfirmChanges')
     Read-Host | Out-Null
 }

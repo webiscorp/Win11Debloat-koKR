@@ -6,8 +6,8 @@ function Get-FriendlyTargetUserName {
     $target = Get-TargetUserForAppRemoval
 
     switch ($target) {
-        "AllUsers" { return "all users" }
-        "CurrentUser" { return "the current user" }
-        default { return "user $target" }
+        "AllUsers" { return (Get-Translation -Key 'HelperTargetAllUsers') }
+        "CurrentUser" { return (Get-Translation -Key 'HelperTargetCurrentUser') }
+        default { return (Get-Translation -Key 'HelperTargetNamedUser' -FormatArgs @($target)) }
     }
 }

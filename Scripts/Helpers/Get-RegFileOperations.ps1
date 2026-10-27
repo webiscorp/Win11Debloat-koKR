@@ -75,7 +75,7 @@ function Get-RegFileOperations {
 
         $parsedValue = Convert-RegValueData -valueData $matches.valueData.Trim()
         if (-not $parsedValue) {
-            Write-Warning "Skipping unsupported or malformed registry value '$valueName' in '$currentKeyPath'."
+            Write-Warning (Get-Translation -Key 'HelperRegistryValueSkipped' -FormatArgs @($valueName, $currentKeyPath))
             continue
         }
 

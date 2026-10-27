@@ -51,7 +51,7 @@ function Show-RestoreBackupDialog {
     try {
         $schemaPath = $script:RestoreBackupWindowSchema
         if (-not $schemaPath -or -not (Test-Path $schemaPath)) {
-            throw 'Restore backup window schema file could not be found.'
+            throw (Get-Translation -Key 'GuiRestoreSchemaMissing')
         }
 
         $xaml = Get-Content -Path $schemaPath -Raw
@@ -274,7 +274,7 @@ function Show-RestoreBackupDialog {
             $revertibleFeaturesList = @($forwardFeatureLists.Revertible)
             $reappliedFeaturesList = @($undoFeatureLists.Revertible)
             $nonRevertibleFeaturesList = @($combinedFeatureLists.NonRevertible)
-            Write-Host "Backup overview prepared. Reverted=$($revertibleFeaturesList.Count), ReApplied=$($reappliedFeaturesList.Count), NonRevertible=$($nonRevertibleFeaturesList.Count)"
+            Write-Host (Get-Translation -Key 'GuiBackupOverviewPrepared' -FormatArgs @($revertibleFeaturesList.Count, $reappliedFeaturesList.Count, $nonRevertibleFeaturesList.Count))
 
             if ($revertibleFeaturesList.Count -eq 0 -and $reappliedFeaturesList.Count -eq 0) {
                 throw (Get-Translation -Key 'RestoreNoRestorableChangesError')
@@ -313,7 +313,7 @@ function Show-RestoreBackupDialog {
 
             $openDialog = New-Object Microsoft.Win32.OpenFileDialog
             $openDialog.Title = Get-Translation -Key 'RestoreSelectRegistryFileDialogTitle'
-            $openDialog.Filter = 'Registry backup (*.json)|*.json'
+            $openDialog.Filter = Get-Translation -Key 'FileDialogRegistryBackupFilter'
             $openDialog.DefaultExt = '.json'
             $openDialog.InitialDirectory = $script:RegistryBackupsPath
 
@@ -321,7 +321,7 @@ function Show-RestoreBackupDialog {
                 return
             }
 
-            Write-Host "Backup file selected: $($openDialog.FileName)"
+            Write-Host (Get-Translation -Key 'GuiBackupFileSelected' -FormatArgs @($openDialog.FileName))
 
             try {
                 $selectedBackup = Import-RegistryBackup -FilePath $openDialog.FileName
@@ -331,7 +331,7 @@ function Show-RestoreBackupDialog {
                 }
             }
             catch {
-                Write-Error "Failed to load registry backup '$($openDialog.FileName)': $($_.Exception.Message)" -ErrorAction Continue
+                Write-Error (Get-Translation -Key 'GuiRegistryBackupLoadFailed' -FormatArgs @($openDialog.FileName, $_.Exception.Message)) -ErrorAction Continue
                 Show-MessageBox -Owner $window -Title (Get-Translation -Key 'RestoreInvalidBackupTitle') -Message (Get-Translation -Key 'RestoreInvalidBackupMessage' -FormatArgs @($_.Exception.Message)) -Button 'OK' -Icon 'Error' | Out-Null
                 return
             }
@@ -347,7 +347,7 @@ function Show-RestoreBackupDialog {
             if ($useManualBackupFile -and [string]::IsNullOrWhiteSpace($state.SelectedStartMenuBackupFilePath)) {
                 $openDialog = New-Object Microsoft.Win32.OpenFileDialog
                 $openDialog.Title = Get-Translation -Key 'RestoreSelectStartMenuFileDialogTitle'
-                $openDialog.Filter = 'Start Menu backup (*.bak)|*.bak'
+                $openDialog.Filter = Get-Translation -Key 'FileDialogStartMenuBackupFilter'
                 $openDialog.InitialDirectory = "$env:LOCALAPPDATA\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState"
                 $openDialog.DefaultExt = '.bak'
 
@@ -356,7 +356,7 @@ function Show-RestoreBackupDialog {
                 }
 
                 $state.SelectedStartMenuBackupFilePath = $openDialog.FileName
-                Write-Host "Selected Start Menu backup file: $($state.SelectedStartMenuBackupFilePath)"
+                Write-Host (Get-Translation -Key 'GuiStartMenuBackupSelected' -FormatArgs @($state.SelectedStartMenuBackupFilePath))
                 & $refreshStartMenuUi
                 return
             }
@@ -409,7 +409,12 @@ function Show-RestoreBackupDialog {
 
         $nonRevertibleWikiLink.Add_Click({
             try {
-                Start-Process 'https://github.com/Raphire/Win11Debloat/wiki/Reverting-Changes' | Out-Null
+                if ($script:Lang.LanguageCode -eq 'ko-KR') {
+                    Start-Process 'https://github.com/webiscorp/Win11Debloat-koKR/blob/master/docs/localization/USER_GUIDE.ko-KR.md#recovery' | Out-Null
+                }
+                else {
+                    Start-Process 'https://github.com/Raphire/Win11Debloat/wiki/Reverting-Changes' | Out-Null
+                }
             }
             catch { }
         })
@@ -466,7 +471,7 @@ function Show-RestoreBackupDialog {
         }
         catch {
             $innerMessage = if ($_.Exception.InnerException) { $_.Exception.InnerException.Message } else { 'None' }
-            throw "Failed to show restore backup dialog. Error: $($_.Exception.Message) Inner: $innerMessage"
+            throw (Get-Translation -Key 'GuiRestoreDialogFailed' -FormatArgs @($_.Exception.Message, $innerMessage))
         }
     }
     finally {

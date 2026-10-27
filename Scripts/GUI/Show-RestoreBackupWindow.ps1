@@ -8,7 +8,7 @@ function Show-RestoreBackupWindow {
     )
 
     try {
-        Write-Host 'Opening restore backup dialog.'
+        Write-Host (Get-Translation -Key 'GuiOpeningRestoreDialog')
 
         $restoreResult = [PSCustomObject]@{
             RestoredRegistry = $false
@@ -17,7 +17,7 @@ function Show-RestoreBackupWindow {
 
         $dialogResult = Show-RestoreBackupDialog -Owner $Owner
         if (-not $dialogResult -or $dialogResult.Result -eq 'Cancel') {
-            Write-Host 'Restore canceled by user.'
+            Write-Host (Get-Translation -Key 'GuiRestoreCancelled')
             return $restoreResult
         }
 
@@ -27,10 +27,10 @@ function Show-RestoreBackupWindow {
         if ($dialogResult.Result -eq 'RestoreRegistry') {
             $backup = $dialogResult.Backup
             if (-not $backup) {
-                throw 'Registry backup restore requested without a selected backup.'
+                throw (Get-Translation -Key 'GuiRegistryRestoreNoSelection')
             }
 
-            Write-Host "User confirmed registry restore for $($backup.Target)."
+            Write-Host (Get-Translation -Key 'GuiRegistryRestoreConfirmed' -FormatArgs @($backup.Target))
             $confirmUntrustedValues = {
                 param($mismatches)
                 $details = @($mismatches | ForEach-Object {
@@ -63,7 +63,7 @@ function Show-RestoreBackupWindow {
             }
 
             if ($useManualBackupFile -and [string]::IsNullOrWhiteSpace($backupFilePath)) {
-                throw 'Start Menu restore canceled: no backup file selected.'
+                throw (Get-Translation -Key 'GuiStartMenuRestoreNoSelection')
             }
 
             $result = if ($scope -eq 'AllUsers') {
@@ -114,7 +114,7 @@ function Show-RestoreBackupWindow {
     }
     catch {
         $errorMessage = if ($_.Exception.Message) { $_.Exception.Message } else { Get-Translation -Key 'RestoreUnexpectedError' }
-        Write-Error "Restore operation failed: $errorMessage"
+        Write-Error (Get-Translation -Key 'GuiRestoreOperationFailed' -FormatArgs @($errorMessage))
         Show-MessageBox -Title (Get-Translation -Key 'ErrorTitle') -Message (Get-Translation -Key 'RestoreOperationFailedMessage' -FormatArgs @($errorMessage)) -Icon Error
         return [PSCustomObject]@{
             RestoredRegistry = $false

@@ -1,9 +1,9 @@
-<#
+﻿<#
     .SYNOPSIS
         Creates and displays the main Win11Debloat window.
 #>
 function Show-MainWindow {
-    if (-not $script:Lang) { throw 'Unable to load UI language.' }
+    if (-not $script:Lang) { throw 'Unable to load UI language. / UI 언어를 불러오지 못했습니다.' }
     $script:CancelRequested = $false
     Add-Type -AssemblyName PresentationFramework,PresentationCore,WindowsBase,System.Windows.Forms | Out-Null
 
@@ -51,7 +51,7 @@ function Show-MainWindow {
     # ---- Handle unhandled exceptions on the dispatcher thread ----
     $dispatcherErrorHandler = [System.Windows.Threading.DispatcherUnhandledExceptionEventHandler]{
         param($sender, $e)
-        Write-Warning "Unhandled exception in GUI: $($e.Exception.Message)"
+        Write-Warning (Get-Translation -Key 'GuiUnhandledException' -FormatArgs @($e.Exception.Message))
         Write-Warning "Stack trace: $($e.Exception.StackTrace)"
         $e.Handled = $true
     }
@@ -94,8 +94,8 @@ function Show-MainWindow {
         $menuBtn.ContextMenu.IsOpen = $true
     })
 
-    $menuDocumentation.Add_Click({ Start-Process "https://github.com/Raphire/Win11Debloat/wiki" })
-    $menuReportBug.Add_Click({ Start-Process "https://github.com/Raphire/Win11Debloat/issues" })
+    $menuDocumentation.Add_Click({ Start-Process "https://github.com/webiscorp/Win11Debloat-koKR/blob/master/docs/localization/USER_GUIDE.ko-KR.md" })
+    $menuReportBug.Add_Click({ Start-Process "https://github.com/webiscorp/Win11Debloat-koKR#support" })
 
     $menuLogs.Add_Click({
         $logsFolder = Split-Path -Parent $script:DefaultLogPath
@@ -175,7 +175,7 @@ function Show-MainWindow {
             Export-Configuration -Owner $window -UsesDarkMode (Get-AppUsesDarkMode) -AppsPanel $appsPanel -UiControlMappings $script:UiControlMappings -UserSelectionCombo $userSelectionCombo -OtherUsernameTextBox $otherUsernameTextBox
         }
         catch {
-            Write-Warning "Export configuration failed: $($_.Exception.Message)"
+            Write-Warning (Get-Translation -Key 'GuiExportFailed' -FormatArgs @($_.Exception.Message))
             Show-MessageBox -Owner $window -Message (Get-Translation -Key 'ExportConfigFailedMessage' -FormatArgs @($_.Exception.Message)) -Title (Get-Translation -Key 'ExportConfigFailedTitle') -Button 'OK' -Icon 'Error' | Out-Null
         }
     })
@@ -191,7 +191,7 @@ function Show-MainWindow {
             }
         }
         catch {
-            Write-Warning "Import configuration failed: $($_.Exception.Message)"
+            Write-Warning (Get-Translation -Key 'GuiImportFailed' -FormatArgs @($_.Exception.Message))
             Show-MessageBox -Owner $window -Message (Get-Translation -Key 'ImportConfigFailedMessage' -FormatArgs @($_.Exception.Message)) -Title (Get-Translation -Key 'ImportConfigFailedTitle') -Button 'OK' -Icon 'Error' | Out-Null
         }
     })
@@ -211,7 +211,7 @@ function Show-MainWindow {
                 }
             }
             catch {
-                Write-Warning "Restore backup action failed: $($_.Exception.Message)"
+                Write-Warning (Get-Translation -Key 'GuiRestoreFailed' -FormatArgs @($_.Exception.Message))
                 Show-MessageBox -Owner $window -Message (Get-Translation -Key 'RestoreBackupFailedMessage' -FormatArgs @($_.Exception.Message)) -Title (Get-Translation -Key 'RestoreBackupFailedTitle') -Button 'OK' -Icon 'Error' | Out-Null
             }
         })
@@ -235,13 +235,16 @@ function Show-MainWindow {
     # ---- Build JSON-defined app presets ----
     foreach ($preset in (Import-AppPresetsFromJson)) {
         $checkbox = New-Object System.Windows.Controls.CheckBox
-        $checkbox.Content = $preset.Name
+        $preset_name = Get-AppPresetDisplayName -PresetId $preset.PresetId -FallbackName $preset.Name
+        $checkbox.Content = $preset_name
         $checkbox.IsThreeState = $true
         $checkbox.Style = $window.Resources['PresetCheckBoxStyle']
-        $checkbox.ToolTip = Get-Translation -Key 'AppPresetSelectTooltip' -FormatArgs @($preset.Name)
-        $checkbox.SetValue([System.Windows.Automation.AutomationProperties]::NameProperty, $preset.Name)
+        $checkbox.ToolTip = Get-Translation -Key 'AppPresetSelectTooltip' -FormatArgs @($preset_name)
+        $checkbox.SetValue([System.Windows.Automation.AutomationProperties]::NameProperty, $preset_name)
         Add-TriStateClickBehavior -CheckBox $checkbox
         Add-Member -InputObject $checkbox -MemberType NoteProperty -Name 'PresetAppIds' -Value $preset.AppIds
+        Add-Member -InputObject $checkbox -MemberType NoteProperty -Name 'PresetId' -Value $preset.PresetId
+        Add-Member -InputObject $checkbox -MemberType NoteProperty -Name 'PresetName' -Value $preset.Name
         $jsonPresetsPanel.Children.Add($checkbox) | Out-Null
         $script:JsonPresetCheckboxes += $checkbox
 
@@ -680,7 +683,7 @@ function Show-MainWindow {
 
             $scopeTarget = Get-AppRemovalScopeTarget -AppRemovalScopeCombo $appRemovalScopeCombo -OtherUsernameTextBox $otherUsernameTextBox
             if ([string]::IsNullOrWhiteSpace($scopeTarget)) {
-                Write-Warning 'App removal was cancelled because the selected removal scope is invalid.'
+                Write-Warning (Get-Translation -Key 'GuiInvalidRemovalScope')
                 return
             }
 
@@ -715,13 +718,13 @@ function Show-MainWindow {
         }
 
         switch ($userSelectionCombo.SelectedIndex) {
-            0 { Write-Host "Selected user mode: current user ($(Get-UserName))" }
+            0 { Write-Host (Get-Translation -Key 'GuiSelectedCurrentUser' -FormatArgs @((Get-UserName))) }
             1 {
-                Write-Host "Selected user mode: $($otherUsernameTextBox.Text.Trim())"
+                Write-Host (Get-Translation -Key 'GuiSelectedOtherUser' -FormatArgs @($otherUsernameTextBox.Text.Trim()))
                 Add-Parameter User ($otherUsernameTextBox.Text.Trim())
             }
             2 {
-                Write-Host "Selected user mode: default user profile (Sysprep)"
+                Write-Host (Get-Translation -Key 'GuiSelectedDefaultUser')
                 Add-Parameter Sysprep
             }
         }
@@ -816,7 +819,7 @@ function Show-MainWindow {
             Invoke-NavigationUpdate
         }
         catch {
-            Write-Warning "Error during GUI initialization: $($_.Exception.Message)"
+            Write-Warning (Get-Translation -Key 'GuiInitializationFailed' -FormatArgs @($_.Exception.Message))
             Write-Warning "Stack trace: $($_.Exception.StackTrace)"
             Show-MessageBox -Message (Get-Translation -Key 'InitializationErrorMessage' -FormatArgs @($_.Exception.Message)) -Title (Get-Translation -Key 'InitializationErrorTitle') -Button 'OK' -Icon 'Error' | Out-Null
         }
@@ -894,7 +897,7 @@ function Show-MainWindow {
         $script:PreloadedAppData = Import-AppDetailsFromJson -OnlyInstalled:$false -InstalledList $null -InitialCheckedFromJson:$false
     }
     catch {
-        Write-Warning "Failed to preload apps list: $_"
+        Write-Warning (Get-Translation -Key 'GuiAppsPreloadFailed' -FormatArgs @($_))
     }
 
     # ---- Show window ----

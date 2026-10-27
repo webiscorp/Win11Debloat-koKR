@@ -11,7 +11,7 @@ function Import-Settings {
     $settingsJson = Import-JsonFile -filePath $filePath -expectedVersion $expectedVersion
     
     if (-not $settingsJson -or -not $settingsJson.Settings) {
-        throw "Failed to load settings from $(Split-Path $filePath -Leaf)"
+        throw (Get-Translation -Key 'FileSettingsLoadFailed' -FormatArgs @((Split-Path $filePath -Leaf)))
     }
 
     # Get current Windows build version
