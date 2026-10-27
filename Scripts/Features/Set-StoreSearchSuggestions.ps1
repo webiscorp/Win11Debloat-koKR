@@ -40,7 +40,7 @@ function Set-StoreSearchSuggestionsDisabledForAllUsers {
     }
 
     if ($processedProfiles -eq 0) {
-        Write-Warning 'Unable to disable Microsoft Store search suggestions because no target user profiles could be resolved.'
+        Write-Warning (Get-Translation -Key 'RuntimeStoreSuggestionsDisableNoUsers')
         return $false
     }
 
@@ -77,14 +77,14 @@ function Set-StoreSearchSuggestionsDisabled {
     if (-not $userName) { $userName = '<unknown>' }
 
     if ($script:Params.ContainsKey("WhatIf")) {
-        Write-Host "[WhatIf] Disable Microsoft Store search suggestions for user $userName by restricting access to ${StoreAppsDatabase}" -ForegroundColor Cyan
+        Write-Host (Get-Translation -Key 'RuntimeStoreSuggestionsDisableWhatIf' -FormatArgs @($userName, $StoreAppsDatabase)) -ForegroundColor Cyan
         return $true
     }
 
     try {
         # This file doesn't exist in EEA (No Store app suggestions).
         if (-not (Test-Path -Path $StoreAppsDatabase)) {
-            Write-Host "Unable to find Store app database for user $userName, creating it now to prevent Windows from creating it later..." -ForegroundColor Yellow
+            Write-Host (Get-Translation -Key 'RuntimeStoreDatabaseCreate' -FormatArgs @($userName)) -ForegroundColor Yellow
 
             $storeDbDir = Split-Path -Path $StoreAppsDatabase -Parent
             if (-not (Test-Path -Path $storeDbDir)) {
@@ -101,11 +101,11 @@ function Set-StoreSearchSuggestionsDisabled {
         Set-Acl -Path $StoreAppsDatabase -AclObject $Acl -ErrorAction Stop | Out-Null
     }
     catch {
-        Write-Warning "Failed to restrict ACL for store database '$StoreAppsDatabase': $($_.Exception.Message)"
+        Write-Warning (Get-Translation -Key 'RuntimeStoreDatabaseRestrictFailed' -FormatArgs @($StoreAppsDatabase, $_.Exception.Message))
         return $false
     }
 
-    Write-Host "Disabled Microsoft Store search suggestions for user $userName"
+    Write-Host (Get-Translation -Key 'RuntimeStoreSuggestionsDisabled' -FormatArgs @($userName))
     return $true
 }
 
@@ -151,7 +151,7 @@ function Set-StoreSearchSuggestionsEnabledForAllUsers {
     }
 
     if ($processedProfiles -eq 0) {
-        Write-Warning 'Unable to re-enable Microsoft Store search suggestions because no target user profiles could be resolved.'
+        Write-Warning (Get-Translation -Key 'RuntimeStoreSuggestionsEnableNoUsers')
         return $false
     }
 
@@ -187,12 +187,12 @@ function Set-StoreSearchSuggestionsEnabled {
     if (-not $userName) { $userName = '<unknown>' }
 
     if ($script:Params.ContainsKey("WhatIf")) {
-        Write-Host "[WhatIf] Re-enable Microsoft Store search suggestions for user $userName by restoring access to ${StoreAppsDatabase}" -ForegroundColor Cyan
+        Write-Host (Get-Translation -Key 'RuntimeStoreSuggestionsEnableWhatIf' -FormatArgs @($userName, $StoreAppsDatabase)) -ForegroundColor Cyan
         return $true
     }
 
     if (-not (Test-Path -Path $StoreAppsDatabase)) {
-        Write-Host "Store app database not found for user $userName, nothing to undo"
+        Write-Host (Get-Translation -Key 'RuntimeStoreDatabaseNothingToUndo' -FormatArgs @($userName))
         return $true
     }
 
@@ -200,12 +200,12 @@ function Set-StoreSearchSuggestionsEnabled {
     $global:LASTEXITCODE = 0
     takeown /F "$StoreAppsDatabase" /A | Out-Null
     if ($LASTEXITCODE -ne 0) {
-        Write-Warning "Failed to take ownership of store database '$StoreAppsDatabase' while undoing Microsoft Store search suggestions. Exit code: $LASTEXITCODE"
+        Write-Warning (Get-Translation -Key 'RuntimeStoreDatabaseOwnershipFailed' -FormatArgs @($StoreAppsDatabase, $LASTEXITCODE))
         return $false
     }
     icacls "$StoreAppsDatabase" /grant *S-1-5-32-544:F /C | Out-Null
     if ($LASTEXITCODE -ne 0) {
-        Write-Warning "Failed to grant Administrators access to store database '$StoreAppsDatabase' while undoing Microsoft Store search suggestions. Exit code: $LASTEXITCODE"
+        Write-Warning (Get-Translation -Key 'RuntimeStoreDatabaseGrantFailed' -FormatArgs @($StoreAppsDatabase, $LASTEXITCODE))
         return $false
     }
 
@@ -233,16 +233,16 @@ function Set-StoreSearchSuggestionsEnabled {
         Set-Acl -Path $StoreAppsDatabase -AclObject $acl -ErrorAction Stop | Out-Null
     }
     catch {
-        Write-Warning "Failed to normalize ACL for store database '$StoreAppsDatabase': $($_.Exception.Message)"
+        Write-Warning (Get-Translation -Key 'RuntimeStoreDatabaseNormalizeFailed' -FormatArgs @($StoreAppsDatabase, $_.Exception.Message))
     }
 
     try {
         Remove-Item -Path $StoreAppsDatabase -Force -ErrorAction Stop
-        Write-Host "Re-enabled Microsoft Store search suggestions for user $userName"
+        Write-Host (Get-Translation -Key 'RuntimeStoreSuggestionsEnabled' -FormatArgs @($userName))
         return $true
     }
     catch {
-        Write-Warning "Failed to remove '$StoreAppsDatabase' while undoing Microsoft Store search suggestions for user $userName. $($_.Exception.Message)"
+        Write-Warning (Get-Translation -Key 'RuntimeStoreDatabaseRemoveFailed' -FormatArgs @($StoreAppsDatabase, $userName, $_.Exception.Message))
         return $false
     }
 }

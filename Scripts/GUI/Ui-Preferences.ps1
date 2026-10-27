@@ -1,4 +1,4 @@
-<#
+﻿<#
     .SYNOPSIS
         Reads saved UI theme and language preferences.
 
@@ -23,7 +23,7 @@ function Get-UiPreferences {
                 $preferences.Language = $saved.Language
             }
         }
-        catch { Write-Warning "Unable to read UI preferences: $($_.Exception.Message)" }
+        catch { Write-Warning "Unable to read UI preferences / 화면 설정을 읽지 못했습니다: $($_.Exception.Message)" }
     }
     return $preferences
 }

@@ -94,7 +94,7 @@ function New-DynamicTweakControls {
     $featuresJson = Import-JsonFile -filePath $script:FeaturesFilePath -expectedVersion "1.0"
 
     if (-not $featuresJson) {
-        throw "Unable to load Features.json file. The GUI cannot continue without feature definitions."
+        throw (Get-Translation -Key 'GuiFeaturesCatalogLoadFailed')
     }
 
     # Column containers
@@ -261,6 +261,9 @@ function New-DynamicTweakControls {
             System.String. The category URL, or the Features page for an empty category.
     #>
     function Get-WikiUrlForCategory($category) {
+        if ($script:Lang.LanguageCode -eq 'ko-KR') {
+            return 'https://github.com/webiscorp/Win11Debloat-koKR/blob/master/docs/localization/USER_GUIDE.ko-KR.md#features'
+        }
         if (-not $category) { return 'https://github.com/Raphire/Win11Debloat/wiki/Features' }
 
         $slug = $category.ToLowerInvariant()

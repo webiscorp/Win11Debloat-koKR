@@ -44,6 +44,8 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     
                     <!-- Version -->
@@ -71,10 +73,23 @@
                     <TextBlock
                             Grid.Row="2" Grid.Column="1"
                             FontSize="13"
+                            TextWrapping="Wrap"
                             Margin="0,0,0,0">
                         <Hyperlink x:Name="ProjectLink"
                                    Style="{DynamicResource InlineHyperlinkStyle}"
                                    AutomationProperties.Name="https://github.com/Raphire/Win11Debloat">https://github.com/Raphire/Win11Debloat</Hyperlink>
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0"
+                            Text="%LANG:AboutLocalizationLabel%"
+                            Style="{DynamicResource ModalInfoLabelTextStyle}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1"
+                            Text="WEBIS"
+                            Style="{DynamicResource ModalInfoValueTextStyle}"/>
+                    <TextBlock Grid.Row="4" Grid.ColumnSpan="2" FontSize="13" Margin="0,8,0,0" TextWrapping="Wrap">
+                        <Hyperlink x:Name="KoreanProjectLink"
+                                   Style="{DynamicResource InlineHyperlinkStyle}"
+                                   AutomationProperties.Name="%LANG:AboutKoreanEditionLink%">%LANG:AboutKoreanEditionLink%</Hyperlink>
                     </TextBlock>
                 </Grid>
 
@@ -86,6 +101,11 @@
 
                 <!-- Content -->
                 <StackPanel Grid.Row="2" Margin="20,16,20,16">
+                    <TextBlock Text="%LANG:AboutKoreanEditionNotice%"
+                            FontSize="14"
+                            Foreground="{DynamicResource AppFgColor}"
+                            TextWrapping="Wrap"
+                            Margin="0,0,0,15"/>
                     <!-- Donation Message -->
                     <TextBlock Text="%LANG:AboutDonationMessage%"
                             FontSize="14"

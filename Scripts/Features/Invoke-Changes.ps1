@@ -20,7 +20,7 @@ function Invoke-FeatureApply {
     try {
         # Resolve feature metadata from Features.json
         $feature = $script:Features[$FeatureId]
-        $applyText = $feature.ApplyText
+        $applyText = Get-Translation -Key $FeatureId -Field 'ApplyText' -Section 'Features'
 
     # ---- Registry-backed features: import .reg file, then handle additional tasks ----
     if ($feature.RegistryKey) {
@@ -48,15 +48,15 @@ function Invoke-FeatureApply {
     # ---- Custom features (no registry backing, or special handling required) ----
     switch ($FeatureId) {
         'RemoveApps' {
-            Write-Host "> $applyText for $(Get-FriendlyTargetUserName)..."
+            Write-Host (Get-Translation -Key 'RuntimeFeatureTargetProgress' -FormatArgs @($applyText, (Get-FriendlyTargetUserName)))
             $appsList = Generate-AppsList
 
             if ($appsList.Count -eq 0) {
-                Write-Host "No valid apps were selected for removal" -ForegroundColor Yellow
+                Write-Host (Get-Translation -Key 'RuntimeNoValidAppsSelected') -ForegroundColor Yellow
                 return $true
             }
 
-            Write-Host "$($appsList.Count) apps selected for removal"
+            Write-Host (Get-Translation -Key 'RuntimeAppsSelectedForRemoval' -FormatArgs @($appsList.Count))
             return (Remove-SelectedApps $appsList)
         }
         'RemoveGamingApps' {
@@ -92,21 +92,21 @@ function Invoke-FeatureApply {
             return (Enable-WindowsFeature "Microsoft-Windows-Subsystem-Linux")
         }
         'ClearStart' {
-            Write-Host "> $applyText for user $(Get-UserName)..."
+            Write-Host (Get-Translation -Key 'RuntimeFeatureUserProgress' -FormatArgs @($applyText, (Get-UserName)))
             $startMenuBinFile = Get-StartMenuBinPathForUser -UserName (Get-UserName)
             if (-not [string]::IsNullOrWhiteSpace($startMenuBinFile)) {
                 return (Replace-StartMenu -startMenuBinFile $startMenuBinFile)
             }
-            Write-Warning "Unable to apply '$applyText': the Start menu path for user $(Get-UserName) could not be resolved."
+            Write-Warning (Get-Translation -Key 'RuntimeStartMenuUserPathUnavailable' -FormatArgs @($applyText, (Get-UserName)))
             return $false
         }
         'ReplaceStart' {
-            Write-Host "> $applyText for user $(Get-UserName)..."
+            Write-Host (Get-Translation -Key 'RuntimeFeatureUserProgress' -FormatArgs @($applyText, (Get-UserName)))
             $startMenuBinFile = Get-StartMenuBinPathForUser -UserName (Get-UserName)
             if (-not [string]::IsNullOrWhiteSpace($startMenuBinFile)) {
                 return (Replace-StartMenu -startMenuBinFile $startMenuBinFile -startMenuTemplate $script:Params.Item("ReplaceStart"))
             }
-            Write-Warning "Unable to apply '$applyText': the Start menu path for user $(Get-UserName) could not be resolved."
+            Write-Warning (Get-Translation -Key 'RuntimeStartMenuUserPathUnavailable' -FormatArgs @($applyText, (Get-UserName)))
             return $false
         }
         'ClearStartAllUsers' {
@@ -117,26 +117,26 @@ function Invoke-FeatureApply {
         }
         'DisableStoreSearchSuggestions' {
             if ($script:Params.ContainsKey("Sysprep")) {
-                Write-Host "> Disabling Microsoft Store search suggestions in the start menu for all users..."
+                Write-Host (Get-Translation -Key 'RuntimeStoreSuggestionsDisableAllProgress')
                 return (Set-StoreSearchSuggestionsDisabledForAllUsers)
             }
 
-            Write-Host "> Disabling Microsoft Store search suggestions for user $(Get-UserName)..."
+            Write-Host (Get-Translation -Key 'RuntimeStoreSuggestionsDisableUserProgress' -FormatArgs @((Get-UserName)))
             $storeDb = Get-StoreAppsDatabasePathForUser -UserName (Get-UserName)
             if ($storeDb) {
                 return (Set-StoreSearchSuggestionsDisabled -StoreAppsDatabase $storeDb)
             }
-            Write-Warning "Unable to disable Microsoft Store search suggestions because the Store database for user $(Get-UserName) could not be resolved."
+            Write-Warning (Get-Translation -Key 'RuntimeStoreSuggestionsDisableDatabaseUnavailable' -FormatArgs @((Get-UserName)))
             return $false
         }
     }
     }
     catch {
-        Write-Warning "Failed to apply '$applyText': $($_.Exception.Message)"
+        Write-Warning (Get-Translation -Key 'RuntimeFeatureApplyFailed' -FormatArgs @($applyText, $_.Exception.Message))
         return $false
     }
 
-    Write-Warning "Unknown feature '$FeatureId' could not be applied."
+    Write-Warning (Get-Translation -Key 'RuntimeUnknownFeatureApply' -FormatArgs @($FeatureId))
     return $false
 }
 
@@ -158,11 +158,11 @@ function Invoke-FeatureUndo {
 
     $feature = if ($script:Features.ContainsKey($FeatureId)) { $script:Features[$FeatureId] } else { $null }
     if (-not $feature) {
-        Write-Warning "Unknown feature '$FeatureId' could not be undone."
+        Write-Warning (Get-Translation -Key 'RuntimeUnknownFeatureUndo' -FormatArgs @($FeatureId))
         return $false
     }
 
-    $undoText = if ($feature.ApplyUndoText) { $feature.ApplyUndoText } elseif ($feature.UndoLabel) { $feature.UndoLabel } else { $FeatureId }
+    $undoText = if ($feature.ApplyUndoText) { Get-Translation -Key $FeatureId -Field 'ApplyUndoText' -Section 'Features' } elseif ($feature.UndoLabel) { Get-Translation -Key $FeatureId -Field 'UndoLabel' -Section 'Features' } else { $FeatureId }
 
     try {
         # ---- Registry-backed features: import undo data, then handle additional tasks ----
@@ -185,16 +185,16 @@ function Invoke-FeatureUndo {
         switch ($FeatureId) {
             'DisableStoreSearchSuggestions' {
                 if ($script:Params.ContainsKey('Sysprep')) {
-                    Write-Host "> Re-enabling Microsoft Store search suggestions in the start menu for all users..."
+                    Write-Host (Get-Translation -Key 'RuntimeStoreSuggestionsEnableAllProgress')
                     return (Set-StoreSearchSuggestionsEnabledForAllUsers)
                 }
 
-                Write-Host "> Re-enabling Microsoft Store search suggestions for user $(Get-UserName)..."
+                Write-Host (Get-Translation -Key 'RuntimeStoreSuggestionsEnableUserProgress' -FormatArgs @((Get-UserName)))
                 $storeDb = Get-StoreAppsDatabasePathForUser -UserName (Get-UserName)
                 if ($storeDb) {
                     return (Set-StoreSearchSuggestionsEnabled -StoreAppsDatabase $storeDb)
                 }
-                Write-Warning "Unable to re-enable Microsoft Store search suggestions because the Store database for user $(Get-UserName) could not be resolved."
+                Write-Warning (Get-Translation -Key 'RuntimeStoreSuggestionsEnableDatabaseUnavailable' -FormatArgs @((Get-UserName)))
                 return $false
             }
             'EnableWindowsSandbox' {
@@ -210,11 +210,11 @@ function Invoke-FeatureUndo {
     }
 
     catch {
-        Write-Warning "Failed to undo '$undoText': $($_.Exception.Message)"
+        Write-Warning (Get-Translation -Key 'RuntimeFeatureUndoFailed' -FormatArgs @($undoText, $_.Exception.Message))
         return $false
     }
 
-    Write-Warning "Feature '$FeatureId' does not support undo."
+    Write-Warning (Get-Translation -Key 'RuntimeFeatureUndoUnsupported' -FormatArgs @($FeatureId))
     return $false
 }
 
@@ -345,7 +345,7 @@ function Invoke-AllChanges {
     # Guard: prevent running as SYSTEM account without explicit target user
     $isSystem = Test-RunningAsSystem
     if ($isSystem -and -not $script:Params.ContainsKey("User") -and -not $script:Params.ContainsKey("Sysprep")) {
-        throw "Win11Debloat is running as the SYSTEM account. Use the '-User' or '-Sysprep' parameter to target a specific user."
+        throw (Get-Translation -Key 'RuntimeSystemAccountTargetRequired')
     }
 
     $script:AppRemovalFailures = 0
@@ -369,9 +369,9 @@ function Invoke-AllChanges {
     foreach ($id in $unsupportedIds) {
         $feature = $script:Features[$id]
         $range = @()
-        if ($feature.MinVersion) { $range += "build $($feature.MinVersion) or newer" }
-        if ($feature.MaxVersion) { $range += "build $($feature.MaxVersion) or older" }
-        Write-Warning "Skipping ${id}: it is only supported on Windows $($range -join ' and '), this system runs build $currentBuild."
+        if ($feature.MinVersion) { $range += (Get-Translation -Key 'RuntimeBuildMinimum' -FormatArgs @($feature.MinVersion)) }
+        if ($feature.MaxVersion) { $range += (Get-Translation -Key 'RuntimeBuildMaximum' -FormatArgs @($feature.MaxVersion)) }
+        Write-Warning (Get-Translation -Key 'RuntimeFeatureUnsupportedBuild' -FormatArgs @($id, ($range -join (Get-Translation -Key 'RuntimeBuildRangeSeparator')), $currentBuild))
 
         # Also drop it from the parameters, so that later steps (such as the reboot advice) only see what was applied
         [void]$script:Params.Remove($id)
@@ -411,10 +411,10 @@ function Invoke-AllChanges {
         }
 
         if ($script:Params.ContainsKey("WhatIf")) {
-            Write-Host "[WhatIf] Create registry backup" -ForegroundColor Cyan
+            Write-Host (Get-Translation -Key 'RuntimeRegistryBackupWhatIf') -ForegroundColor Cyan
         }
         else {
-            Write-Host "> Creating registry backup..."
+            Write-Host (Get-Translation -Key 'RuntimeRegistryBackupProgress')
             try {
                 $undoSyntheticFeatures = @($undoIds | ForEach-Object {
                     $f = if ($script:Features.ContainsKey($_)) { $script:Features[$_] } else { $null }
@@ -425,7 +425,7 @@ function Invoke-AllChanges {
                 New-RegistrySettingsBackup -ActionableKeys $applyIds -ExtraFeatures $undoSyntheticFeatures | Out-Null
             }
             catch {
-                throw "Registry backup failed before applying changes. $($_.Exception.Message)"
+                throw (Get-Translation -Key 'RuntimeRegistryBackupBeforeChangesFailed' -FormatArgs @($_.Exception.Message))
             }
         }
     }
@@ -440,11 +440,11 @@ function Invoke-AllChanges {
             & $script:ApplyProgressCallback $step $totalSteps (Get-Translation -Key 'ApplyCreatingRestorePoint')
         }
         if ($script:Params.ContainsKey("WhatIf")) {
-            Write-Host "[WhatIf] Create system restore point" -ForegroundColor Cyan
+            Write-Host (Get-Translation -Key 'RuntimeRestorePointWhatIf') -ForegroundColor Cyan
             Write-Host ""
         }
         else {
-            Write-Host "> Creating a system restore point..."
+            Write-Host (Get-Translation -Key 'RuntimeRestorePointProgress')
             $restorePointSucceeded = Invoke-SystemRestorePoint
             if (-not $restorePointSucceeded) {
                 if ($script:CancelRequested) { return }
@@ -477,17 +477,17 @@ function Invoke-AllChanges {
     # ================================================================
     if ($script:AppRemovalFailures -gt 0) {
         Write-Host ""
-        Write-Warning "$($script:AppRemovalFailures) app removal(s) failed. See output above for details."
+        Write-Warning (Get-Translation -Key 'RuntimeAppRemovalFailures' -FormatArgs @($script:AppRemovalFailures))
     }
 
     if ($script:FeatureFailures -gt 0) {
         Write-Host ""
-        Write-Warning "$($script:FeatureFailures) feature change(s) failed. See output above for details."
+        Write-Warning (Get-Translation -Key 'RuntimeFeatureChangeFailures' -FormatArgs @($script:FeatureFailures))
     }
 
     if ($script:AppRemovalVerificationUnavailable) {
         Write-Host ""
-        Write-Warning "Unable to verify if all apps were uninstalled successfully."
+        Write-Warning (Get-Translation -Key 'RuntimeAppRemovalVerificationUnavailable')
     }
 
 }

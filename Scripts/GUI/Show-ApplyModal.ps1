@@ -137,7 +137,7 @@ function Show-ApplyModal {
             $script:ApplyCompletionPanel.Visibility = 'Visible'
             
             if ($script:CancelRequested) {
-                Write-Warning "Script execution was cancelled by the user. Any remaining changes were not applied."
+                Write-Warning (Get-Translation -Key 'GuiExecutionCancelled')
 
                 $script:ApplyCompletionIconEl.Text = [char]0xE7BA
                 $script:ApplyCompletionIconEl.Foreground = [System.Windows.Media.SolidColorBrush]::new([System.Windows.Media.ColorConverter]::ConvertFromString("#e8912d"))
@@ -145,7 +145,7 @@ function Show-ApplyModal {
                 $script:ApplyCompletionMessageEl.Text = Get-Translation -Key 'ApplyCompletionMessageCancelled'
             } elseif ($failureCount -gt 0 -or $appRemovalVerificationUnavailable) {
                 if ($failureCount -gt 0) {
-                    Write-Host "Script completed with $failureCount error(s)."
+                    Write-Host (Get-Translation -Key 'GuiExecutionCompletedWithErrors' -FormatArgs @($failureCount))
                 }
 
                 $script:ApplyCompletionIconEl.Text = [char]0xE7BA
@@ -158,8 +158,13 @@ function Show-ApplyModal {
                     $script:ApplyCompletionTitleEl.Text = Get-Translation -Key 'ApplyCompletionTitleErrors'
                     $script:ApplyCompletionMessageEl.Text = Get-Translation -Key 'ApplyCompletionMessageFailures' -Count $failureCount -FormatArgs @($failureCount)
                 }
+            } elseif ($script:Params.ContainsKey('WhatIf')) {
+                Write-Host (Get-Translation -Key 'GuiChangesPreviewed')
+
+                $script:ApplyCompletionTitleEl.Text = Get-Translation -Key 'ApplyCompletionTitlePreview'
+                $script:ApplyCompletionMessageEl.Text = Get-Translation -Key 'ApplyCompletionMessagePreview'
             } else {
-                Write-Host "All changes have been applied successfully!"
+                Write-Host (Get-Translation -Key 'GuiChangesApplied')
 
                 $script:ApplyCompletionTitleEl.Text = Get-Translation -Key 'ApplyCompletionTitleSuccess'
 
@@ -202,7 +207,7 @@ function Show-ApplyModal {
             $applyWindow.Dispatcher.Invoke([System.Windows.Threading.DispatcherPriority]::Render, [action]{})
         }
         catch {
-            Write-Host "Error: $($_.Exception.Message)"
+            Write-Host (Get-Translation -Key 'GuiErrorDetails' -FormatArgs @($_.Exception.Message))
             $script:ApplyInProgressPanel.Visibility = 'Collapsed'
             $script:ApplyCompletionPanel.Visibility = 'Visible'
             $script:ApplyCompletionIconEl.Text = [char]0xEA39
@@ -241,7 +246,7 @@ function Show-ApplyModal {
 
     $applyKofiBtn.Add_Click({
         if ($script:ApplyModalInErrorState) {
-            Start-Process "https://github.com/Raphire/Win11Debloat/issues/new"
+            Start-Process "https://github.com/webiscorp/Win11Debloat-koKR#support"
         } else {
             Start-Process "https://ko-fi.com/raphire"
         }

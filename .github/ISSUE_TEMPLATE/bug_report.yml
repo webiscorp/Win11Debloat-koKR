@@ -1,79 +1,66 @@
-name: "🐞 Bug report"
-description: "Report an issue you encountered"
+name: "🐞 오류 신고"
+description: "WEBIS 한국어판의 기능·번역·화면 문제를 알려 주세요."
 labels: ["bug", "unconfirmed"]
-
 body:
   - type: markdown
     attributes:
       value: |
-        # 🐞 **Bug report**
-        Thanks for taking the time to fill out this bug report! Please provide as much information as possible in your report to help us understand and resolve the issue.
-
+        # 한국어판 오류 신고
+        WEBIS 한국어 현지화 Fork의 신고 양식입니다. 사용한 버전과 문제를 재현하는 방법을 적어 주세요.
+        실제 앱 제거·설정 변경을 반복하기 전에 백업을 보존하세요. 로그에 계정명·PC 이름·개인 경로가 있으면 가린 뒤 첨부하세요.
   - type: checkboxes
     id: checklist
     attributes:
-      label: Checklist
-      description: Please confirm the following before posting your issue.
+      label: 확인 사항
       options:
-        - label: I have searched for existing issues/discussions and didn't find any similar ones.
+        - label: 기존 이슈에서 같은 문제가 있는지 확인했습니다.
           required: true
-        - label: I haven't used any other scripts, tools or programs that might have caused this issue.
+        - label: 다른 최적화·설정 변경 도구를 함께 사용하지 않았습니다.
           required: false
-
   - type: input
     id: windows_version
     attributes:
-      label: Windows version
-      description: What version of Windows are you using?
-      placeholder: e.g. Windows 11 24H2 (26100.4202)
+      label: Windows 버전과 표시 언어
+      description: winver에서 버전과 OS 빌드를 확인할 수 있습니다.
+      placeholder: "예: Windows 11 24H2 (26100.x), 한국어, 배율 150%"
     validations:
       required: true
-
   - type: input
     id: script_setting
     attributes:
-      label: Script mode/options
-      description: What mode/options did you use with the script?
-      placeholder: e.g. "Default mode", "Custom mode with options X, Y, Z"
+      label: 한국어판 버전·실행 방법·선택한 옵션
+      description: Release 태그 또는 커밋과 GUI/CLI, Windows PowerShell 버전을 적어 주세요.
+      placeholder: "예: 커밋 SHA, Run.bat, 기본 모드, 선택한 앱과 옵션"
     validations:
       required: true
-
   - type: textarea
     id: issue_description
     attributes:
-      label: Describe the issue
-      description: Provide a clear and detailed description of the issue.
-      placeholder: e.g. "When I ran the script I expected [...], but instead [...]. This caused [...]."
+      label: 발생한 문제
+      description: 기대한 동작과 실제 결과를 구분해 적어 주세요. 번역 문제라면 해당 화면과 문구를 함께 알려 주세요.
     validations:
       required: true
-
   - type: textarea
     id: steps_to_reproduce
     attributes:
-      label: Steps to reproduce
-      description: How can the behaviour be reproduced? Please provide detailed steps.
+      label: 재현 순서
       placeholder: |
-        1. Open '...'
-        2. Select '...'
-        3. Wait for '...'
-        4. Etc.
+        1. 실행 방법:
+        2. 선택한 메뉴·옵션:
+        3. 확인한 결과:
     validations:
       required: true
-
   - type: textarea
     id: error_logs
     attributes:
-      label: Error output
-      description: "Include any relevant logs or error messages. Logs can be found in `%temp%/Win11Debloat` or the root folder of the script. Please keep in mind that logs may contain personal information such as usernames and the name of your PC, so review them before submitting."
-      placeholder: Include any relevant logs or error messages.
+      label: 오류 메시지·로그
+      description: '기본 로그: %LOCALAPPDATA%\Win11Debloat\Logs. LOCALAPPDATA가 없는 환경에서는 스크립트 폴더의 Logs입니다. 개인정보를 가린 뒤 첨부하세요.'
     validations:
       required: false
-
   - type: textarea
     id: additional_context
     attributes:
-      label: Additional context
-      description: Add any other context about the problem here.
-      placeholder: e.g. Screenshots, links to related discussions, etc.
+      label: 추가 정보
+      description: 화면 캡처, 사용 중인 다른 관리 도구, 복구 시도 결과 등을 적어 주세요.
     validations:
       required: false

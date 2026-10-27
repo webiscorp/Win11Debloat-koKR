@@ -2,7 +2,7 @@
 BeforeAll {
     Add-Type -AssemblyName PresentationFramework
     $script:RepoRoot = Split-Path $PSScriptRoot -Parent
-    foreach ($file in @('FileIO/Import-JsonFile', 'FileIO/Import-LanguageFile',
+    foreach ($file in @('FileIO/Import-JsonFile', 'FileIO/Import-LanguageFile', 'FileIO/Import-AppPresetsFromJson',
         'GUI/Ui-Preferences', 'GUI/Show-SettingsDialog', 'GUI/Set-WindowThemeResources',
         'GUI/MainWindow-Localization', 'GUI/MainWindow-TweaksBuilder', 'GUI/MainWindow-AppSelection',
         'GUI/MainWindow-Deployment', 'GUI/Show-Bubble', 'Helpers/Get-UserName', 'Helpers/Windows-BuildHelpers')) {
@@ -106,7 +106,7 @@ Describe 'Language changes on existing controls' {
             return ConvertTo-Json -InputObject @($rows) -Depth 4 -Compress
         }
 
-        foreach ($language in @('nl-NL', 'pt-BR')) {
+        foreach ($language in @('nl-NL', 'pt-BR', 'ko-KR')) {
             $script:Lang = Import-LanguageFile -LanguageCode $language
             $fresh = New-LanguageTestWindow
             New-DynamicTweakControls -Window $fresh -WinVersion $Build
@@ -133,7 +133,7 @@ Describe 'Language changes on existing controls' {
         $item.SetResourceReference([System.Windows.Controls.HeaderedItemsControl]::HeaderProperty, 'Language_MenuAbout')
         [void]$menu.Items.Add($item)
 
-        foreach ($language in @('en-US', 'nl-NL', 'pt-BR', 'en-US')) {
+        foreach ($language in @('en-US', 'nl-NL', 'pt-BR', 'ko-KR', 'en-US')) {
             $script:Lang = Import-LanguageFile -LanguageCode $language
             Update-WindowLanguageResources -Window $window
             $button.Content | Should -Be (Get-Translation -Key 'SettingsTitle')
@@ -164,7 +164,7 @@ Describe 'Language changes on existing controls' {
         $group.Add_SelectionChanged({ $script:SelectionChanges++ })
         $before = @(Get-PendingTweakActions -Window $window -ShowAppliedTweaksMode $true | ForEach-Object { "$($_.Action):$($_.FeatureId)" } | Sort-Object)
 
-        foreach ($language in @('nl-NL', 'pt-BR', 'en-US')) {
+        foreach ($language in @('nl-NL', 'pt-BR', 'ko-KR', 'en-US')) {
             $script:Lang = Import-LanguageFile -LanguageCode $language
             Update-MainWindowTweakLanguage -Window $window
             [object]::ReferenceEquals($window.FindName('Feature_DisableTelemetry_Combo'), $checkbox) | Should -BeTrue
@@ -199,7 +199,7 @@ Describe 'Language changes on existing controls' {
         $script:JsonPresetCheckboxes = @()
         $script:PreloadedAppData = @('old catalog')
 
-        foreach ($language in @('nl-NL', 'pt-BR', 'en-US')) {
+        foreach ($language in @('nl-NL', 'pt-BR', 'ko-KR', 'en-US')) {
             $script:Lang = Import-LanguageFile -LanguageCode $language
             Update-MainWindowAppLanguage -AppsPanel $panel
             $app.AppNameText.Text | Should -Be (Get-Translation -Key 'Microsoft.WindowsCalculator' -Field 'FriendlyName' -Section 'Apps')
@@ -212,7 +212,11 @@ Describe 'Language changes on existing controls' {
         $script:PreloadedAppData | Should -BeNullOrEmpty
     }
 
-    It 'refreshes search and deployment text without changing user input or selections' {
+    It 'refreshes <Language> search and deployment text without changing user input or selections' -ForEach @(
+        @{ Language = 'nl-NL'; AppQuery = 'rekenmachine'; TweakQuery = 'telemetrie' }
+        # Korean query fragments: calculator and remote (telemetry).
+        @{ Language = 'ko-KR'; AppQuery = ([string][char]0xACC4 + [char]0xC0B0); TweakQuery = ([string][char]0xC6D0 + [char]0xACA9) }
+    ) {
         Mock Get-UserName { 'TestUser' }
         Mock Update-AppsPanelSort {}
         Mock Hide-Bubble {}
@@ -259,8 +263,8 @@ Describe 'Language changes on existing controls' {
         $tweakSearchBox = $window.FindName('TweakSearchBox')
         $tweakSearchPlaceholder = $window.FindName('TweakSearchPlaceholder')
         $tweaksScrollViewer = $null
-        $appSearchBox.Text = 'rekenmachine'
-        $tweakSearchBox.Text = 'telemetrie'
+        $appSearchBox.Text = $AppQuery
+        $tweakSearchBox.Text = $TweakQuery
         $appSearchBox.Add_TextChanged($script:SearchHandlers['appSearchBox'])
         $tweakSearchBox.Add_TextChanged($script:SearchHandlers['tweakSearchBox'])
         $script:AppSearchMatches = @(); $script:AppSearchMatchIndex = -1
@@ -271,15 +275,15 @@ Describe 'Language changes on existing controls' {
         $checkbox = $window.FindName('Feature_DisableTelemetry_Combo')
         $checkbox.IsChecked = $true
 
-        $script:Lang = Import-LanguageFile -LanguageCode 'nl-NL'
+        $script:Lang = Import-LanguageFile -LanguageCode $Language
         Update-MainWindowLanguage -Window $window
 
         $userCombo.SelectedIndex | Should -Be 1
         $scope.SelectedItem | Should -Be $target
         $window.FindName('OtherUsernameTextBox').Text | Should -Be 'Alice'
         $tabs.SelectedIndex | Should -Be 2
-        $appSearchBox.Text | Should -Be 'rekenmachine'
-        $tweakSearchBox.Text | Should -Be 'telemetrie'
+        $appSearchBox.Text | Should -Be $AppQuery
+        $tweakSearchBox.Text | Should -Be $TweakQuery
         $script:AppSearchMatches.Count | Should -Be 1
         [object]::ReferenceEquals($script:AppSearchMatches[0], $app) | Should -BeTrue
         $checkbox.Background | Should -Be ([System.Windows.Media.Brushes]::Yellow)
@@ -289,6 +293,35 @@ Describe 'Language changes on existing controls' {
         $window.FindName('UserSelectionDescription').Text | Should -Be (Get-Translation -Key 'DeployUserDescriptionOtherUserNamed' -FormatArgs @('Alice'))
         $window.FindName('AppRemovalScopeDescription').Text | Should -Be (Get-Translation -Key 'AppRemovalScopeDescriptionTargetUser')
         $script:UpdatingLanguage | Should -BeFalse
+    }
+
+    It 'updates built-in preset names and accessibility while preserving custom names and selections' {
+        $panel = [System.Windows.Controls.StackPanel]::new()
+        $builtin = [System.Windows.Controls.CheckBox]::new()
+        $builtin.IsChecked = $true
+        $builtin | Add-Member -NotePropertyMembers @{
+            PresetId = 'xbox_gaming_apps'; PresetName = 'Renamed source preset'; PresetAppIds = @('Microsoft.GamingApp')
+        }
+        $custom = [System.Windows.Controls.CheckBox]::new()
+        $custom.IsChecked = $false
+        $custom | Add-Member -NotePropertyMembers @{
+            PresetId = ''; PresetName = 'My custom apps'; PresetAppIds = @('Custom.App')
+        }
+        $script:JsonPresetCheckboxes = @($builtin, $custom)
+
+        foreach ($language in @('en-US', 'ko-KR', 'en-US')) {
+            $script:Lang = Import-LanguageFile -LanguageCode $language
+            Update-MainWindowAppLanguage -AppsPanel $panel
+            $builtin.Content | Should -Be (Get-Translation -Key 'AppPresetXboxGamingApps')
+            $builtin.Content | Should -Not -Be 'AppPresetXboxGamingApps'
+            $builtin.ToolTip | Should -Be (Get-Translation -Key 'AppPresetSelectTooltip' -FormatArgs @($builtin.Content))
+            [System.Windows.Automation.AutomationProperties]::GetName($builtin) | Should -Be $builtin.Content
+            $builtin.PresetAppIds | Should -Be @('Microsoft.GamingApp')
+            $builtin.IsChecked | Should -BeTrue
+            $custom.Content | Should -Be 'My custom apps'
+            $custom.IsChecked | Should -BeFalse
+            $custom.PresetAppIds | Should -Be @('Custom.App')
+        }
     }
 }
 

@@ -43,7 +43,7 @@ function Get-ConfigDeploymentFlag {
 
     $flagValue = ConvertTo-ConfigBoolean $Lookup[$Name]
     if ($null -eq $flagValue) {
-        Write-Warning "Ignoring deployment setting '$Name' in the config file: expected true or false, found '$($Lookup[$Name])'."
+        Write-Warning (Get-Translation -Key 'HelperConfigBooleanExpected' -FormatArgs @($Name, $Lookup[$Name]))
     }
     return $flagValue
 }
@@ -65,25 +65,25 @@ function Import-ConfigToParams {
         $resolvedConfigPath = (Resolve-Path -LiteralPath $ConfigPath -ErrorAction Stop).Path
     }
     catch {
-        throw "Unable to find config file at path: $ConfigPath"
+        throw (Get-Translation -Key 'HelperConfigMissing' -FormatArgs @($ConfigPath))
     }
 
     if (-not (Test-Path -LiteralPath $resolvedConfigPath -PathType Leaf)) {
-        throw "Provided config path is not a file: $resolvedConfigPath"
+        throw (Get-Translation -Key 'HelperConfigNotFile' -FormatArgs @($resolvedConfigPath))
     }
 
     if ([System.IO.Path]::GetExtension($resolvedConfigPath) -ne '.json') {
-        throw "Provided config file must be a .json file: $resolvedConfigPath"
+        throw (Get-Translation -Key 'HelperConfigNotJson' -FormatArgs @($resolvedConfigPath))
     }
 
     $configJson = Import-JsonFile -filePath $resolvedConfigPath -expectedVersion $ExpectedVersion
     if ($null -eq $configJson) {
-        throw "Failed to read config file: $resolvedConfigPath"
+        throw (Get-Translation -Key 'HelperConfigReadFailed' -FormatArgs @($resolvedConfigPath))
     }
 
     $consistencyError = Test-ConfigConsistency -Config $configJson
     if ($consistencyError) {
-        throw "Invalid config file '$resolvedConfigPath': $consistencyError"
+        throw (Get-Translation -Key 'HelperConfigInvalid' -FormatArgs @($resolvedConfigPath, $consistencyError))
     }
 
     $importedItems = 0
@@ -190,7 +190,7 @@ function Import-ConfigToParams {
     }
 
     if ($importedItems -eq 0) {
-        throw "The config file contains no importable data: $resolvedConfigPath"
+        throw (Get-Translation -Key 'HelperConfigNoData' -FormatArgs @($resolvedConfigPath))
     }
 
     return $resolvedConfigPath

@@ -977,6 +977,7 @@
   "Presets": [
     {
       "Name": "Xbox gaming apps",
+      "PresetId": "xbox_gaming_apps",
       "AppIds": [
         "Microsoft.GamingApp",
         "Microsoft.XboxGameOverlay",
@@ -985,6 +986,7 @@
     },
     {
       "Name": "OEM software (Acer, ASUS, Dell, HP, Lenovo, LG, MSI, Samsung)",
+      "PresetId": "oem_software",
       "AppIds": [
         "SAMSUNGELECTRONICSCoLtd.MultiControl",
         "SAMSUNGELECTRONICSCoLtd.SecondScreen",

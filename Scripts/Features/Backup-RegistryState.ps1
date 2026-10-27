@@ -33,10 +33,10 @@ function New-RegistrySettingsBackup {
 
     $backupConfig = Get-RegistryBackupPayload -SelectedFeatures $selectedFeatures -UndoFeatures $undoFeatures -CreatedAt $timestamp
     if (-not (Save-ToFile -Config $backupConfig -FilePath $backupFilePath -MaxDepth 25)) {
-        throw "Failed to save registry backup to '$backupFilePath'"
+        throw (Get-Translation -Key 'RuntimeRegistryBackupSaveFailed' -FormatArgs @($backupFilePath))
     }
 
-    Write-Host "Backup successfully created: $backupFilePath"
+    Write-Host (Get-Translation -Key 'RuntimeRegistryBackupCreated' -FormatArgs @($backupFilePath))
     Write-Host ""
 
     return $backupFilePath

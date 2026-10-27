@@ -1,3 +1,30 @@
+# WEBIS 한국어판에 기여하기
+
+이 저장소는 [Raphire/Win11Debloat](https://github.com/Raphire/Win11Debloat)의 **비공식 한국어 현지화 Fork**입니다. 한국어 번역·문서·한국어판 문제는 [webiscorp/Win11Debloat-koKR](https://github.com/webiscorp/Win11Debloat-koKR)에서 다룹니다.
+
+- 제보: [한국어판 Issues](https://github.com/webiscorp/Win11Debloat-koKR/issues). 변경은 작업 브랜치에서 준비하고 이 Fork의 `master`를 대상으로 PR을 제출하세요.
+- 번역·검수 기록·Upstream 동기화·테스트·배포 기준: [한국어 유지보수 지침](../docs/localization/MAINTENANCE.ko-KR.md).
+- 설치·실행·복구: [한국어 사용 가이드](../docs/localization/USER_GUIDE.ko-KR.md). 현재 실제 테스트 결과와 미검증 항목은 [검증 기록](../docs/localization/STATUS.md)에 있습니다.
+
+한국어판 소스는 다음 경로에서 받습니다. 기여 권한이 없다면 **이 한국어판 저장소를 Fork**한 주소로 clone하세요.
+
+```powershell
+git clone https://github.com/webiscorp/Win11Debloat-koKR.git
+cd Win11Debloat-koKR
+```
+
+로컬 제품 실행은 복구 수단을 확보한 Windows 테스트 환경에서 관리자 권한의 **Windows PowerShell 5.1**로 수행합니다. PowerShell 7은 일부 리소스 검사에만 사용하며 제품 실행 지원을 뜻하지 않습니다.
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Win11Debloat.ps1 -Language ko-KR
+```
+
+시스템 설정을 적용하지 않는 카탈로그 검사와 기존 Pester 실행 방법은 위 유지보수 지침을 따르세요. 앱 제거·레지스트리 변경·복구 시험은 운영 PC에서 수행하지 않습니다.
+
+> **아래는 보존한 원본 기여 안내입니다.** 아래의 `debloat.raphi.re` 원격 실행 명령과 `Raphire/Win11Debloat` 링크는 원본 프로젝트용이며 WEBIS 한국어판을 설치하거나 제보하는 경로가 아닙니다. 한국어판 작업에는 위 로컬 소스와 한국어 문서를 사용하세요. 원본의 기능 개발·구조 설명은 참고하되 한국어판 검증·배포 조건은 위 유지보수 지침을 적용합니다.
+
+---
+
 # How to Contribute?
 
 We welcome contributions from the community. You can contribute to Win11Debloat by:

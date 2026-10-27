@@ -1,4 +1,4 @@
-<#
+﻿<#
     .SYNOPSIS
         Returns the required language catalog names.
 
@@ -94,16 +94,18 @@ function Import-LanguageFile {
         [string]$LanguagesPath = $script:LanguagesPath
     )
 
+    if ([string]::IsNullOrWhiteSpace($LanguageCode)) { $LanguageCode = 'en-US' }
+
     $resolvedFolder = Resolve-LanguageFolder -LanguageCode $LanguageCode -LanguagesPath $LanguagesPath
     $content = Import-LanguageContent -LanguageFolder $resolvedFolder -LanguagesPath $LanguagesPath
 
     if (-not $content -and $resolvedFolder -ne 'en-US') {
-        Write-Warning "Failed to load language '$resolvedFolder', falling back to en-US."
+        Write-Warning "Failed to load language '$resolvedFolder', falling back to en-US. / '$resolvedFolder' 언어를 불러오지 못해 영어로 표시합니다."
         $content = Import-LanguageContent -LanguageFolder 'en-US' -LanguagesPath $LanguagesPath
     }
 
     if (-not $content) {
-        Write-Error "Unable to load the en-US language files. The GUI cannot continue without them."
+        Write-Error "Unable to load the en-US language files. The GUI cannot continue without them. / 기본 영어 언어 파일을 불러오지 못해 화면을 표시할 수 없습니다."
         return $null
     }
 
@@ -136,6 +138,7 @@ function Get-PluralCategory {
 
     switch ($languagePrefix) {
         'zh' { return 'other' }
+        'ko' { return 'other' }
         # Portuguese CLDR rule: 'one' for 0 and 1, 'many' for positive multiples
         # of 1,000,000, and 'other' for every remaining count.
         'pt' {
@@ -313,7 +316,7 @@ function Get-Translation {
             return $resolved -f $FormatArgs
         }
         catch {
-            Write-Warning "Translation '$Key' has a placeholder mismatch with its format arguments: $($_.Exception.Message)"
+            Write-Warning "Translation '$Key' has a placeholder mismatch with its format arguments / 번역의 자리표시자와 전달값이 일치하지 않습니다: $($_.Exception.Message)"
             return $resolved
         }
     }
@@ -509,7 +512,7 @@ function ConvertTo-LocalizedXaml {
     $result = [System.Text.RegularExpressions.Regex]::Replace($Xaml, '%LANG:([A-Za-z0-9_]+)%', $evaluator)
 
     if ($missingKeys.Count -gt 0) {
-        throw "Unresolved localization marker(s) in XAML, key(s) not found in any language: $($missingKeys -join ', ')"
+        throw "Unresolved localization marker(s) in XAML, key(s) not found in any language / 화면에 필요한 번역 키를 찾을 수 없습니다: $($missingKeys -join ', ')"
     }
 
     return $result

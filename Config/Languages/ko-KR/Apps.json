@@ -1,7 +1,7 @@
 ﻿{
   "Clipchamp.Clipchamp": {
     "FriendlyName": "Microsoft Clipchamp",
-    "Description": "동영상을 만들고 편집하며 자르기, 자막 및 오디오 추가"
+    "Description": "동영상을 만들고 편집하며, 자르기와 자막 및 오디오 추가를 지원합니다."
   },
   "Microsoft.3DBuilder": {
     "FriendlyName": "3D 빌더",
@@ -29,7 +29,7 @@
   },
   "Microsoft.BingSports": {
     "FriendlyName": "MSN 스포츠",
-    "Description": "지원이 중단된 스포츠 뉴스 및 점수 앱입니다."
+    "Description": "지원이 중단된 스포츠 뉴스 및 경기 결과 앱입니다."
   },
   "Microsoft.BingTranslator": {
     "FriendlyName": "Microsoft 번역기",
@@ -57,7 +57,7 @@
   },
   "Microsoft.Getstarted": {
     "FriendlyName": "팁",
-    "Description": "Windows 기능 사용을 위한 팁 및 안내 (사용 중단 예정)"
+    "Description": "Windows 기능 사용을 위한 팁 및 안내(더 이상 개발되지 않음)"
   },
   "Microsoft.Messaging": {
     "FriendlyName": "통신사 메시지",
@@ -89,15 +89,15 @@
   },
   "Microsoft.MixedReality.Portal": {
     "FriendlyName": "혼합 현실 포털",
-    "Description": "Windows Mixed Reality 헤드셋용 포털입니다. (사용 중단 예정)"
+    "Description": "Windows Mixed Reality 헤드셋용 포털입니다(더 이상 개발되지 않음)."
   },
   "Microsoft.NetworkSpeedTest": {
     "FriendlyName": "네트워크 속도 테스트",
     "Description": "다운로드 및 업로드 속도와 네트워크 지연 시간 측정"
   },
   "Microsoft.Office.OneNote": {
-    "FriendlyName": "OneNote",
-    "Description": "UWP(유니버설 Windows 플랫폼) 버전의 디지털 노트 필기 앱입니다."
+    "FriendlyName": "Windows 10용 OneNote(레거시)",
+    "Description": "지원이 중단된 UWP(유니버설 Windows 플랫폼) 버전의 디지털 노트 필기 앱입니다."
   },
   "Microsoft.Office.Sway": {
     "FriendlyName": "Sway",
@@ -109,7 +109,7 @@
   },
   "Microsoft.Print3D": {
     "FriendlyName": "3D 인쇄",
-    "Description": "3D 모델 인쇄 준비 (사용 중단 예정)"
+    "Description": "3D 모델 인쇄 준비(더 이상 개발되지 않음)"
   },
   "Microsoft.PowerAutomateDesktop": {
     "FriendlyName": "Power Automate",
@@ -153,22 +153,22 @@
   },
   "MicrosoftCorporationII.MicrosoftFamily": {
     "FriendlyName": "Microsoft Family Safety",
-    "Description": "가족의 화면 시간, 콘텐츠 필터, 활동 보고서를 관리하는 앱입니다."
+    "Description": "가족의 화면 사용 시간, 콘텐츠 필터, 활동 보고서를 관리하는 앱입니다."
   },
   "MicrosoftCorporationII.QuickAssist": {
     "FriendlyName": "빠른 지원",
     "Description": "PC 문제 해결을 위한 화면 공유 및 원격 제어"
   },
   "MicrosoftTeams": {
-    "FriendlyName": "Microsoft Teams(이전)",
+    "FriendlyName": "Microsoft Teams(이전 버전)",
     "Description": "개인용 채팅 및 통화를 위한 이전 Teams 앱"
   },
   "MSTeams": {
-    "FriendlyName": "Microsoft Teams(신규)",
+    "FriendlyName": "Microsoft Teams(새 버전)",
     "Description": "회사, 학교 및 개인 계정용 채팅, 통화 및 모임"
   },
   "ACGMediaPlayer": {
-    "FriendlyName": "ACG 미디어 플레이어",
+    "FriendlyName": "ACG Player",
     "Description": "자막을 지원하는 로컬 오디오 및 동영상 재생과 DLNA 스트리밍"
   },
   "ActiproSoftwareLLC": {
@@ -184,7 +184,7 @@
     "Description": "Amazon 쇼핑 앱입니다."
   },
   "AmazonVideo.PrimeVideo": {
-    "FriendlyName": "윈도우용 프라임 비디오",
+    "FriendlyName": "Windows용 Prime Video",
     "Description": "Amazon Prime Video 스트리밍 서비스 앱입니다."
   },
   "Asphalt8Airborne": {
@@ -228,7 +228,7 @@
     "Description": "Facebook 소셜 미디어 앱입니다."
   },
   "FarmVille2CountryEscape": {
-    "FriendlyName": "FarmVille 2",
+    "FriendlyName": "FarmVille 2: Country Escape",
     "Description": "농장 시뮬레이션 게임입니다."
   },
   "Flipboard": {
@@ -236,7 +236,7 @@
     "Description": "잡지 형식의 뉴스 및 소셜 네트워크 수집 앱입니다."
   },
   "HiddenCity": {
-    "FriendlyName": "Hidden City",
+    "FriendlyName": "Hidden City: Hidden Object Adventure",
     "Description": "숨은 물건 찾기 퍼즐 어드벤처 게임입니다."
   },
   "HULULLC.HULUPLUS": {
@@ -252,15 +252,15 @@
     "Description": "Instagram 소셜 미디어 앱입니다."
   },
   "king.com.BubbleWitch3Saga": {
-    "FriendlyName": "버블위치사가3",
-    "Description": "마법의 도전이 있는 버블 슈팅 퍼즐 게임"
+    "FriendlyName": "Bubble Witch 3 Saga",
+    "Description": "마법을 테마로 한 도전 과제가 있는 버블 슈팅 퍼즐 게임"
   },
   "king.com.CandyCrushSaga": {
     "FriendlyName": "Candy Crush Saga",
     "Description": "사탕을 세 개씩 맞추는 퍼즐 게임"
   },
   "king.com.CandyCrushSodaSaga": {
-    "FriendlyName": "Candy Crush Soda",
+    "FriendlyName": "Candy Crush Soda Saga",
     "Description": "소다 테마의 레벨과 게임 모드에서 사탕을 세 개씩 맞추는 퍼즐"
   },
   "LinkedInforWindows": {
@@ -305,7 +305,7 @@
   },
   "Sidia.LiveWallpaper": {
     "FriendlyName": "Samsung Live Wallpaper",
-    "Description": "Samsung Galaxy Book용 정적 및 애니메이션 배경 화면"
+    "Description": "Samsung Galaxy Book용 정지 이미지 및 애니메이션 배경 화면"
   },
   "SlingTV": {
     "FriendlyName": "Sling TV",
@@ -341,7 +341,7 @@
   },
   "Microsoft.GetHelp": {
     "FriendlyName": "도움말",
-    "Description": "일부 Windows 11 문제 해결사와 지원 상호 작용에 필요한 앱입니다."
+    "Description": "일부 Windows 11 문제 해결사와 지원 기능에 필요한 앱입니다."
   },
   "Microsoft.M365Companions": {
     "FriendlyName": "Microsoft 365 컴패니언",
@@ -365,7 +365,7 @@
   },
   "Microsoft.People": {
     "FriendlyName": "Microsoft 피플",
-    "Description": "메일 및 일정용 연락처 저장 및 정리 (지원 중단)."
+    "Description": "메일 및 일정의 연락처를 저장하고 관리하는 앱입니다(지원 중단)."
   },
   "MicrosoftCorporationII.Windows365": {
     "FriendlyName": "Windows App",
@@ -413,11 +413,11 @@
   },
   "Microsoft.WindowsStore": {
     "FriendlyName": "Microsoft Store",
-    "Description": "Windows 앱과 게임 설치 및 업데이트. 경고: Store를 제거하면 앱 설치 및 복구가 더 어려워질 수 있음"
+    "Description": "Windows 앱과 게임을 설치하고 업데이트합니다. 경고: Microsoft Store를 제거하면 앱 설치와 복구가 더 어려워질 수 있습니다."
   },
   "Microsoft.WindowsTerminal": {
     "FriendlyName": "터미널",
-    "Description": "명령 프롬프트, PowerShell 및 WSL용 탭 터미널. 경고: Win11Debloat를 실행 중인 터미널을 제거하면 세션이 닫힐 수 있음"
+    "Description": "명령 프롬프트, PowerShell 및 WSL용 탭 터미널입니다. 경고: Win11Debloat를 실행 중인 터미널을 제거하면 해당 세션이 종료될 수 있습니다."
   },
   "Microsoft.Xbox.TCUI": {
     "FriendlyName": "Xbox Live (TCUI)",
@@ -425,19 +425,19 @@
   },
   "Microsoft.XboxGameOverlay": {
     "FriendlyName": "Xbox Game Overlay",
-    "Description": "기존 Xbox 게임 내 오버레이 구성 요소. 경고: 제거하면 게임의 Xbox 기능에 영향을 줄 수 있음"
+    "Description": "기존 Xbox 게임 내 오버레이 구성 요소입니다. 경고: 제거하면 게임의 Xbox 기능에 영향을 줄 수 있습니다."
   },
   "Microsoft.XboxGamingOverlay": {
     "FriendlyName": "Game Bar",
-    "Description": "게임 내 녹화, 스크린샷, 위젯 및 Xbox 소셜 기능. 경고: Game Bar를 제거하면 일부 AMD Ryzen 9 X3D 시스템의 성능이 저하될 수 있음"
+    "Description": "게임 내 녹화, 스크린샷, 위젯 및 Xbox 소셜 기능을 제공합니다. 경고: Game Bar를 제거하면 일부 AMD Ryzen 9 X3D 시스템의 성능이 저하될 수 있습니다."
   },
   "Microsoft.XboxIdentityProvider": {
     "FriendlyName": "Xbox Identity Provider",
     "Description": "일부 게임과 Xbox 서비스에 필요한 Xbox 로그인 프레임워크입니다."
   },
   "Microsoft.XboxSpeechToTextOverlay": {
-    "FriendlyName": "Xbox Speech To Text",
-    "Description": "지원되는 게임 채팅의 음성-텍스트 및 텍스트-음성 변환. 경고: 이 Windows 구성 요소는 제거 후 다시 설치하기 어려울 수 있음"
+    "FriendlyName": "Game Speech Window",
+    "Description": "지원되는 게임의 채팅에서 음성을 텍스트로, 텍스트를 음성으로 변환합니다. 경고: 이 Windows 구성 요소는 제거 후 다시 설치하기 어려울 수 있습니다."
   },
   "Microsoft.YourPhone": {
     "FriendlyName": "휴대폰과 연결",
@@ -545,7 +545,7 @@
   },
   "LGElectronics.LGMonitorApp": {
     "FriendlyName": "LG Monitor App Installer",
-    "Description": "호환되는 LG 모니터 유틸리티 설치. LG 모니터 연결 시 Windows 업데이트가 이 앱을 다시 설치할 수 있음"
+    "Description": "호환되는 LG 모니터 유틸리티를 설치합니다. LG 모니터를 연결하면 Windows 업데이트에서 이 앱을 다시 설치할 수 있습니다."
   },
   "AD2F1837.HPAIExperienceCenter": {
     "FriendlyName": "HP AI Experience Center",
@@ -577,7 +577,7 @@
   },
   "AD2F1837.HPPCHardwareDiagnosticsWindows": {
     "FriendlyName": "HP PC Hardware Diagnostics Windows",
-    "Description": "메모리 및 저장 장치 등 PC 하드웨어를 테스트하여 오류 진단"
+    "Description": "메모리 및 저장 장치 등 PC 하드웨어를 테스트하여 문제 진단을 돕습니다."
   },
   "AD2F1837.HPPowerManager": {
     "FriendlyName": "HP Power Manager",
@@ -593,7 +593,7 @@
   },
   "AD2F1837.HPQuickDrop": {
     "FriendlyName": "HP QuickDrop",
-    "Description": "지원이 중단된, 장치 간 빠른 파일 전송을 위한 HP OEM 소프트웨어입니다."
+    "Description": "장치 간 빠른 파일 전송을 위한 HP OEM 소프트웨어입니다(지원 중단)."
   },
   "AD2F1837.HPQuickTouch": {
     "FriendlyName": "HP QuickTouch",
@@ -641,7 +641,7 @@
   },
   "DellInc.DellDigitalDelivery": {
     "FriendlyName": "Dell Digital Delivery",
-    "Description": "미리 구매한 소프트웨어를 제공하는 Dell OEM 소프트웨어입니다. (지원 중단)"
+    "Description": "미리 구매한 소프트웨어를 제공하는 Dell OEM 소프트웨어입니다(지원 중단)."
   },
   "DellInc.DellMobileConnect": {
     "FriendlyName": "Dell Mobile Connect",

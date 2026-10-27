@@ -51,7 +51,7 @@ function Convert-RegOperationToValueKind {
             return @{ Name = $valueName; Kind = [Microsoft.Win32.RegistryValueKind]::MultiString; Value = [string[]]@($Operation.ValueData) }
         }
         default {
-            throw "Unsupported value type '$valueType' while applying reg operation for '$operationKeyPath'"
+            throw (Get-Translation -Key 'HelperRegistryValueTypeUnsupported' -FormatArgs @($valueType, $operationKeyPath))
         }
     }
 }
@@ -66,12 +66,12 @@ function Get-RegistryKeyForOperation {
 
     $parts = Split-RegistryPath -path $RegistryPath
     if (-not $parts) {
-        throw "Unsupported registry path: $RegistryPath"
+        throw (Get-Translation -Key 'HelperRegistryPathUnsupported' -FormatArgs @($RegistryPath))
     }
 
     $rootKey = Get-RegistryRootKey -hiveName $parts.Hive
     if (-not $rootKey) {
-        throw "Unsupported registry hive '$($parts.Hive)' in path '$RegistryPath'"
+        throw (Get-Translation -Key 'HelperRegistryHiveUnsupported' -FormatArgs @($parts.Hive, $RegistryPath))
     }
 
     $subKeyPath = $parts.SubKey
@@ -126,7 +126,7 @@ function Invoke-RegistrySetValueOperation {
     )
 
     if ($null -eq $KeyInfo.Key) {
-        throw [System.UnauthorizedAccessException]::new("Unable to open or create registry key '$($Operation.KeyPath)'")
+        throw [System.UnauthorizedAccessException]::new((Get-Translation -Key 'HelperRegistryKeyOpenFailed' -FormatArgs @($Operation.KeyPath)))
     }
 
     try {
@@ -152,11 +152,11 @@ function Write-RegistryOperationAccessDeniedWarning {
     if ($operationType -eq 'SetValue' -or $operationType -eq 'DeleteValue') {
         $valueName = Get-NormalizedRegistryValueName -ValueName $Operation.ValueName
         $displayValueName = if ([string]::IsNullOrEmpty($valueName)) { '(Default)' } else { $valueName }
-        Write-Warning "Skipping operation '$operationType' on key '$keyPath' value '$displayValueName' due to access restrictions: $ExceptionMessage"
+        Write-Warning (Get-Translation -Key 'HelperRegistryValueAccessDenied' -FormatArgs @($operationType, $keyPath, $displayValueName, $ExceptionMessage))
         return
     }
 
-    Write-Warning "Skipping operation '$operationType' on key '$keyPath' due to access restrictions: $ExceptionMessage"
+    Write-Warning (Get-Translation -Key 'HelperRegistryKeyAccessDenied' -FormatArgs @($operationType, $keyPath, $ExceptionMessage))
 }
 
 function Invoke-RegistryOperation {
@@ -186,7 +186,7 @@ function Invoke-RegistryOperation {
             Invoke-RegistrySetValueOperation -Operation $Operation -KeyInfo $keyInfo
         }
         default {
-            throw "Unsupported reg operation type '$($Operation.OperationType)' in '$RegFilePath'"
+            throw (Get-Translation -Key 'HelperRegOperationUnsupported' -FormatArgs @($Operation.OperationType, $RegFilePath))
         }
     }
 }
@@ -209,7 +209,7 @@ function Invoke-RegistryOperationsFromRegFile {
     $totalOperations = $operations.Count
 
     if ($script:Params.ContainsKey("WhatIf")) {
-        Write-Host "[WhatIf] Apply $totalOperations registry changes from '$RegFilePath'" -ForegroundColor Cyan
+        Write-Host (Get-Translation -Key 'HelperRegApplyWhatIf' -FormatArgs @($totalOperations, $RegFilePath)) -ForegroundColor Cyan
         return $true
     }
 
@@ -224,11 +224,11 @@ function Invoke-RegistryOperationsFromRegFile {
     }
 
     if ($totalOperations -gt 0 -and $accessDeniedCount -eq $totalOperations) {
-        throw "Registry fallback import could not apply any operations in '$RegFilePath' because all $accessDeniedCount operation(s) were blocked by access restrictions."
+        throw (Get-Translation -Key 'HelperRegAllBlocked' -FormatArgs @($RegFilePath, $accessDeniedCount))
     }
 
     if ($accessDeniedCount -gt 0) {
-        Write-Warning "Registry fallback import completed with $accessDeniedCount access-restricted operation(s) skipped in '$RegFilePath'."
+        Write-Warning (Get-Translation -Key 'HelperRegPartialImport' -FormatArgs @($accessDeniedCount, $RegFilePath))
         return $false
     }
 

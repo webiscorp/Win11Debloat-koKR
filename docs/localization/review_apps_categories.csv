@@ -1,0 +1,337 @@
+﻿key,status,reason
+Apps.Clipchamp.Clipchamp.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Clipchamp.Clipchamp.Description,changed,동사 나열이 중간에 끊기는 문장을 완결하고 기능 범위를 유지
+Apps.Microsoft.3DBuilder.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.3DBuilder.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.549981C3F5F10.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.549981C3F5F10.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.BingFinance.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.BingFinance.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.BingFoodAndDrink.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.BingFoodAndDrink.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.BingHealthAndFitness.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.BingHealthAndFitness.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.BingNews.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.BingNews.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.BingSports.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.BingSports.Description,changed,스포츠 scores 문맥을 단순 점수에서 경기 결과로 명확화
+Apps.Microsoft.BingTranslator.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.BingTranslator.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.BingTravel.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.BingTravel.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.BingWeather.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.BingWeather.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.XP9CXNGPPJ97XX.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.XP9CXNGPPJ97XX.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.Windows.AIHub.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.Windows.AIHub.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.PCManager.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.PCManager.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.Getstarted.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.Getstarted.Description,changed,deprecated를 미래의 사용 중단으로 단정하지 않도록 수정
+Apps.Microsoft.Messaging.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.Messaging.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.Microsoft3DViewer.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.Microsoft3DViewer.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.MicrosoftJournal.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.MicrosoftJournal.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.MicrosoftOfficeHub.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.MicrosoftOfficeHub.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.MicrosoftPowerBIForWindows.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.MicrosoftPowerBIForWindows.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.MicrosoftSolitaireCollection.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.MicrosoftSolitaireCollection.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.MicrosoftStickyNotes.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.MicrosoftStickyNotes.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.MixedReality.Portal.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.MixedReality.Portal.Description,changed,deprecated를 미래의 사용 중단으로 단정하지 않도록 수정
+Apps.Microsoft.NetworkSpeedTest.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.NetworkSpeedTest.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.Office.OneNote.FriendlyName,changed,원문의 Windows 10 및 Legacy 식별 정보 누락 복원
+Apps.Microsoft.Office.OneNote.Description,changed,원문의 discontinued 지원 중단 정보 누락 복원
+Apps.Microsoft.Office.Sway.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.Office.Sway.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.OneConnect.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.OneConnect.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.Print3D.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.Print3D.Description,changed,deprecated를 미래의 사용 중단으로 단정하지 않도록 수정
+Apps.Microsoft.PowerAutomateDesktop.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.PowerAutomateDesktop.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.SkypeApp.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.SkypeApp.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.Todos.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.Todos.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.Windows.DevHome.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.Windows.DevHome.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.WindowsAlarms.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.WindowsAlarms.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.WindowsFeedbackHub.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.WindowsFeedbackHub.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.WindowsMaps.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.WindowsMaps.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.WindowsSoundRecorder.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.WindowsSoundRecorder.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.XboxApp.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.XboxApp.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.ZuneVideo.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.ZuneVideo.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.MicrosoftCorporationII.MicrosoftFamily.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.MicrosoftCorporationII.MicrosoftFamily.Description,changed,screen time을 자연스러운 화면 사용 시간으로 명확화
+Apps.MicrosoftCorporationII.QuickAssist.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.MicrosoftCorporationII.QuickAssist.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.MicrosoftTeams.FriendlyName,changed,신구 클라이언트의 구분 문구 통일
+Apps.MicrosoftTeams.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.MSTeams.FriendlyName,changed,신구 클라이언트의 구분 문구 통일
+Apps.MSTeams.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.ACGMediaPlayer.FriendlyName,changed,원문 제품명 ACG Player를 정확히 보존
+Apps.ACGMediaPlayer.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.ActiproSoftwareLLC.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.ActiproSoftwareLLC.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AdobeSystemsIncorporated.AdobePhotoshopExpress.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.AdobeSystemsIncorporated.AdobePhotoshopExpress.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Amazon.com.Amazon.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Amazon.com.Amazon.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AmazonVideo.PrimeVideo.FriendlyName,changed,Windows 표기와 원문 제품명 Prime Video를 일관되게 보존
+Apps.AmazonVideo.PrimeVideo.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Asphalt8Airborne.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Asphalt8Airborne.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AutodeskSketchBook.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AutodeskSketchBook.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.CaesarsSlotsFreeCasino.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.CaesarsSlotsFreeCasino.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.COOKINGFEVER.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.COOKINGFEVER.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.CyberLinkMediaSuiteEssentials.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.CyberLinkMediaSuiteEssentials.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.DisneyMagicKingdoms.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.DisneyMagicKingdoms.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Disney.37853FC22B2CE.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Disney.37853FC22B2CE.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.DrawboardPDF.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.DrawboardPDF.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Duolingo-LearnLanguagesforFree.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Duolingo-LearnLanguagesforFree.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.FACEBOOK.FACEBOOK.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.FACEBOOK.FACEBOOK.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.FarmVille2CountryEscape.FriendlyName,changed,원문 게임 부제 누락 복원으로 다른 앱과 구분
+Apps.FarmVille2CountryEscape.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Flipboard.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Flipboard.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.HiddenCity.FriendlyName,changed,원문 게임 부제 누락 복원
+Apps.HiddenCity.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.HULULLC.HULUPLUS.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.HULULLC.HULUPLUS.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.iHeartRadio.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.iHeartRadio.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Facebook.Instagram.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Facebook.Instagram.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.king.com.BubbleWitch3Saga.FriendlyName,changed,띄어쓰기 없이 붙인 음역 대신 원문 제품명 보존
+Apps.king.com.BubbleWitch3Saga.Description,changed,magical challenges의 어색한 직역 완화
+Apps.king.com.CandyCrushSaga.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.king.com.CandyCrushSaga.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.king.com.CandyCrushSodaSaga.FriendlyName,changed,원문 제품명 Saga 누락 복원
+Apps.king.com.CandyCrushSodaSaga.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.LinkedInforWindows.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.LinkedInforWindows.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.MarchofEmpires.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.MarchofEmpires.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.4DF9E0F8.Netflix.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.4DF9E0F8.Netflix.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.NYTCrossword.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.NYTCrossword.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.OneCalendar.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.OneCalendar.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.PandoraMediaInc.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.PandoraMediaInc.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.PhototasticCollage.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.PhototasticCollage.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.PicsArt-PhotoStudio.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.PicsArt-PhotoStudio.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.PolarrPhotoEditorAcademicEdition.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.PolarrPhotoEditorAcademicEdition.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.flaregamesGmbH.RoyalRevolt.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.flaregamesGmbH.RoyalRevolt.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Sidia.LiveWallpaper.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Sidia.LiveWallpaper.Description,changed,정적 배경 화면을 사용자에게 익숙한 정지 이미지로 설명
+Apps.SlingTV.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.SlingTV.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.SpotifyAB.SpotifyMusic.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.SpotifyAB.SpotifyMusic.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.BytedancePte.Ltd.TikTok.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.BytedancePte.Ltd.TikTok.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.TuneInRadio.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.TuneInRadio.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.WinZipUniversal.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.WinZipUniversal.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.BingSearch.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.BingSearch.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.Edge.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.Edge.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.GamingApp.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.GamingApp.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.GetHelp.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.GetHelp.Description,changed,support interactions의 불명확한 직역 지원 상호 작용 개선
+Apps.Microsoft.M365Companions.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.M365Companions.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.MSPaint.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.MSPaint.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.OneDrive.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.OneDrive.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.OutlookForWindows.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.OutlookForWindows.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.Paint.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.Paint.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.People.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.People.Description,changed,문장 종결과 지원 중단 표기 정리
+Apps.MicrosoftCorporationII.Windows365.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.MicrosoftCorporationII.Windows365.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.RemoteDesktop.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.RemoteDesktop.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.ScreenSketch.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.ScreenSketch.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.StartExperiencesApp.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.StartExperiencesApp.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.SurfaceHub.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.SurfaceHub.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.Whiteboard.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.Whiteboard.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.Windows.Photos.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.Windows.Photos.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.WindowsCalculator.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.WindowsCalculator.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.WindowsCamera.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.WindowsCamera.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.windowscommunicationsapps.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.windowscommunicationsapps.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.WindowsNotepad.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.WindowsNotepad.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.WindowsStore.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.WindowsStore.Description,changed,제거 경고를 완결된 문장으로 바꾸고 Store 제품명 명확화
+Apps.Microsoft.WindowsTerminal.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.WindowsTerminal.Description,changed,제거 시 현재 실행 세션에 미치는 영향을 명확히 전달
+Apps.Microsoft.Xbox.TCUI.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.Xbox.TCUI.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.XboxGameOverlay.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.XboxGameOverlay.Description,changed,제거 경고의 문체와 종결 통일
+Apps.Microsoft.XboxGamingOverlay.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.XboxGamingOverlay.Description,changed,성능 저하 경고를 명확한 완결 문장으로 통일
+Apps.Microsoft.XboxIdentityProvider.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.Microsoft.XboxIdentityProvider.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.Microsoft.XboxSpeechToTextOverlay.FriendlyName,changed,영문 기준과 다른 과거 표시명 Xbox Speech To Text를 실제 원문 이름으로 수정
+Apps.Microsoft.XboxSpeechToTextOverlay.Description,changed,양방향 변환 기능과 재설치 위험을 자연스러운 문장으로 명확화
+Apps.Microsoft.YourPhone.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.YourPhone.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.ZuneMusic.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.ZuneMusic.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.MicrosoftWindows.CrossDevice.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.MicrosoftWindows.CrossDevice.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.MicrosoftWindows.Client.WebExperience.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.MicrosoftWindows.Client.WebExperience.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.Microsoft.WidgetsPlatformRuntime.FriendlyName,kept,기존 한국어 앱 표시명이 원문 제품을 식별하며 자연스러워 유지
+Apps.Microsoft.WidgetsPlatformRuntime.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.AD2F1837.OMENCommandCenter.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.OMENCommandCenter.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AcerIncorporated.AcerCareCenterS.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AcerIncorporated.AcerCareCenterS.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.B9ECED6F.ASUSPCAssistant.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.B9ECED6F.ASUSPCAssistant.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.B9ECED6F.Glidex.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.B9ECED6F.Glidex.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.SAMSUNGELECTRONICSCoLtd.SamsungQuickShare.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.SAMSUNGELECTRONICSCoLtd.SamsungQuickShare.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.9426MICRO-STARINTERNATION.MSICenter.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.9426MICRO-STARINTERNATION.MSICenter.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.SAMSUNGELECTRONICSCO.LTD.PCGallery.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.SAMSUNGELECTRONICSCO.LTD.PCGallery.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.SAMSUNGELECTRONICSCoLtd.SamsungFlux.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.SAMSUNGELECTRONICSCoLtd.SamsungFlux.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.SAMSUNGELECTRONICSCoLtd.SamsungNotes.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.SAMSUNGELECTRONICSCoLtd.SamsungNotes.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.B9ECED6F.ScreenPadMaster.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.B9ECED6F.ScreenPadMaster.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.SAMSUNGELECTRONICSCO.LTD.SamsungStudio.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.SAMSUNGELECTRONICSCO.LTD.SamsungStudio.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.SAMSUNGELECTRONICSCO.LTD.SamsungScreenRecording.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.SAMSUNGELECTRONICSCO.LTD.SamsungScreenRecording.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.SAMSUNGELECTRONICSCO.LTD.Bixby.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.SAMSUNGELECTRONICSCO.LTD.Bixby.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.SAMSUNGELECTRONICSCO.LTD.SamsungWelcome.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.SAMSUNGELECTRONICSCO.LTD.SamsungWelcome.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.SAMSUNGELECTRONICSCO.LTD.SmartThingsWindows.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.SAMSUNGELECTRONICSCO.LTD.SmartThingsWindows.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.SAMSUNGELECTRONICSCoLtd.MultiControl.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.SAMSUNGELECTRONICSCoLtd.MultiControl.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.SAMSUNGELECTRONICSCoLtd.SecondScreen.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.SAMSUNGELECTRONICSCoLtd.SecondScreen.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.SAMSUNGELECTRONICSCO.LTD.PENUP.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.SAMSUNGELECTRONICSCO.LTD.PENUP.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.9426MICRO-STARINTERNATION.BusinessCenter.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.9426MICRO-STARINTERNATION.BusinessCenter.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AcerIncorporated.AcerRegistration.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AcerIncorporated.AcerRegistration.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.E0469640.SmartAppearance.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.E0469640.SmartAppearance.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.LGElectronics.LGMonitorApp.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.LGElectronics.LGMonitorApp.Description,changed,설치 동작과 재설치 조건을 완결된 문장으로 정리
+Apps.AD2F1837.HPAIExperienceCenter.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPAIExperienceCenter.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AD2F1837.HPConnectedMusic.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPConnectedMusic.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AD2F1837.HPConnectedPhotopoweredbySnapfish.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPConnectedPhotopoweredbySnapfish.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AD2F1837.HPDesktopSupportUtilities.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPDesktopSupportUtilities.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AD2F1837.HPEasyClean.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPEasyClean.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AD2F1837.HPFileViewer.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPFileViewer.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.AD2F1837.HPJumpStarts.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPJumpStarts.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AD2F1837.HPPCHardwareDiagnosticsWindows.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPPCHardwareDiagnosticsWindows.Description,changed,help diagnose의 도움 의미 보존과 문장 종결
+Apps.AD2F1837.HPPowerManager.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPPowerManager.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AD2F1837.HPPrinterControl.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPPrinterControl.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AD2F1837.HPPrivacySettings.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPPrivacySettings.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AD2F1837.HPQuickDrop.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPQuickDrop.Description,changed,관형어 뒤 쉼표와 어순 개선
+Apps.AD2F1837.HPQuickTouch.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPQuickTouch.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.AD2F1837.HPRegistration.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPRegistration.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AD2F1837.HPSupportAssistant.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPSupportAssistant.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AD2F1837.HPSureShieldAI.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPSureShieldAI.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.AD2F1837.HPSystemInformation.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPSystemInformation.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AD2F1837.HPWelcome.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPWelcome.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.AD2F1837.HPWorkWell.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.HPWorkWell.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Apps.AD2F1837.myHP.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.AD2F1837.myHP.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.E046963F.LenovoCompanion.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.E046963F.LenovoCompanion.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.LenovoCompanyLimited.LenovoVantageService.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.LenovoCompanyLimited.LenovoVantageService.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.DellInc.DellSupportAssistforPCs.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.DellInc.DellSupportAssistforPCs.Description,kept,원문 앱 기능·대상·범위를 대조하여 누락이나 의미 변경 없이 전달됨을 확인
+Apps.DellInc.DellDigitalDelivery.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.DellInc.DellDigitalDelivery.Description,changed,지원 중단 괄호의 문장부호 일관성 정리
+Apps.DellInc.DellMobileConnect.FriendlyName,kept,원문 제품명 또는 기술 식별 이름을 의도적으로 보존; 번역 누락 아님
+Apps.DellInc.DellMobileConnect.Description,kept,기능과 원문의 의존성·경고·지원 상태·불확실성 표현을 대조하여 의미가 일치함을 확인
+Categories.PrivacySuggestedContent.Label,kept,Windows 개인 정보 및 추천 콘텐츠 기능 범위와 일치
+Categories.System.Label,kept,시스템 설정 범주로 간결하고 정확
+Categories.StartMenuSearch.Label,kept,Windows 시작 메뉴 및 검색 용어와 일치
+Categories.AI.Label,kept,널리 쓰는 기술 약어 AI를 의도적으로 보존
+Categories.WindowsUpdate.Label,kept,Windows 업데이트 제품 기능 표기 유지
+Categories.Taskbar.Label,kept,Windows 작업 표시줄 용어 유지
+Categories.Appearance.Label,kept,색상과 시각 효과를 묶는 개인 설정 범주로 자연스러움
+Categories.FileExplorer.Label,kept,Windows 파일 탐색기 용어 유지
+Categories.Gaming.Label,kept,게임 관련 기능 범주를 정확히 표현
+Categories.MultiTasking.Label,kept,Windows 멀티태스킹 용어 유지
+Categories.OptionalWindowsFeatures.Label,kept,선택적 Windows 기능 범위를 정확히 표현
+Categories.Other.Label,kept,기타 기능 범주로 간결하고 정확

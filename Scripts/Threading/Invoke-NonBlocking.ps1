@@ -29,6 +29,7 @@ function Invoke-NonBlocking {
             while (-not $handle.IsCompleted) {
                 if ($stopwatch -and $stopwatch.Elapsed.TotalSeconds -ge $TimeoutSeconds) {
                     $ps.Stop()
+                    # Internal sentinel used by Remove-WinGetApp; its catch localizes the user message.
                     throw "Operation timed out after $TimeoutSeconds seconds"
                 }
                 Invoke-DoEvents

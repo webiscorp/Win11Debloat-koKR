@@ -33,7 +33,7 @@ function Save-ToFile {
         return $true
     }
     catch {
-        Write-Error "Failed to write '$FilePath': $($_.Exception.Message)"
+        Write-Error (Get-Translation -Key 'FileWriteFailed' -FormatArgs @($FilePath, $_.Exception.Message))
         return $false
     }
 }

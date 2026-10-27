@@ -1,14 +1,10 @@
-BeforeAll {
+﻿BeforeAll {
     Add-Type -AssemblyName PresentationFramework
+    . (Join-Path $PSScriptRoot '..\Scripts\FileIO\Import-JsonFile.ps1')
+    . (Join-Path $PSScriptRoot '..\Scripts\FileIO\Import-LanguageFile.ps1')
     . (Join-Path $PSScriptRoot '..\Scripts\Helpers\Import-ConfigToParams.ps1')
     . (Join-Path $PSScriptRoot '..\Scripts\GUI\Show-ImportExportConfigWindow.ps1')
-
-    # Returns the key, followed by the format arguments, so tests can see which options a description lists.
-    function Get-Translation {
-        param($Key, $FormatArgs)
-        if ($FormatArgs) { return "$Key $($FormatArgs -join '|')" }
-        return $Key
-    }
+    $script:LanguagesPath = Join-Path $PSScriptRoot '..\Config\Languages'
 
     function New-DeploymentTestControls {
         $window = New-Object System.Windows.Window
@@ -49,6 +45,7 @@ BeforeAll {
 
 Describe 'Set-ImportedDeploymentSettings' {
     BeforeEach {
+        $script:Lang = Import-LanguageFile -LanguageCode 'en-US' -LanguagesPath $script:LanguagesPath
         $warnings = [System.Collections.Generic.List[string]]::new()
         Mock Write-Warning { $warnings.Add([string]$Message) }
     }
@@ -89,11 +86,22 @@ Describe 'Set-ImportedDeploymentSettings' {
         $controls.RestartExplorerCheckBox.IsChecked | Should -BeTrue
     }
 
-    It 'leaves a box alone when the value is not a boolean (<Text>)' -ForEach @(
-        @{ Text = 'the text yes'; Value = 'yes' }
-        @{ Text = 'the text 0'; Value = '0' }
-        @{ Text = 'the number 2'; Value = 2 }
+    It 'leaves a box alone and explains invalid values in <language_code> (<Text>)' -ForEach @(
+        foreach ($language_case in @(
+            @{ language_code = 'en-US'; expected_warning = "Ignoring deployment setting '{0}' in the config file: expected true or false, found '{1}'." }
+            @{ language_code = 'ko-KR'; expected_warning = "설정 파일의 배포 옵션 '{0}'을(를) 무시합니다. true 또는 false가 필요하지만 '{1}'이(가) 지정되어 있습니다." }
+        )) {
+            foreach ($invalid_case in @(
+                @{ Text = 'the text yes'; Value = 'yes' }
+                @{ Text = 'the text 0'; Value = '0' }
+                @{ Text = 'the number 2'; Value = 2 }
+            )) {
+                @{ Text = $invalid_case.Text; Value = $invalid_case.Value; language_code = $language_case.language_code; expected_warning = $language_case.expected_warning }
+            }
+        }
     ) {
+        $script:Lang = Import-LanguageFile -LanguageCode $language_code -LanguagesPath $script:LanguagesPath
+        $script:Lang.LanguageCode | Should -Be $language_code
         $controls = New-DeploymentTestControls
 
         Invoke-ImportedDeploymentSettings -Controls $controls -Values @{ CreateRestorePoint = $Value; SkipRegistryBackup = $Value; RestartExplorer = $Value }
@@ -102,8 +110,9 @@ Describe 'Set-ImportedDeploymentSettings' {
         $controls.RegistryBackupCheckBox.IsChecked | Should -BeFalse
         $controls.RestartExplorerCheckBox.IsChecked | Should -BeTrue
         $warnings | Should -HaveCount 3
+        # Independent expected text verifies actual catalog lookup and the setting/value argument order.
         foreach ($name in 'CreateRestorePoint', 'SkipRegistryBackup', 'RestartExplorer') {
-            $warnings | Where-Object { $_ -like "*'$name'*expected true or false, found '$Value'*" } | Should -HaveCount 1
+            $warnings | Where-Object { $_ -ceq ($expected_warning -f $name, $Value) } | Should -HaveCount 1
         }
     }
 
@@ -122,6 +131,7 @@ Describe 'Set-ImportedDeploymentSettings' {
 
 Describe 'Get-DeploymentCategoryDetailString' {
     BeforeEach {
+        $script:Lang = Import-LanguageFile -LanguageCode 'en-US' -LanguagesPath $script:LanguagesPath
         $warnings = [System.Collections.Generic.List[string]]::new()
         Mock Write-Warning { $warnings.Add([string]$Message) }
     }
@@ -135,9 +145,9 @@ Describe 'Get-DeploymentCategoryDetailString' {
 
         $text = Get-DeploymentCategoryDetailString -DeploymentSettings $settings
 
-        $text | Should -Match 'ImportExportOptionRegistryBackup'
-        $text | Should -Not -Match 'ImportExportOptionRestorePoint'
-        $text | Should -Not -Match 'ImportExportOptionRestartExplorer'
+        $text | Should -Match 'Registry Backup'
+        $text | Should -Not -Match 'Restore Point'
+        $text | Should -Not -Match 'Restart Explorer'
     }
 
     It 'lists every option for real booleans and the text true' -ForEach @(
@@ -152,9 +162,9 @@ Describe 'Get-DeploymentCategoryDetailString' {
 
         $text = Get-DeploymentCategoryDetailString -DeploymentSettings $settings
 
-        $text | Should -Match 'ImportExportOptionRestorePoint'
-        $text | Should -Match 'ImportExportOptionRegistryBackup'
-        $text | Should -Match 'ImportExportOptionRestartExplorer'
+        $text | Should -Match 'Restore Point'
+        $text | Should -Match 'Registry Backup'
+        $text | Should -Match 'Restart Explorer'
     }
 
     It 'leaves out the registry backup when it is skipped, including when written as text' -ForEach @(
@@ -163,18 +173,18 @@ Describe 'Get-DeploymentCategoryDetailString' {
     ) {
         $settings = @([PSCustomObject]@{ Name = 'SkipRegistryBackup'; Value = $Skip })
 
-        Get-DeploymentCategoryDetailString -DeploymentSettings $settings | Should -Not -Match 'ImportExportOptionRegistryBackup'
+        Get-DeploymentCategoryDetailString -DeploymentSettings $settings | Should -Not -Match 'Registry Backup'
     }
     It 'does not list the registry backup for an unsupported SkipRegistryBackup value, and does not warn' {
         $settings = @([PSCustomObject]@{ Name = 'SkipRegistryBackup'; Value = 'yes' })
 
-        Get-DeploymentCategoryDetailString -DeploymentSettings $settings | Should -Not -Match 'ImportExportOptionRegistryBackup'
+        Get-DeploymentCategoryDetailString -DeploymentSettings $settings | Should -Not -Match 'Registry Backup'
         $warnings | Should -HaveCount 0
     }
 
     It 'lists the registry backup when SkipRegistryBackup is missing' {
         $settings = @([PSCustomObject]@{ Name = 'RestartExplorer'; Value = $true })
 
-        Get-DeploymentCategoryDetailString -DeploymentSettings $settings | Should -Match 'ImportExportOptionRegistryBackup'
+        Get-DeploymentCategoryDetailString -DeploymentSettings $settings | Should -Match 'Registry Backup'
     }
 }

@@ -52,8 +52,8 @@ function Show-SettingsDialog {
         if ($theme -eq $script:UiPreferences.Theme -and $language -eq $script:UiPreferences.Language) { $dialog.Close(); return }
         try {
             $lang = if ($language -eq $script:UiPreferences.Language) { $script:Lang } else { Get-UiLanguage -Language $language }
-            if (-not $lang) { throw 'Unable to load language.' }
-            if ($language -ne 'Auto' -and $lang.LanguageCode -ne $language) { throw 'The selected language could not be loaded.' }
+            if (-not $lang) { throw (Get-Translation -Key 'GuiLanguageLoadFailed') }
+            if ($language -ne 'Auto' -and $lang.LanguageCode -ne $language) { throw (Get-Translation -Key 'GuiSelectedLanguageLoadFailed') }
             $preferences = @{ Theme = $theme; Language = $language }
             Save-UiPreferences -Preferences $preferences
             $script:UiPreferences = $preferences
@@ -65,7 +65,7 @@ function Show-SettingsDialog {
             $errorText = $dialog.FindName('SettingsErrorText')
             $errorText.Text = Get-Translation -Key 'SettingsSaveError'
             $errorText.Visibility = 'Visible'
-            Write-Warning "Unable to update UI preferences: $($_.Exception.Message)"
+            Write-Warning (Get-Translation -Key 'GuiPreferencesUpdateFailed' -FormatArgs @($_.Exception.Message))
         }
     }
     foreach ($mode in @('Auto', 'Light', 'Dark')) {

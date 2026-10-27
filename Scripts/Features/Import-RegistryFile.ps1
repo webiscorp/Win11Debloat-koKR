@@ -18,8 +18,8 @@ function Import-RegistryFile {
         $regFilePath = Get-RegistryFilePathForFeature -RegistryKey $path
 
         if (-not (Test-Path $regFilePath)) {
-            $errorMessage = "Unable to find registry file: $path ($regFilePath)"
-            Write-Host "Error: $errorMessage" -ForegroundColor Red
+            $errorMessage = (Get-Translation -Key 'RuntimeRegistryFileMissing' -FormatArgs @($path, $regFilePath))
+            Write-Host (Get-Translation -Key 'RuntimeRegistryImportErrorDetail' -FormatArgs @($errorMessage)) -ForegroundColor Red
             return $false
         }
 
@@ -38,13 +38,14 @@ function Import-RegistryFile {
             if ($usePowerShellFallbackOnly) {
                 $fallbackSucceeded = Invoke-RegistryOperationsFromRegFile -RegFilePath $targetRegFilePath
                 if ($fallbackSucceeded) {
-                    Write-Host "The operation completed successfully via PowerShell registry writer."
+                    Write-Host (Get-Translation -Key 'RuntimeRegistryPowerShellWriterSuccess')
                 }
                 return $fallbackSucceeded
             }
 
+            $import_failure_template = Get-Translation -Key 'RuntimeRegistryImportFailed'
             $regResult = Invoke-NonBlocking -ScriptBlock {
-                param($targetRegFilePath)
+                param($targetRegFilePath, $import_failure_template)
                 $result = @{
                     Output = @()
                     ExitCode = 0
@@ -62,7 +63,7 @@ function Import-RegistryFile {
                     $result.ExitCode = $importExitCode
 
                     if ($importExitCode -ne 0) {
-                        throw "Registry import failed with exit code $importExitCode for '$targetRegFilePath'"
+                        throw ($import_failure_template -f $importExitCode, $targetRegFilePath)
                     }
                 }
                 catch {
@@ -71,7 +72,7 @@ function Import-RegistryFile {
                 }
 
                 return $result
-            } -ArgumentList $targetRegFilePath
+            } -ArgumentList @($targetRegFilePath, $import_failure_template)
 
             $regOutput = @($regResult.Output)
             $hasSuccess = ($regResult.ExitCode -eq 0) -and -not $regResult.Error
@@ -91,11 +92,11 @@ function Import-RegistryFile {
             }
 
             if (-not $hasSuccess) {
-                $details = if ($regResult.Error) { $regResult.Error } else { "Exit code: $($regResult.ExitCode)" }
-                Write-Warning "reg import failed for '$path'. Falling back to PowerShell registry writer. Details: $details"
+                $details = if ($regResult.Error) { $regResult.Error } else { (Get-Translation -Key 'RuntimeRegistryImportExitCode' -FormatArgs @($regResult.ExitCode)) }
+                Write-Warning (Get-Translation -Key 'RuntimeRegistryImportFallback' -FormatArgs @($path, $details))
                 $fallbackSucceeded = Invoke-RegistryOperationsFromRegFile -RegFilePath $targetRegFilePath
                 if ($fallbackSucceeded) {
-                    Write-Host "The operation completed successfully via PowerShell registry writer."
+                    Write-Host (Get-Translation -Key 'RuntimeRegistryPowerShellWriterSuccess')
                 }
                 return $fallbackSucceeded
             }

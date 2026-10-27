@@ -8,31 +8,41 @@
 function Invoke-SystemRestorePoint {
     $failed = $false
     $isSilent = ($script:Params -and $script:Params.ContainsKey('Silent')) -or $script:Silent
+    # Translate in the caller: timeout workers run in isolated PowerShell runspaces.
+    $restore_messages = @{
+        enable_failed = Get-Translation -Key 'RuntimeRestoreEnableFailed'
+        query_failed = Get-Translation -Key 'RuntimeRestoreExistingQueryFailed'
+        created = Get-Translation -Key 'RuntimeRestorePointCreated'
+        create_failed = Get-Translation -Key 'RuntimeRestorePointUnableToCreate'
+        recent_exists = Get-Translation -Key 'RuntimeRestorePointRecentExists'
+        description = Get-Translation -Key 'RuntimeRestorePointDescription'
+    }
 
     try {
         $SysRestore = Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore" -Name "RPSessionInterval" -ErrorAction Stop
     }
     catch {
-        Write-Host "Error: Unable to determine whether System Restore is enabled: $($_.Exception.Message)" -ForegroundColor Red
+        Write-Host (Get-Translation -Key 'RuntimeRestoreStateQueryFailed' -FormatArgs @($_.Exception.Message)) -ForegroundColor Red
         $failed = $true
     }
 
     if (-not $failed -and $SysRestore.RPSessionInterval -eq 0) {
         # In GUI mode, skip the prompt and just try to enable it
-        if ($script:GuiWindow -or $isSilent -or $( Read-Host -Prompt "System restore is disabled, would you like to enable it and create a restore point? (y/n)") -eq 'y') {
+        if ($script:GuiWindow -or $isSilent -or $( Read-Host -Prompt (Get-Translation -Key 'RuntimeRestoreEnablePrompt')) -eq 'y') {
             try {
-                $enableResult = Invoke-NonBlocking -TimeoutSeconds 90 -ScriptBlock {
+                $enableResult = Invoke-NonBlocking -TimeoutSeconds 90 -ArgumentList @($restore_messages) -ScriptBlock {
+                    param($restore_messages)
                     try {
                         Enable-ComputerRestore -Drive "$env:SystemDrive"
                         return $null
                     }
                     catch {
-                        return "Error: Failed to enable System Restore: $_"
+                        return ($restore_messages.enable_failed -f $_)
                     }
                 }
             }
             catch {
-                $enableResult = "Error: Failed to enable System Restore: $_"
+                $enableResult = ($restore_messages.enable_failed -f $_)
             }
 
             if ($enableResult) {
@@ -47,30 +57,31 @@ function Invoke-SystemRestorePoint {
 
     if (-not $failed) {
         try {
-            $result = Invoke-NonBlocking -TimeoutSeconds 90 -ScriptBlock {
+            $result = Invoke-NonBlocking -TimeoutSeconds 90 -ArgumentList @($restore_messages) -ScriptBlock {
+                param($restore_messages)
                 try {
                     $recentRestorePoints = Get-ComputerRestorePoint | Where-Object { (Get-Date) - [System.Management.ManagementDateTimeConverter]::ToDateTime($_.CreationTime) -le (New-TimeSpan -Hours 24) }
                 }
                 catch {
-                    return [PSCustomObject]@{ Success = $false; Message = "Error: Unable to retrieve existing restore points: $_" }
+                    return [PSCustomObject]@{ Success = $false; Message = ($restore_messages.query_failed -f $_) }
                 }
 
                 if ($recentRestorePoints.Count -eq 0) {
                     try {
-                        Checkpoint-Computer -Description "Restore point created by Win11Debloat" -RestorePointType "MODIFY_SETTINGS"
-                        return [PSCustomObject]@{ Success = $true; Message = "System restore point created successfully" }
+                        Checkpoint-Computer -Description $restore_messages.description -RestorePointType "MODIFY_SETTINGS"
+                        return [PSCustomObject]@{ Success = $true; Message = $restore_messages.created }
                     }
                     catch {
-                        return [PSCustomObject]@{ Success = $false; Message = "Error: Unable to create restore point: $_" }
+                        return [PSCustomObject]@{ Success = $false; Message = ($restore_messages.create_failed -f $_) }
                     }
                 }
                 else {
-                    return [PSCustomObject]@{ Success = $true; Message = "A recent restore point already exists, no new restore point was created" }
+                    return [PSCustomObject]@{ Success = $true; Message = $restore_messages.recent_exists }
                 }
             }
         }
         catch {
-            $result = [PSCustomObject]@{ Success = $false; Message = "Error: Failed to create system restore point: $_" }
+            $result = [PSCustomObject]@{ Success = $false; Message = (Get-Translation -Key 'RuntimeRestorePointCreateException' -FormatArgs @($_)) }
         }
 
         if ($result -and $result.Success) {
@@ -81,7 +92,7 @@ function Invoke-SystemRestorePoint {
             $failed = $true
         }
         else {
-            Write-Host "Error: Failed to create system restore point" -ForegroundColor Red
+            Write-Host (Get-Translation -Key 'RuntimeRestorePointCreateFailedNoDetail') -ForegroundColor Red
             $failed = $true
         }
     }
@@ -97,14 +108,14 @@ function Invoke-SystemRestorePoint {
             }
         }
         elseif (-not $isSilent) {
-            Write-Host "Failed to create a system restore point. Do you want to continue without a restore point? (y/n)" -ForegroundColor Yellow
+            Write-Host (Get-Translation -Key 'RuntimeRestorePointContinuePrompt') -ForegroundColor Yellow
             if ($( Read-Host ) -ne 'y') {
                 $script:CancelRequested = $true
                 return $false
             }
         }
 
-        Write-Host "Warning: Continuing without restore point" -ForegroundColor Yellow
+        Write-Host (Get-Translation -Key 'RuntimeRestorePointContinuingWithout') -ForegroundColor Yellow
         return $false
     }
 

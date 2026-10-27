@@ -21,7 +21,7 @@ function Remove-SelectedApps {
 
     if ($script:Params.ContainsKey("WhatIf")) {
         foreach ($app in $appslist) {
-            Write-Host "[WhatIf] Remove App Package: $app" -ForegroundColor Cyan
+            Write-Host (Get-Translation -Key 'RuntimeAppRemoveWhatIf' -FormatArgs @($app)) -ForegroundColor Cyan
         }
 
         return $true
@@ -47,11 +47,11 @@ function Remove-SelectedApps {
         }
 
         if ($script:WingetDeferredRemovals.ContainsKey($app)) {
-            Write-Host "Skipping $app because its uninstall is already scheduled."
+            Write-Host (Get-Translation -Key 'RuntimeAppAlreadyScheduled' -FormatArgs @($app))
             continue
         }
 
-        Write-Host "Removing $app"
+        Write-Host (Get-Translation -Key 'RuntimeAppRemoving' -FormatArgs @($app))
 
         if ((Get-AppRemovalMethod $app) -eq 'WinGet') {
             $schedulingFailed = $false
@@ -95,7 +95,7 @@ function Remove-SelectedApps {
                 }
 
                 if ($edgeIds -contains $app) {
-                    Write-Host "Unable to uninstall Microsoft Edge via WinGet" -ForegroundColor Red
+                    Write-Host (Get-Translation -Key 'RuntimeWingetEdgeRemoveFailed') -ForegroundColor Red
                     if (-not $edgeForceRemoveRequested) {
                         $edgeForceRemoveRequested = $true
                         $edgeForceRemoveSucceeded = Request-EdgeForceRemove
@@ -105,7 +105,7 @@ function Remove-SelectedApps {
                     }
                 }
                 else {
-                    Write-Host "Unable to uninstall $app via WinGet" -ForegroundColor Red
+                    Write-Host (Get-Translation -Key 'RuntimeWingetAppRemoveFailed' -FormatArgs @($app)) -ForegroundColor Red
                 }
                 $wingetRemovalFailures[$app] = $true
             }
@@ -145,7 +145,7 @@ function Remove-WinGetApp {
     if ($null -ne $SchedulingFailed) { $SchedulingFailed.Value = $false }
 
     if (-not $script:WingetInstalled) {
-        Write-Error "WinGet is either not installed or is outdated; $app could not be removed"
+        Write-Error (Get-Translation -Key 'RuntimeWingetUnavailableAppRemoval' -FormatArgs @($app))
         return $false
     }
 
@@ -196,7 +196,7 @@ function Remove-WinGetApp {
     catch {
         $uninstallCommandSucceeded = $false
         if ($_.Exception.Message -like 'Operation timed out after *') {
-            Write-Error "WinGet uninstall for $app did not complete within $TimeoutSeconds seconds: $_"
+            Write-Error (Get-Translation -Key 'RuntimeWingetUninstallTimeout' -FormatArgs @($app, $TimeoutSeconds, $_))
         }
         else {
             Write-Verbose "WinGet uninstall for $app failed: $_"
@@ -206,10 +206,10 @@ function Remove-WinGetApp {
     if (-not $userScopeBlocked -and
         ($script:Params.ContainsKey('User') -or $script:Params.ContainsKey('Sysprep'))) {
         $runOnceTarget = Get-RunOnceWingetTarget
-        $targetDescription = if ($runOnceTarget.AllUsers) { 'all users' }
-            elseif ($script:Params.ContainsKey('Sysprep') -and -not $script:Params.ContainsKey('AppRemovalTarget')) { 'new users' }
-            else { "user $($runOnceTarget.UserName)" }
-        Write-Host "Adding RunOnce uninstall for $app for $targetDescription..."
+        $targetDescription = if ($runOnceTarget.AllUsers) { Get-Translation -Key 'RuntimeRemovalAllUsers' }
+            elseif ($script:Params.ContainsKey('Sysprep') -and -not $script:Params.ContainsKey('AppRemovalTarget')) { Get-Translation -Key 'RuntimeRemovalNewUsers' }
+            else { Get-Translation -Key 'RuntimeRemovalNamedUser' -FormatArgs @($runOnceTarget.UserName) }
+        Write-Host (Get-Translation -Key 'RuntimeRunOnceUninstallAdding' -FormatArgs @($app, $targetDescription))
         $scheduleSucceeded = Set-RunOnceWingetTask -appId $app -Target $runOnceTarget
     }
 
@@ -256,8 +256,12 @@ function Remove-AppxApp {
     $isWindows10 = $script:WinVersion -ge 10240 -and $script:WinVersion -lt 22000
 
     try {
+        $removal_messages = @{
+            verification_failed = Get-Translation -Key 'RuntimeAppxVerificationFailed'
+            verified_despite_error = Get-Translation -Key 'RuntimeAppxRemovalVerifiedDespiteError'
+        }
         $removalResult = Invoke-NonBlocking -ScriptBlock {
-            param($pattern, $target, $isWindows10)
+            param($pattern, $target, $isWindows10, $removal_messages)
 
             $removalErrors = @()
             $ignoredRemovalMessages = [System.Collections.Generic.List[string]]::new()
@@ -290,7 +294,7 @@ function Remove-AppxApp {
                 }
                 catch {
                     # An unsuccessful query cannot confirm removal; preserve the original error.
-                    $verificationWarnings.Add("Unable to verify removal of $PackageName (target: $target, provisioned: $Provisioned): $_")
+                    $verificationWarnings.Add(($removal_messages.verification_failed -f $PackageName, $target, $Provisioned, $_))
                     return $false
                 }
             }
@@ -316,7 +320,7 @@ function Remove-AppxApp {
                 }
                 catch {
                     if (Test-IgnorableAppxRemovalError $_ -PackageName $package.PackageFullName) {
-                        $ignoredRemovalMessages.Add("Windows 10 Appx removal reported error 0x80070002 for $($package.PackageFullName), but the removal succeeded.")
+                        $ignoredRemovalMessages.Add(($removal_messages.verified_despite_error -f $package.PackageFullName))
                     }
                     else {
                         Write-Error -ErrorRecord $_ -ErrorAction Continue -ErrorVariable +removalErrors
@@ -332,7 +336,7 @@ function Remove-AppxApp {
                     }
                     catch {
                         if (Test-IgnorableAppxRemovalError $_ -PackageName $package.PackageName -Provisioned) {
-                            $ignoredRemovalMessages.Add("Windows 10 Appx removal reported error 0x80070002 for $($package.PackageName), but the removal succeeded.")
+                            $ignoredRemovalMessages.Add(($removal_messages.verified_despite_error -f $package.PackageName))
                         }
                         else {
                             Write-Error -ErrorRecord $_ -ErrorAction Continue -ErrorVariable +removalErrors
@@ -346,10 +350,10 @@ function Remove-AppxApp {
                 IgnoredRemovalMessages = $ignoredRemovalMessages.ToArray()
                 VerificationWarnings = $verificationWarnings.ToArray()
             }
-        } -ArgumentList @($appPattern, $targetUser, $isWindows10)
+        } -ArgumentList @($appPattern, $targetUser, $isWindows10, $removal_messages)
     }
     catch {
-        Write-Error "Unable to remove $app via Appx: $_"
+        Write-Error (Get-Translation -Key 'RuntimeAppxRemoveFailed' -FormatArgs @($app, $_))
         return $false
     }
 
@@ -399,7 +403,7 @@ function Get-AppRemovalMethod {
             }
         }
         catch {
-            Write-Warning "Failed to load app removal methods from '$script:AppsListFilePath'. Defaulting unknown apps to Appx. Error: $_"
+            Write-Warning (Get-Translation -Key 'RuntimeAppRemovalMethodsLoadFailed' -FormatArgs @($script:AppsListFilePath, $_))
         }
     }
 
@@ -430,7 +434,7 @@ function Request-EdgeForceRemove {
             return (Invoke-ForceRemoveEdge)
         }
     }
-    elseif ($(Read-Host -Prompt "Would you like to forcefully uninstall Microsoft Edge? NOT RECOMMENDED! (y/n)") -eq 'y') {
+    elseif ($(Read-Host -Prompt (Get-Translation -Key 'RuntimeEdgeForceRemovePrompt')) -eq 'y') {
         Write-Host ""
         return (Invoke-ForceRemoveEdge)
     }
@@ -522,7 +526,7 @@ function Get-RunOnceWingetTargetUserNames {
             }
             catch {
                 $allSucceeded = $false
-                Write-Warning "The deferred AllUsers WinGet uninstall may be incomplete: unable to resolve account name for profile SID '$sid'. This profile will not be scheduled. $_"
+                Write-Warning (Get-Translation -Key 'RuntimeWingetAllUsersProfileUnresolved' -FormatArgs @($sid, $_))
                 continue
             }
 
@@ -531,7 +535,7 @@ function Get-RunOnceWingetTargetUserNames {
         }
     }
     catch {
-        Write-Error "Unable to enumerate user profiles for deferred WinGet uninstall: $_"
+        Write-Error (Get-Translation -Key 'RuntimeWingetProfilesEnumerationFailed' -FormatArgs @($_))
         return [PSCustomObject]@{ UserNames = @(); Success = $false }
     }
 
@@ -607,7 +611,7 @@ function Set-RunOnceWingetTask {
             } -ArgumentObject $operation
         }
         catch {
-            Write-Error "Failed to schedule uninstall task for $($appId) for '$targetUserName': $_"
+            Write-Error (Get-Translation -Key 'RuntimeWingetScheduleFailed' -FormatArgs @($appId, $targetUserName, $_))
             $allSucceeded = $false
         }
     }

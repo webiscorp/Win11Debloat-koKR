@@ -1,46 +1,36 @@
-name: "💡 Feature request"
-description: "Suggest a new feature or improvement"
+name: "💡 개선 제안"
+description: "한국어 번역·사용성·기능 개선을 제안해 주세요."
 labels: ["enhancement"]
-
 body:
   - type: markdown
     attributes:
       value: |
-        # 💡 **Feature request**
-        Thanks for taking the time to suggest a feature for Win11Debloat! Please include as much detail as possible to help us understand and evaluate your suggestion.
-
+        # 한국어판 개선 제안
+        불편한 점과 원하는 동작을 구체적으로 적어 주세요. 원본 기능 변경이 필요한 제안은 Upstream과의 호환성도 함께 검토합니다.
   - type: checkboxes
     id: checklist
     attributes:
-      label: Checklist
-      description: Please confirm the following before posting your issue.
+      label: 확인 사항
       options:
-        - label: I have searched for existing issues/discussions and didn't find any similar ones.
+        - label: 기존 이슈에 같은 제안이 있는지 확인했습니다.
           required: true
-
   - type: textarea
     id: description
     attributes:
-      label: Describe the feature or improvement
-      description: Provide a clear and concise description of your suggested feature or improvement. Explain why you think this feature is needed and how it would benefit users.
-      placeholder: Describe the feature or improvement.
+      label: 개선할 내용
+      description: 현재의 불편과 개선 후 원하는 동작, 필요한 이유를 적어 주세요.
     validations:
       required: true
-
   - type: textarea
     id: examples
     attributes:
-      label: Examples
-      description: Provide examples of how the feature could work or be implemented.
-      placeholder: e.g. Code snippets, mockups, or links to other implementations of similar features.
+      label: 예시
+      description: 번역 대안, 화면 예시 또는 관련 자료를 첨부할 수 있습니다.
     validations:
       required: false
-
   - type: textarea
     id: additional_context
     attributes:
-      label: Additional context
-      description: Add any other context or screenshots about the feature request here.
-      placeholder: e.g. Screenshots, links to related discussions, etc.
+      label: 추가 정보
     validations:
       required: false

@@ -243,7 +243,7 @@ function Get-AppRemovalScopeTarget {
         "AppRemovalScopeAllUsers" { return 'AllUsers' }
         "AppRemovalScopeCurrentUser" { return 'CurrentUser' }
         default {
-            Write-Warning "Unrecognized app-removal scope item '$($selectedItem.Name)'. Skipping app removal."
+            Write-Warning (Get-Translation -Key 'GuiUnknownAppRemovalScope' -FormatArgs @($selectedItem.Name))
             return $null
         }
     }
@@ -620,11 +620,11 @@ function Initialize-MainWindowApps {
                 $listOfApps = $null
 
                 if ($OnlyInstalledAppsBox.IsChecked -and ($script:WingetInstalled -eq $true)) {
-                    Write-Host "Retrieving installed apps via winget..."
+                    Write-Host (Get-Translation -Key 'GuiRetrievingInstalledApps')
                     $listOfApps = Get-WingetInstalledApps -TimeOut 20 -NonBlocking
 
                     if ($null -eq $listOfApps) {
-                        Write-Warning "WinGet returned no data (command timed out or failed)"
+                        Write-Warning (Get-Translation -Key 'GuiWinGetReturnedNoData')
                         Show-MessageBox -Message (Get-Translation -Key 'AppSelectionWinGetLoadFailedMessage') -Title (Get-Translation -Key 'ErrorTitle') -Button 'OK' -Icon 'Error' | Out-Null
                         $OnlyInstalledAppsBox.IsChecked = $false
                     }
@@ -634,7 +634,7 @@ function Initialize-MainWindowApps {
                     -LoadingAppsIndicator $LoadingAppsIndicator -ImportConfigBtn $ImportConfigBtn -ListOfApps $listOfApps
             }
             catch {
-                Write-Warning "Failed to load apps list: $($_.Exception.Message)"
+                Write-Warning (Get-Translation -Key 'GuiAppsLoadFailed' -FormatArgs @($_.Exception.Message))
                 $LoadingAppsIndicator.Visibility = 'Collapsed'
                 $OnlyInstalledAppsBox.IsHitTestVisible = $true
                 $Window.FindName('DeploymentApplyBtn').IsEnabled = $true

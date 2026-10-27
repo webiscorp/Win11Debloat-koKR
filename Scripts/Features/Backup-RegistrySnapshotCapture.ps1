@@ -10,7 +10,7 @@ function Get-RegistryBackupCapturePlans {
     foreach ($feature in $SelectedRegistryFeatures) {
         $regFilePath = Get-RegistryFilePathForFeature -RegistryKey $feature.RegistryKey -UseSysprepRegFiles:$UseSysprepRegFiles
         if (-not (Test-Path $regFilePath)) {
-            throw "Unable to find registry file for backup: $($feature.RegistryKey) ($regFilePath)"
+            throw (Get-Translation -Key 'RuntimeBackupRegistryFileMissing' -FormatArgs @($feature.RegistryKey, $regFilePath))
         }
 
         foreach ($operation in @(Get-RegFileOperations -regFilePath $regFilePath)) {
@@ -33,7 +33,7 @@ function Get-RegistryBackupCapturePlans {
                 [string]$feature.RegistryKey
             }
 
-            throw "Unable to find registry undo file for backup: $undoKeyDescription ($regFilePath)"
+            throw (Get-Translation -Key 'RuntimeBackupUndoFileMissing' -FormatArgs @($undoKeyDescription, $regFilePath))
         }
 
         foreach ($operation in @(Get-RegFileOperations -regFilePath $regFilePath)) {
@@ -172,12 +172,12 @@ function Get-RegistryKeySnapshot {
 
     $registryParts = Split-RegistryPath -path $KeyPath
     if (-not $registryParts) {
-        throw "Unsupported registry path in backup: $KeyPath"
+        throw (Get-Translation -Key 'RuntimeBackupPathUnsupported' -FormatArgs @($KeyPath))
     }
 
     $rootKey = Get-RegistryRootKey -hiveName $registryParts.Hive
     if (-not $rootKey) {
-        throw "Unsupported registry hive in backup: $($registryParts.Hive)"
+        throw (Get-Translation -Key 'RuntimeBackupHiveUnsupported' -FormatArgs @($registryParts.Hive))
     }
 
     $subKeyPath = $registryParts.SubKey
@@ -256,7 +256,7 @@ function Convert-RegistryKeyToSnapshot {
         foreach ($subKeyName in @($RegistryKey.GetSubKeyNames())) {
             $childKey = $RegistryKey.OpenSubKey($subKeyName, $false)
             if ($null -eq $childKey) {
-                throw "Unable to read registry subkey '$($RegistryKey.Name)\$subKeyName' while creating a backup snapshot. The backup was not created."
+                throw (Get-Translation -Key 'RuntimeBackupSubkeyReadFailed' -FormatArgs @($RegistryKey.Name, $subKeyName))
             }
 
             try {
@@ -297,7 +297,7 @@ function Convert-RegistryValueToSnapshot {
 
     $valueKind = $RegistryKey.GetValueKind($ValueName)
     if ($valueKind -eq [Microsoft.Win32.RegistryValueKind]::None) {
-        throw "REG_NONE registry values are not supported for backup. Key='$($RegistryKey.Name)' Name='$ValueName'"
+        throw (Get-Translation -Key 'RuntimeBackupRegNoneUnsupported' -FormatArgs @($RegistryKey.Name, $ValueName))
     }
 
     $value = $RegistryKey.GetValue($ValueName, $null, [Microsoft.Win32.RegistryValueOptions]::DoNotExpandEnvironmentNames)
@@ -314,7 +314,7 @@ function Convert-RegistryValueToSnapshot {
     catch {
         $valueType = if ($null -ne $value) { $value.GetType().FullName } else { '<null>' }
         $valueForLog = if ($null -eq $value) { '<null>' } elseif ($value -is [array]) { ($value -join ',') } else { [string]$value }
-        throw "Failed to normalize registry value for backup. Key='$($RegistryKey.Name)' Name='$ValueName' Kind='$valueKind' RawType='$valueType' RawValue='$valueForLog'. InnerError: $($_.Exception.Message)"
+        throw (Get-Translation -Key 'RuntimeBackupValueNormalizeFailed' -FormatArgs @($RegistryKey.Name, $ValueName, $valueKind, $valueType, $valueForLog, $_.Exception.Message))
     }
 
     return @{
