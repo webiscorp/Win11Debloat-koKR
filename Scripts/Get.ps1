@@ -256,11 +256,13 @@ catch {
 }
 
 # Keep interrupted legacy backups as well as current LocalAppData-fallback files.
+# Windows PowerShell 5.1 ignores -Exclude with -LiteralPath; filter names explicitly.
 if (Test-Path $tempWorkPath) {
     Write-Output ""
     Write-Output (get_launcher_text -key 'CleanOld')
-    Get-ChildItem -LiteralPath $tempWorkPath -Exclude Config,ConfigOld,Logs,Backups,LastUsedSettings.json,Preferences.json |
-        Remove-Item -Recurse -Force -ErrorAction Stop
+    Get-ChildItem -LiteralPath $tempWorkPath -Force |
+        Where-Object { $_.Name -notin @('Config', 'ConfigOld', 'Logs', 'Backups', 'LastUsedSettings.json', 'Preferences.json') } |
+        ForEach-Object { Remove-Item -LiteralPath $_.FullName -Recurse -Force -ErrorAction Stop }
 }
 [void][System.IO.Directory]::CreateDirectory($tempWorkPath)
 $configDir = Join-Path $tempWorkPath 'Config'
@@ -365,7 +367,9 @@ if (Test-Path $tempWorkPath) {
     Write-Output (get_launcher_text -key 'Cleanup')
 
     # Cleanup, remove Win11Debloat directory
-    Get-ChildItem -Path $tempWorkPath -Exclude Config,ConfigOld,Logs,Backups,LastUsedSettings.json,Preferences.json | Remove-Item -Recurse -Force
+    Get-ChildItem -LiteralPath $tempWorkPath -Force |
+        Where-Object { $_.Name -notin @('Config', 'ConfigOld', 'Logs', 'Backups', 'LastUsedSettings.json', 'Preferences.json') } |
+        ForEach-Object { Remove-Item -LiteralPath $_.FullName -Recurse -Force -ErrorAction Stop }
 }
 
 Write-Output ""

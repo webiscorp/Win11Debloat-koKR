@@ -19,7 +19,7 @@ $repo_root = Split-Path $PSScriptRoot -Parent
 [void][System.IO.Directory]::CreateDirectory([System.IO.Path]::GetFullPath($output_path))
 $output_path = [System.IO.Path]::GetFullPath($output_path)
 foreach ($helper in @('FileIO/Import-JsonFile', 'FileIO/Import-LanguageFile', 'FileIO/Import-AppDetailsFromJson',
-        'FileIO/Import-AppPresetsFromJson', 'GUI/Set-WindowThemeResources', 'GUI/MainWindow-Localization',
+        'FileIO/Import-AppPresetsFromJson', 'GUI/Set-WindowThemeResources', 'GUI/MainWindow-Localization', 'GUI/MainWindow-Navigation',
         'GUI/MainWindow-TweaksBuilder', 'GUI/MainWindow-AppSelection', 'GUI/Attach-ShiftClickBehavior',
         'Helpers/Windows-BuildHelpers', 'Threading/Invoke-DoEvents')) {
     . (Join-Path $PSScriptRoot "$helper.ps1")
@@ -81,24 +81,43 @@ function save_view_render {
     $window.Height = $height
     $window.UpdateLayout()
     if ($window.FindName('TweaksGrid')) { Update-TweaksResponsiveColumns -Window $window; $window.UpdateLayout() }
+
+    # Let the 250 ms checkbox template animations finish before capturing their glyphs.
+    # Invoke-DoEvents only pumps when GuiWindow is set; restore the fixture state afterward.
+    $previous_gui_window = $script:GuiWindow
+    $script:GuiWindow = $window
+    try {
+        $settle_clock = [System.Diagnostics.Stopwatch]::StartNew()
+        while ($settle_clock.ElapsedMilliseconds -lt 350) {
+            Invoke-DoEvents
+            Start-Sleep -Milliseconds 16
+        }
+        Invoke-DoEvents
+        $window.UpdateLayout()
+    }
+    finally { $script:GuiWindow = $previous_gui_window }
+
     $root = [System.Windows.FrameworkElement]$window.Content
-    if ($root.ActualWidth -lt 1 -or $root.ActualHeight -lt 1) { throw "View has no measurable content: $view_name" }
+    if ($root.ActualWidth -lt 1 -or $root.ActualHeight -lt 1 -or
+        $window.ActualWidth -lt 1 -or $window.ActualHeight -lt 1) { throw "View has no measurable content: $view_name" }
     $metrics = @(get_caption_metrics -root $root)
     $clipped = @($metrics | Where-Object { $_.potential_clipping })
     foreach ($item in $clipped) { $failures.Add("Potential caption clipping in $view_name/$theme/$width`: $($item.control) [$($item.text)]") }
     foreach ($raster_dpi in @(96, 144, 192)) {
         $factor = $raster_dpi / 96.0
         $bitmap = [System.Windows.Media.Imaging.RenderTargetBitmap]::new(
-            [int][Math]::Ceiling($root.ActualWidth * $factor), [int][Math]::Ceiling($root.ActualHeight * $factor),
+            [int][Math]::Ceiling($window.ActualWidth * $factor), [int][Math]::Ceiling($window.ActualHeight * $factor),
             $raster_dpi, $raster_dpi, [System.Windows.Media.PixelFormats]::Pbgra32)
-        $bitmap.Render($root)
+        # Window coordinates include the content border's 25 DIP margin on every side.
+        $bitmap.Render($window)
         $encoder = [System.Windows.Media.Imaging.PngBitmapEncoder]::new()
         $encoder.Frames.Add([System.Windows.Media.Imaging.BitmapFrame]::Create($bitmap))
         $file_name = "${view_name}_${theme}_${width}dip_${raster_dpi}dpi.png"
         $stream = [System.IO.File]::Create((Join-Path $output_path $file_name))
         try { $encoder.Save($stream) } finally { $stream.Dispose() }
         $render_results.Add([PSCustomObject]@{ view = $view_name; theme = $theme; file = $file_name;
-            width_dip = $root.ActualWidth; height_dip = $root.ActualHeight; raster_dpi = $raster_dpi;
+            width_dip = $window.ActualWidth; height_dip = $window.ActualHeight; raster_dpi = $raster_dpi;
+            content_width_dip = $root.ActualWidth; content_height_dip = $root.ActualHeight;
             actual_host_dpi = [System.Windows.Media.VisualTreeHelper]::GetDpi($root).PixelsPerInchX;
             caption_metrics = $metrics; potential_clipping_count = $clipped.Count })
     }
@@ -188,6 +207,7 @@ try {
                     foreach ($layout_width in @(860, 1280)) {
                         for ($tab_index = 0; $tab_index -lt $window.FindName('MainTabControl').Items.Count; $tab_index++) {
                             $window.FindName('MainTabControl').SelectedIndex = $tab_index
+                            Update-NavigationButtons -Window $window -TabControl $window.FindName('MainTabControl')
                             save_view_render -window $window -view_name "MainWindow_tab$tab_index" -theme $theme -width $layout_width -height 800
                         }
                     }
@@ -212,12 +232,16 @@ finally {
         runner_image_version = $env:ImageVersion
         powershell = $PSVersionTable.PSVersion.ToString()
         renderer = 'WPF off-screen test windows; application entry point and apply actions not executed'
+        capture_target = 'Full Window visual and dimensions, including content margins'
+        animation_settle_ms = 350
         feature_build_fixture = 26100
         raster_dpi = @(96, 144, 192)
         real_display_scale_test = 'NOT TESTED: raster DPI is not Windows display scaling'
         windows_10_11_uat = 'NOT TESTED: hosted Windows Server views are not client OS UAT'
         app_removal_registry_restore_reboot = 'NOT TESTED: intentionally excluded from rendering'
         input_method = 'NOT TESTED: text search uses programmatic Korean input, not a real IME'
+        navigation = 'Existing navigation helper updates view state after programmatic tab selection; actual wizard button clicks NOT TESTED'
+        modal_states = 'Initial XAML state with selected fixture values; caller-populated lists, titles and interactive steps are not exercised'
         renders = @($render_results.ToArray())
         errors = @($failures.ToArray())
     }

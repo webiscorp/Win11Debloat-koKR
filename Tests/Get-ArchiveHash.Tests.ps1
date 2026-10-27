@@ -219,6 +219,12 @@ Describe 'Launcher archive verification flow' {
         [void][System.IO.Directory]::CreateDirectory($backup_directory)
         [System.IO.File]::WriteAllText((Join-Path $backup_directory 'Preferences.json'), '{"Language":"ko-KR"}')
         [System.IO.File]::WriteAllText((Join-Path $backup_directory 'LastUsedSettings.json'), '{"Version":"1.0"}')
+        $preserved_files = @('Logs/session.log', 'Backups/state.json', 'Preferences.json', 'LastUsedSettings.json', 'ConfigOld/Preferences.json.previous-fixture')
+        foreach ($relative_path in $preserved_files) {
+            $persistent_file = Join-Path $work_directory $relative_path
+            [void][System.IO.Directory]::CreateDirectory((Split-Path -Parent $persistent_file))
+            [System.IO.File]::WriteAllText($persistent_file, 'preserve user data')
+        }
         $state.SumsText = 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad  Win11Debloat.zip'
         Mock Expand-Archive {
             $payload_directory = Join-Path $DestinationPath 'Win11Debloat-koKR'
@@ -233,6 +239,10 @@ Describe 'Launcher archive verification flow' {
         & $getScriptPath *> $null
         [System.IO.File]::ReadAllText((Join-Path $work_directory 'Config/Preferences.json')) | Should -Be '{"Language":"ko-KR"}'
         [System.IO.File]::ReadAllText((Join-Path $work_directory 'Config/LastUsedSettings.json')) | Should -Be '{"Version":"1.0"}'
+        foreach ($relative_path in $preserved_files) {
+            [System.IO.File]::ReadAllText((Join-Path $work_directory $relative_path)) | Should -Be 'preserve user data'
+        }
+        Test-Path -LiteralPath (Join-Path $work_directory 'Win11Debloat.ps1') | Should -BeFalse
         Should -Invoke Start-Process -Times 1 -Exactly
     }
 

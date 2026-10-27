@@ -33,7 +33,7 @@ try {
 }
 finally { Pop-Location }
 
-Add-Type -AssemblyName System.IO.Compression.FileSystem
+Add-Type -AssemblyName System.IO.Compression,System.IO.Compression.FileSystem
 $build_info = [ordered]@{
     distribution = 'WEBIS Win11Debloat-koKR'
     repository = 'https://github.com/webiscorp/Win11Debloat-koKR'
