@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Open a discussion
+  - name: 한국어판 사용 안내와 FAQ
+    url: https://github.com/webiscorp/Win11Debloat-koKR/blob/master/docs/localization/USER_GUIDE.ko-KR.md
+    about: 설치·실행·언어 선택·백업·복구 방법을 확인하세요.
+  - name: 원본 프로젝트 토론 (영어)
     url: https://github.com/Raphire/Win11Debloat/discussions
-    about: Discuss anything that is not a bug report or feature request
+    about: Raphire 원본 프로젝트의 토론입니다. 한국어판 오류는 이 저장소에 신고하세요.
