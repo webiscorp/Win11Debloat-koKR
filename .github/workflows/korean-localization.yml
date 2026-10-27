@@ -1,0 +1,111 @@
+name: Korean localization
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  catalogs:
+    name: Strict Korean catalog validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Validate UTF-8, duplicate keys, placeholders and review coverage
+        run: python3 Scripts/Test-KoreanLocalization.py --self_test --report artifacts/korean-catalogs.json
+      - name: Upload catalog evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: korean-catalog-evidence
+          path: artifacts/korean-catalogs.json
+          if-no-files-found: error
+          retention-days: 30
+
+  powershell_resources:
+    name: Korean resources (${{ matrix.shell }})
+    runs-on: windows-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        shell: [powershell, pwsh]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Test resource loading and preferences, without running the product
+        shell: ${{ matrix.shell }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
+          if (-not (Get-PackageProvider -Name NuGet -ListAvailable -ErrorAction SilentlyContinue)) {
+              Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Scope CurrentUser -Force -Confirm:$false | Out-Null
+          }
+          Install-Module -Name Pester -RequiredVersion 5.9.0 -Scope CurrentUser -Force -AllowClobber -Confirm:$false
+          Import-Module Pester -RequiredVersion 5.9.0 -Force
+          New-Item -ItemType Directory -Path artifacts -Force | Out-Null
+          $configuration = New-PesterConfiguration
+          $configuration.Run.Path = './Tests/KoreanLocalization.Tests.ps1'
+          $configuration.Run.PassThru = $true
+          $configuration.Output.Verbosity = 'Detailed'
+          $configuration.TestResult.Enabled = $true
+          $configuration.TestResult.OutputPath = 'artifacts/korean-resources.xml'
+          $result = Invoke-Pester -Configuration $configuration
+          if ($result.Result -ne 'Passed' -or $result.TotalCount -eq 0) { exit 1 }
+      - name: Upload runtime test evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: korean-resources-${{ matrix.shell }}
+          path: artifacts/korean-resources.xml
+          if-no-files-found: error
+          retention-days: 30
+
+  wpf_views:
+    name: Korean WPF views (non-destructive, hosted Windows)
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Render light and dark views, search Korean text and measure captions
+        shell: powershell
+        run: powershell.exe -NoProfile -STA -File ./Scripts/Test-KoreanUi.ps1 -output_path ./artifacts/korean-ui
+      - name: Upload WPF evidence (does not certify Windows 10/11 UAT)
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: korean-wpf-view-evidence
+          path: artifacts/korean-ui
+          if-no-files-found: error
+          retention-days: 30
+
+  candidate_package:
+    name: Package a validation candidate only
+    needs: [catalogs, powershell_resources, wpf_views]
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Build commit-pinned ZIP and SHA256SUMS
+        shell: powershell
+        run: ./Scripts/Build-KoreanPackage.ps1 -output_path ./artifacts/korean-package
+      - name: Upload validation candidate (no Release is published)
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: Win11Debloat-koKR-candidate-${{ github.sha }}
+          path: artifacts/korean-package
+          if-no-files-found: error
+          retention-days: 30

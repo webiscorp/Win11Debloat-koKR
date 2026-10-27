@@ -1,3 +1,7 @@
 LastUsedSettings.json
 Logs/*
 Backups/*
+# Generated validation evidence and Python bytecode
+artifacts/
+__pycache__/
+*.pyc
