@@ -43,24 +43,32 @@ jobs:
         with:
           persist-credentials: false
       - name: Test resource loading and preferences, without running the product
-        shell: ${{ matrix.shell }}
+        shell: powershell
+        env:
+          RESOURCE_TEST_SHELL: ${{ matrix.shell }}
         run: |
-          $ErrorActionPreference = 'Stop'
-          [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
-          if (-not (Get-PackageProvider -Name NuGet -ListAvailable -ErrorAction SilentlyContinue)) {
-              Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Scope CurrentUser -Force -Confirm:$false | Out-Null
-          }
-          Install-Module -Name Pester -RequiredVersion 5.9.0 -Scope CurrentUser -Force -AllowClobber -Confirm:$false
-          Import-Module Pester -RequiredVersion 5.9.0 -Force
-          New-Item -ItemType Directory -Path artifacts -Force | Out-Null
-          $configuration = New-PesterConfiguration
-          $configuration.Run.Path = './Tests/KoreanLocalization.Tests.ps1'
-          $configuration.Run.PassThru = $true
-          $configuration.Output.Verbosity = 'Detailed'
-          $configuration.TestResult.Enabled = $true
-          $configuration.TestResult.OutputPath = 'artifacts/korean-resources.xml'
-          $result = Invoke-Pester -Configuration $configuration
-          if ($result.Result -ne 'Passed' -or $result.TotalCount -eq 0) { exit 1 }
+          $resource_test = @'
+              $ErrorActionPreference = 'Stop'
+              [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
+              if (-not (Get-PackageProvider -Name NuGet -ListAvailable -ErrorAction SilentlyContinue)) {
+                  Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Scope CurrentUser -Force -Confirm:$false | Out-Null
+              }
+              Install-Module -Name Pester -RequiredVersion 5.9.0 -Scope CurrentUser -Force -AllowClobber -Confirm:$false
+              Import-Module Pester -RequiredVersion 5.9.0 -Force
+              New-Item -ItemType Directory -Path artifacts -Force | Out-Null
+              $configuration = New-PesterConfiguration
+              $configuration.Run.Path = './Tests/KoreanLocalization.Tests.ps1'
+              $configuration.Run.PassThru = $true
+              $configuration.Output.Verbosity = 'Detailed'
+              $configuration.TestResult.Enabled = $true
+              $configuration.TestResult.OutputPath = 'artifacts/korean-resources.xml'
+              $result = Invoke-Pester -Configuration $configuration
+              if ($result.Result -ne 'Passed' -or $result.TotalCount -eq 0) { exit 1 }
+          '@
+          $test_path = Join-Path $env:RUNNER_TEMP 'Test-KoreanResources.ps1'
+          [System.IO.File]::WriteAllText($test_path, $resource_test, [System.Text.UTF8Encoding]::new($true))
+          & $env:RESOURCE_TEST_SHELL -NoProfile -File $test_path
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Upload runtime test evidence
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

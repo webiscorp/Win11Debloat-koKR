@@ -64,7 +64,8 @@ function get_caption_metrics {
         $typeface = [System.Windows.Media.Typeface]::new($node.FontFamily, $node.FontStyle, $node.FontWeight, $node.FontStretch)
         $formatted = [System.Windows.Media.FormattedText]::new($node.Text,
             [System.Globalization.CultureInfo]::GetCultureInfo('ko-KR'), $node.FlowDirection,
-            $typeface, $node.FontSize, [System.Windows.Media.Brushes]::Black)
+            $typeface, $node.FontSize, [System.Windows.Media.Brushes]::Black,
+            [System.Windows.Media.VisualTreeHelper]::GetDpi($node).PixelsPerDip)
         $unwrapped = $node.TextWrapping -eq [System.Windows.TextWrapping]::NoWrap
         $untrimmed = $node.TextTrimming -eq [System.Windows.TextTrimming]::None
         $potential_clipping = $unwrapped -and $untrimmed -and $formatted.WidthIncludingTrailingWhitespace -gt ($node.ActualWidth + 1.5)
