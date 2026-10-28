@@ -1,0 +1,133 @@
+# One-time, non-public release-draft archival of the already-verified master candidate.
+# This workflow never publishes a GitHub Release or installs/runs Win11Debloat.
+name: WEBIS Korean candidate draft (not public)
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - .github/workflows/prepare-korean-draft.yml
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  archive_draft:
+    if: github.repository == 'webiscorp/Win11Debloat-koKR'
+    runs-on: windows-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_REPO: webiscorp/Win11Debloat-koKR
+      SOURCE_SHA: 0761d82a1629595c6f44cf261b34333410fbd3d9
+      VERIFIED_RUN_ID: '40476416985'
+      VERIFIED_ARTIFACT: Win11Debloat-koKR-candidate-0761d82a1629595c6f44cf261b34333410fbd3d9
+      RELEASE_TAG: 2026.10.27-koKR-rc1
+      EXPECTED_SHA256: 11bd29ccea009c7603a30ba9d421c341929df781278b897393c139261454d5ee
+    steps:
+      - name: Download the previously verified candidate (do not execute it)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          New-Item -ItemType Directory -Path release-draft -Force | Out-Null
+          & gh run download $env:VERIFIED_RUN_ID --repo $env:RELEASE_REPO --name $env:VERIFIED_ARTIFACT --dir release-draft
+          if ($LASTEXITCODE -ne 0) { throw 'Failed to download the verified candidate artifact.' }
+
+      - name: Verify exact source package and checksum
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $zip_path = Join-Path (Get-Location) 'release-draft/Win11Debloat.zip'
+          $sums_path = Join-Path (Get-Location) 'release-draft/SHA256SUMS'
+          if (-not (Test-Path -LiteralPath $zip_path -PathType Leaf) -or -not (Test-Path -LiteralPath $sums_path -PathType Leaf)) {
+            throw 'Candidate ZIP or SHA256SUMS is missing.'
+          }
+          $actual_sha256 = (Get-FileHash -LiteralPath $zip_path -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actual_sha256 -cne $env:EXPECTED_SHA256) { throw "Unrecognized candidate: $actual_sha256" }
+          $checksum_text = (Get-Content -LiteralPath $sums_path -Raw -Encoding ascii).Trim()
+          if ($checksum_text -cne "$($env:EXPECTED_SHA256)  Win11Debloat.zip") { throw 'SHA256SUMS differs from the verified ZIP.' }
+          Add-Type -AssemblyName System.IO.Compression,System.IO.Compression.FileSystem
+          $archive = [System.IO.Compression.ZipFile]::OpenRead($zip_path)
+          try {
+            $entry = $archive.GetEntry('Win11Debloat-koKR/BUILD_INFO.json')
+            if (-not $entry -or -not $archive.GetEntry('Win11Debloat-koKR/LICENSE')) { throw 'Missing BUILD_INFO or LICENSE.' }
+            $reader = [System.IO.StreamReader]::new($entry.Open(), [System.Text.Encoding]::UTF8)
+            try { $info = $reader.ReadToEnd() | ConvertFrom-Json }
+            finally { $reader.Dispose() }
+            if ($info.source_commit -cne $env:SOURCE_SHA -or $info.package_status -cne 'validation_candidate_not_stable_release') {
+              throw 'Package source or validation-only status does not match.'
+            }
+          }
+          finally { $archive.Dispose() }
+          Write-Host "PASS: $actual_sha256, source $($env:SOURCE_SHA), validation candidate only."
+
+      - name: Create or verify an UNPUBLISHED release draft (never stable)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $notes = @'
+          ## WEBIS Win11Debloat-koKR — 검증 후보 (비공개 Draft)
+
+          **공개 안정판이 아닙니다.** 한국어 Windows 10/11에서 앱 제거·설정 적용·백업 및 복원·실제 한글 IME·디스플레이 배율·재시작을 수행한 실사용 검증은 아직 NOT TESTED입니다. 안정판 공개 발행은 BLOCKED입니다.
+
+          - 원본: [Raphire/Win11Debloat](https://github.com/Raphire/Win11Debloat), MIT License, Copyright (c) 2020 Raphire
+          - 비공식 한국어 현지화·유지보수: WEBIS (원작자의 공식 배포판이 아님)
+          - Upstream 기준: `535a1d871a9dd2cba562c5782a8fbc0d16ad16da`
+          - 후보 소스 커밋: `0761d82a1629595c6f44cf261b34333410fbd3d9`
+          - [한국어판 코드 PR #1](https://github.com/webiscorp/Win11Debloat-koKR/pull/1)
+          - [Windows 전체 Pester 1,048 PASS / 0 FAIL, PSScriptAnalyzer PASS](https://github.com/webiscorp/Win11Debloat-koKR/actions/runs/40476416961)
+          - [한국어 CI 5개 작업 PASS 및 화면 증거·원본 후보](https://github.com/webiscorp/Win11Debloat-koKR/actions/runs/40476416985)
+          - [Windows 10/11 UAT 필수 후속 검증: Issue #2](https://github.com/webiscorp/Win11Debloat-koKR/issues/2)
+
+          기존 한국어 문자열 1,169개 전수 대조, 135개 수정 및 사용자 메시지 331개 추가로 1,500개 검사. Windows PowerShell 5.1/PowerShell 7 리소스 테스트, Windows Server 2025 비파괴 WPF 검사 완료. PowerShell 7 전체 제품 실행은 지원하지 않습니다.
+
+          **첨부 파일은 안정판 설치용이 아니라 검증 후보 보관용입니다.**
+          - `Win11Debloat.zip` SHA256: `11bd29ccea009c7603a30ba9d421c341929df781278b897393c139261454d5ee`
+          - `SHA256SUMS` 파일 동봉.
+          - `BUILD_INFO.json` 상태: `validation_candidate_not_stable_release`
+          - [설치·복구 안내](https://github.com/webiscorp/Win11Debloat-koKR/blob/master/docs/localization/USER_GUIDE.ko-KR.md)
+          - [유지보수·검증 기록](https://github.com/webiscorp/Win11Debloat-koKR/blob/master/docs/localization/STATUS.md)
+
+          한국어 Windows 10/11 격리 VM에서 UAT를 통과한 뒤에만 새로운 검토를 통해 안정판을 발행합니다. 이 Draft의 저장·첨부는 공개 Release 발행이 아닙니다.
+          '@
+          $notes_path = Join-Path (Get-Location) 'release-draft/RELEASE_NOTES.md'
+          [System.IO.File]::WriteAllText($notes_path, $notes, [System.Text.UTF8Encoding]::new($false))
+          $all_releases_json = (& gh api "repos/$($env:RELEASE_REPO)/releases?per_page=100" | Out-String)
+          if ($LASTEXITCODE -ne 0) { throw 'Unable to list current releases safely.' }
+          $all_releases = @(ConvertFrom-Json -InputObject $all_releases_json)
+          $existing = @($all_releases | Where-Object { $_.tag_name -ceq $env:RELEASE_TAG })
+          if ($existing.Count -gt 1) { throw 'Ambiguous existing release tag.' }
+          if ($existing.Count -eq 0) {
+            & gh release create $env:RELEASE_TAG --repo $env:RELEASE_REPO --draft --prerelease --target $env:SOURCE_SHA --title 'WEBIS Win11Debloat 한국어판 2026.10.27-rc1 — 검증 후보' --notes-file $notes_path
+            if ($LASTEXITCODE -ne 0) { throw 'Could not create the draft release.' }
+          } else {
+            if (-not $existing[0].draft -or -not $existing[0].prerelease -or $existing[0].target_commitish -cne $env:SOURCE_SHA) {
+              throw 'Existing tag has an unexpected release state or target; refusing any modification.'
+            }
+          }
+          $draft_json = (& gh api "repos/$($env:RELEASE_REPO)/releases?per_page=100" | Out-String)
+          if ($LASTEXITCODE -ne 0) { throw 'Unable to recheck the release.' }
+          $draft = @(ConvertFrom-Json -InputObject $draft_json | Where-Object { $_.tag_name -ceq $env:RELEASE_TAG }) | Select-Object -First 1
+          if (-not $draft -or -not $draft.draft -or -not $draft.prerelease -or $draft.target_commitish -cne $env:SOURCE_SHA) {
+            throw 'Release is not the intended unpublished candidate.'
+          }
+          foreach ($name in @('Win11Debloat.zip', 'SHA256SUMS')) {
+            $asset_path = Join-Path (Get-Location) "release-draft/$name"
+            $matching = @($draft.assets | Where-Object { $_.name -ceq $name })
+            if ($matching.Count -eq 0) {
+              & gh release upload $env:RELEASE_TAG "$asset_path" --repo $env:RELEASE_REPO
+              if ($LASTEXITCODE -ne 0) { throw "Failed to upload $name to draft." }
+            } elseif ($matching.Count -ne 1 -or $matching[0].size -ne (Get-Item -LiteralPath $asset_path).Length) {
+              throw "Existing $name asset differs from the verified candidate."
+            }
+          }
+          $final_json = (& gh api "repos/$($env:RELEASE_REPO)/releases?per_page=100" | Out-String)
+          if ($LASTEXITCODE -ne 0) { throw 'Unable to verify draft release assets.' }
+          $final = @(ConvertFrom-Json -InputObject $final_json | Where-Object { $_.tag_name -ceq $env:RELEASE_TAG }) | Select-Object -First 1
+          if (-not $final.draft -or -not $final.prerelease) { throw 'Unsafe: release is publicly published.' }
+          foreach ($name in @('Win11Debloat.zip', 'SHA256SUMS')) {
+            if (@($final.assets | Where-Object { $_.name -ceq $name }).Count -ne 1) { throw "Missing draft asset: $name" }
+          }
+          Write-Host "PASS: unpublished draft $($final.html_url), source $($env:SOURCE_SHA), 2 verified assets."

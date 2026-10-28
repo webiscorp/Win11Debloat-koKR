@@ -289,3 +289,25 @@ WPF 스크립트의 96/144/192 DPI는 **PNG 렌더링 밀도**입니다. 실제 
 이번 세션의 원시 로그는 §5의 `/tmp` 경로 및 `/tmp/webis_final_source_audit.md`, `/tmp/webis_independent_root_review.md`, `/tmp/webis_new_strings_review.md`에 있습니다. 최종 후보의 로컬 증거는 `/tmp/webis-wpf-1a08/ui-report.json`과 PNG, `/tmp/webis_wpf_1a08_860_visual_review.md`, `/tmp/webis-package-1a08/verification.json`·ZIP·SHA256SUMS입니다. 임시 파일은 장기 보존을 보장하지 않으므로 핵심 수치·판정·재현 가능한 테스트는 본 문서와 저장소에 옮겼고, 실제 CI run 및 artifact 링크를 §5·§8에 기록했습니다.
 
 중간 스냅샷의 1,497개 집계나 수정 전 실패 보고보다 이 문서의 **1,500개 최종 집계와 검증한 코드 SHA의 후속 통과 결과**를 우선합니다. 문서 갱신 이후의 최종 `master` SHA·병합 후 CI·최종 인계용 묶음 해시는 총괄 최종 보고와 프로젝트 인계 기록에서 별도 확정합니다.
+
+---
+
+## 11. 후속 실제 마감 확인 (2026-10-28)
+
+이 절은 위 §5·§8·§9에 남은 **병합 전 스냅샷** 이후 실제 확인된 결과입니다. 이전 PR 후보와 실제 `master`의 SHAs/체크섬을 혼동하지 마세요.
+
+| 검사 | 실제 최종 확인 | 상태 |
+|---|---|---|
+| Fork 관계·원본 권리 | `webiscorp/Win11Debloat-koKR` Fork, 원본 Raphire MIT LICENSE 보존 | **PASS** |
+| 최초 전수검수·기능 보완의 `master` 병합 | [PR #1](https://github.com/webiscorp/Win11Debloat-koKR/pull/1) **merged**, 제품 검증 SHA `0761d82a1629595c6f44cf261b34333410fbd3d9` | **PASS** |
+| 병합 후 전체 Windows 회귀 | [Tests run 40476416961](https://github.com/webiscorp/Win11Debloat-koKR/actions/runs/40476416961), PowerShell 5.1 **1,048 PASS / 0 FAIL / 0 SKIP**, PSScriptAnalyzer PASS | **PASS** |
+| 병합 후 한국어 CI | [Korean localization run 40476416985](https://github.com/webiscorp/Win11Debloat-koKR/actions/runs/40476416985) **최종 attempt 2의 5개 job PASS**. 최초 attempt 1은 Pester 5.9.0의 PowerShell Gallery 다운로드 실패로 일부 job 중단; 재시도 통과. | **PASS (재시도 이력 보존)** |
+| 번역/표시/패키지 | 한국어 카탈로그 **1,500/1,500**, 의도적 영어 **116개**; PowerShell 5.1/7 언어 테스트 각각 8 PASS; 호스팅 Windows Server WPF **90 PNG**·비파괴 화면 검사 | **PASS (실사용 제외)** |
+| 최종 검증 후보 | [artifact 12720818698](https://github.com/webiscorp/Win11Debloat-koKR/actions/runs/40476416985/artifacts/12720818698): `Win11Debloat.zip`, `SHA256SUMS`; ZIP SHA256 `11bd29ccea009c7603a30ba9d421c341929df781278b897393c139261454d5ee`; BUILD_INFO.source_commit `0761d82...`, 상태 `validation_candidate_not_stable_release`. ZIP CRC·LICENSE·제품 파일 405개 비교 확인 | **PASS / 안정판 아님** |
+| 한국어 Windows 10/11 실제 적용·복원 | [UAT/출시 차단 Issue #2](https://github.com/webiscorp/Win11Debloat-koKR/issues/2) | **NOT TESTED / 안정판 BLOCKED** |
+
+**Release 정책:** 검증 후보 ZIP과 체크섬은 저장소의 추가 workflow `.github/workflows/prepare-korean-draft.yml`로 **GitHub의 미게시 Draft**에 보관하도록 별도 처리합니다. 이 workflow는 정해진 CI artifact·SHA와 원본 MIT 고지를 검증하고 `--draft --prerelease`만 허용하도록 설계되었습니다. **워크플로 코드가 존재한다는 사실은 Draft 생성 성공의 증거가 아닙니다.** 실제 작업 결과는 GitHub Releases 및 해당 Actions 실행의 `draft:true`·첨부 asset을 재조회해 확정합니다. Release를 공개 발행하거나 `latest` 안정판으로 승격하지 않습니다.
+
+**새 Upstream 발견:** 2026-10-28 원본 `master` HEAD는 `ea20885fbe9fc16c04ddb9c054f8be1d47ec6d7b`로 확인됐습니다. 최초 번역 기준 `535a1d871a9dd2cba562c5782a8fbc0d16ad16da` 이후 **5커밋·29파일**이 변경됐으며, 앱 한국어 이름·설명, RunOnce 및 원본 Release 워크플로가 포함됩니다. 기존 검증본에 무검증 병합하지 않았고 [Upstream 정합 Issue #3](https://github.com/webiscorp/Win11Debloat-koKR/issues/3)에 분리했습니다. 다음 변경은 이 신규 SHA와 한국어 번역 기준을 비교하여 브랜치+PR에서 검수합니다.
+
+이 절의 증거는 해당 CI 실행·PR 및 Issues로 장기 인계하며, 이전 임시 `/tmp` 경로나 30일 보존 artifact가 영구 인계 수단이라고 주장하지 않습니다.
